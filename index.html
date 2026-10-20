@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>চাকরির খবর — সরকারি ও বেসরকারি চলমান নিয়োগ বিজ্ঞপ্তি, ফলাফল ও পরীক্ষার তারিখ</title>
-<meta name="description" content="বাংলাদেশের চলমান সরকারি ও বেসরকারি চাকরির নিয়োগ বিজ্ঞপ্তি, ফলাফল, প্রবেশপত্র, পরীক্ষার তারিখ, ছবি ও স্বাক্ষর রিসাইজ টুল এবং বয়স ক্যালকুলেটর — এক জায়গায়।">
+<meta name="description" content="বাংলাদেশের চলমান সরকারি ও বেসরকারি চাকরির নিয়োগ বিজ্ঞপ্তি, ফলাফল, প্রবেশপত্র, পরীক্ষার তারিখ, ছবি ও স্বাক্ষর রিসাইজ টুল, সিভি তৈরি এবং বয়স ক্যালকুলেটর — এক জায়গায়।">
 <meta name="theme-color" content="#05664a">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2305664a'/%3E%3Cpath d='M8 15.5 16 9l8 6.5M10.5 14v9h11v-9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='18.5' r='1.8' fill='%235eead4'/%3E%3C/svg%3E">
@@ -426,6 +426,142 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 @media (max-width:400px){.facts{grid-template-columns:1fr}.hstat b{font-size:24px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media print{.site-head,.hero,.quick,footer,.actions{display:none!important}}
+/* ---------- সিভি পাতার ডিজাইন ---------- */
+.cvtool{display:flex;flex-direction:column;gap:18px;padding-top:22px;padding-bottom:44px}
+.cvbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cvbar .btn.cvdanger{color:var(--red);border-color:#efc4c8}
+.cvbar .btn.cvdanger:hover{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.cvmsg{background:var(--brand-soft);border:1px solid var(--brand-soft-2);color:var(--brand-800);border-radius:var(--r);padding:10px 14px;font-size:14.5px;max-width:none}
+.cvlayout{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-items:start}
+.cvleft,.cvright{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (min-width:1080px){
+  .cvlayout{grid-template-columns:minmax(0,1fr) clamp(420px,42vw,540px)}
+  .cvright{position:sticky;top:calc(var(--head-h) + 60px)}
+}
+
+/* ফর্মের কার্ড */
+.cvform{display:flex;flex-direction:column;gap:12px;counter-reset:cvs}
+.cvform details{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-1);counter-increment:cvs;overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.cvform details[open]{border-color:var(--brand-soft-2);box-shadow:var(--sh-2)}
+.cvform summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.4;user-select:none}
+.cvform summary::-webkit-details-marker{display:none}
+.cvform summary::before{content:counter(cvs,bengali);flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand);font-size:14px;font-weight:700}
+.cvform summary::after{content:"";flex:none;margin-left:auto;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}
+.cvform details[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.cvform details[open]>summary{border-bottom:1px solid var(--line)}
+.cvform summary:hover{background:var(--soft)}
+.cvbody{padding:4px 18px 18px}
+.cvtip{font-size:14px;color:var(--muted);margin:10px 0 0;line-height:1.6}
+
+/* ঘর (সব ধরনের ঘর একই রকম) */
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;margin-top:14px;align-items:end}
+.fgrid .full{grid-column:1/-1}
+@media (max-width:560px){.fgrid{grid-template-columns:minmax(0,1fr)}}
+.cvform .field{min-width:0;font-size:14.5px;line-height:1.45}
+.cvform .field input,.cvform .field select,.cvform .field textarea{
+  width:100%;display:block;font:inherit;font-size:16px;font-weight:400;color:var(--fg);
+  padding:11px 14px;min-height:48px;border:1.5px solid var(--line-2);border-radius:var(--r);background-color:#fff;
+  transition:border-color .15s,box-shadow .15s}
+.cvform .field select{padding-right:40px}
+.cvform .field textarea{min-height:84px;resize:vertical;line-height:1.55}
+.cvform .field input::placeholder,.cvform .field textarea::placeholder{color:#8a978f;font-weight:400}
+.cvform .field input:hover,.cvform .field select:hover,.cvform .field textarea:hover{border-color:#b5c4bc}
+.cvform .field input:focus,.cvform .field select:focus,.cvform .field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(5,102,74,.13)}
+
+/* বারবার যোগ হওয়া অংশ (ডিগ্রি, চাকরি…) */
+.rep{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-top:14px}
+.rep .rephead{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--brand-800)}
+.rep .fgrid{margin-top:12px}
+.btn.small{font-size:14px;padding:4px 12px;min-height:34px;border-radius:9px}
+.rep .btn.small{color:var(--red);border-color:#efc4c8}
+.rep .btn.small:hover{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.btn.add{margin-top:14px;width:100%;border-style:dashed;color:var(--brand);border-color:var(--brand);background:var(--brand-soft)}
+.btn.add:hover{background:var(--brand-soft-2);color:var(--brand-800)}
+
+/* ছবি ও স্বাক্ষর */
+.upl{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;padding:12px;border:1.5px dashed var(--line-2);border-radius:var(--r);background:var(--soft)}
+.upl img{width:60px;height:70px;object-fit:cover;border-radius:6px;border:1px solid var(--line);background:#fff}
+.upl img.sg{width:120px;height:40px;object-fit:contain}
+.upl .btn:not(.small){flex:1 1 220px;text-align:left;justify-content:flex-start}
+.upl input[type=file]{display:none}
+
+/* ডিজাইন বাছাই */
+.cvopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.olab{display:block;font-size:14px;font-weight:600;color:var(--fg-2);margin-bottom:6px}
+.cvopts .seg{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cvopts .seg .btn{flex-direction:row;justify-content:center;min-height:46px;padding:8px 10px}
+.swatches{display:flex;gap:12px;flex-wrap:wrap;padding-top:4px}
+.swatches button{width:38px;height:38px;border-radius:50%;border:3px solid #fff;outline:none;box-shadow:0 0 0 2px var(--line-2);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.swatches button:hover{transform:scale(1.08)}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--fg)}
+
+/* প্রিভিউ ও ডাউনলোড */
+.cvrhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cvrhead h2{font-size:20px;margin:0}
+.cvlive{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--brand);background:var(--brand-soft);border-radius:99px;padding:2px 11px}
+.cvlive::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--brand)}
+.cvprev{width:100%;overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable;border-radius:12px;border:1px solid var(--line-2);box-shadow:var(--sh-3);background:#fff}
+@media (min-width:1080px){.cvprev{max-height:max(360px,calc(100vh - 300px))}}
+.cvdl{display:flex;gap:10px;flex-wrap:wrap}
+.cvdl .btn{flex:1 1 160px;font-size:16.5px;min-height:50px}
+.cvhint{margin:0;font-size:13.5px;line-height:1.65;color:var(--muted)}
+#cvPrint{display:none}
+
+/* ---------- সিভির কাগজ (সবসময় সাদা কাগজ) ---------- */
+.cv{--c:#1d4f91;width:794px;min-height:1123px;background:#fff;color:#1d2228;font-family:"Noto Sans Bengali","Hind Siliguri",Arial,sans-serif;font-size:13px;line-height:1.55;transform-origin:0 0;box-sizing:border-box}
+.cv *{box-sizing:border-box}
+.cv p{margin:0}
+.cv .muted{color:#9aa3ad}
+.cv.classic{padding:44px 48px}
+.cv .ctop{display:flex;justify-content:space-between;gap:22px;align-items:flex-start;border-bottom:3px solid var(--c);padding-bottom:14px}
+.cv .nm{font-size:28px;font-weight:700;color:var(--c);line-height:1.25}
+.cv .ps{font-size:15px;font-weight:600;color:#47505a;margin-top:2px}
+.cv .ct{margin-top:8px;color:#333b44;font-size:12.5px;display:flex;flex-direction:column;gap:1px}
+.cv .ph{width:120px;height:140px;object-fit:cover;border:1px solid #c9d0d8;flex:none;display:block}
+.cv .hd{font-size:14.5px;font-weight:700;color:var(--c);margin-top:18px;margin-bottom:6px;padding-bottom:3px;border-bottom:1.5px solid #d6dbe1}
+.cv.en .hd{text-transform:uppercase;letter-spacing:.06em;font-size:13.5px}
+.cv .row6,.cv .row3{display:grid;gap:0 8px;padding:5px 6px;border-bottom:1px solid #e8ecf0}
+.cv .row6{grid-template-columns:1.05fr 1.7fr 1.25fr 1.1fr .85fr .6fr}
+.cv .row3{grid-template-columns:2fr 2fr 1.2fr}
+.cv .hd2{background:#eef2f6;font-weight:700;font-size:12px;border-bottom:none}
+.cv .xp{margin-bottom:8px}
+.cv .xp .l1{display:flex;justify-content:space-between;gap:12px}
+.cv .xp .l1 b{font-size:13.5px}
+.cv .xp .org{color:#47505a;font-weight:600}
+.cv .xp .dur{color:#5b6570;white-space:nowrap;font-size:12.5px}
+.cv ul{margin:2px 0 0;padding-left:18px}
+.cv .cchips{display:flex;flex-wrap:wrap;gap:6px}
+.cv .cchips span{background:#eef2f6;border-radius:4px;padding:1px 9px;font-size:12.5px}
+.cv .pr{display:grid;grid-template-columns:165px 1fr;padding:1.5px 0}
+.cv .pr .k{color:#47505a}
+.cv .refs{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.cv .refs div{line-height:1.5}
+.cv .decl{margin-top:20px}
+.cv .sig{display:flex;justify-content:flex-end;margin-top:30px}
+.cv .sig div{text-align:center;min-width:190px}
+.cv .sig img{max-height:48px;max-width:190px;display:block;margin:0 auto 2px}
+.cv .sig .ln{border-top:1px solid #333b44;padding-top:3px;font-size:12.5px}
+/* মডার্ন */
+.cv.modern{display:grid;grid-template-columns:250px 1fr;padding:0}
+.cv.modern .side{background:var(--c);color:#fff;padding:44px 22px}
+.cv.modern .main{padding:44px 36px 44px 34px;min-width:0}
+.cv.modern .side .ph{width:150px;height:175px;margin:0 auto 18px;border:3px solid #fff;border-radius:6px}
+.cv.modern .side .hd{color:#fff;border-bottom-color:rgba(255,255,255,.4)}
+.cv.modern .side .hd:first-of-type{margin-top:0}
+.cv.modern .side .it{margin-bottom:6px;font-size:12.5px;overflow-wrap:anywhere}
+.cv.modern .side .it small{display:block;opacity:.75;font-size:11.5px}
+.cv.modern .side ul{padding-left:16px}
+.cv.modern .mtop{border-bottom:3px solid var(--c);padding-bottom:12px}
+.cv.modern .row6{grid-template-columns:1.1fr 1.8fr 1.2fr 1fr .8fr .6fr;font-size:12px}
+.cv.modern .pr{grid-template-columns:140px 1fr}
+@media print{
+  body>*:not(#cvPrint){display:none!important}
+  #cvPrint{display:block!important}
+  #cvPrint .cv{transform:none!important;min-height:auto}
+  .cv .avoid{break-inside:avoid}
+  @page{size:A4;margin:0}
+}
+
 </style>
 </head>
 <body>
@@ -491,6 +627,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
     <a href="#results" data-p="results"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg>ফলাফল ও প্রবেশপত্র</a>
     <a href="#exams" data-p="exams"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>পরীক্ষার তারিখ</a>
     <a href="#photo" data-p="photo"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg>ছবি-স্বাক্ষর রিসাইজ</a>
+    <a href="#cv" data-p="cv"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg>সিভি তৈরি</a>
     <a href="#age" data-p="age"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg>বয়স ক্যালকুলেটর</a>
     <a href="#alert" data-p="alert"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>জব অ্যালার্ট</a>
   </div></nav>
@@ -691,6 +828,56 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
   </div>
 </div>
 
+<!-- ================= সিভি তৈরি ================= -->
+<div class="page" id="p-cv" hidden>
+  <header class="page-head"><div class="wrap">
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg></span>
+    <div><h1 class="sec">সিভি তৈরি করুন</h1>
+    <p class="lead">নিজের তথ্য লিখুন — নিচে সাথে সাথে সিভি তৈরি হবে, তারপর PDF ডাউনলোড করুন। আপনার তথ্য কোথাও পাঠানো হয় না, শুধু আপনার ফোন/কম্পিউটারেই থাকে।</p></div>
+  </div></header>
+  <div class="wrap cvtool">
+    <div class="cvbar">
+      <button class="btn" type="button" id="cvSample">✨ নমুনা দিয়ে দেখুন</button>
+      <button class="btn cvdanger" type="button" id="cvClear">সব মুছুন</button>
+    </div>
+    <p class="lead cvmsg" id="cvMsg" hidden aria-live="polite"></p>
+    <div class="cvlayout">
+      <div class="cvleft">
+        <div class="cvform" id="cvForm"></div>
+        <section class="box">
+          <h3>ডিজাইন বেছে নিন</h3>
+          <div class="cvopts">
+            <div><span class="olab">ডিজাইন</span>
+              <div class="seg" id="cvTpl"><button class="btn" type="button" data-v="classic">ক্লাসিক</button><button class="btn" type="button" data-v="modern">মডার্ন</button></div></div>
+            <div><span class="olab">সিভির শিরোনাম কোন ভাষায়</span>
+              <div class="seg" id="cvLang"><button class="btn" type="button" data-v="en">English</button><button class="btn" type="button" data-v="bn">বাংলা</button></div></div>
+            <div><span class="olab">রং</span><div class="swatches" id="cvColor"></div></div>
+          </div>
+        </section>
+      </div>
+      <aside class="cvright" aria-label="সিভির প্রিভিউ">
+        <div class="cvrhead"><h2 class="sec" id="cvPrevTitle">আপনার সিভি</h2><span class="cvlive">লাইভ প্রিভিউ</span></div>
+        <div class="cvprev" id="cvPrev"></div>
+        <div class="actions cvdl">
+          <button class="btn main" type="button" id="cvPdf">⬇ PDF ডাউনলোড করুন</button>
+          <button class="btn" type="button" id="cvPrintBtn">🖨 প্রিন্ট করুন</button>
+        </div>
+        <p class="cvhint">PDF ডাউনলোড না হলে (যেমন ফেসবুকের ভেতরের ব্রাউজারে) সাইটটি Chrome-এ খুলুন। অথবা “প্রিন্ট করুন” চেপে প্রিন্টারের জায়গায় <b>Save as PDF</b> বেছে নিন।</p>
+      </aside>
+    </div>
+    <section class="box">
+      <h3>ভালো সিভির জন্য কয়েকটি পরামর্শ</h3>
+      <ul>
+        <li>সিভি ১–২ পাতার মধ্যে রাখুন। দরকারি তথ্য আগে দিন।</li>
+        <li>ছবি হোক সাম্প্রতিক, সাদা বা হালকা ব্যাকগ্রাউন্ডের, ফরমাল পোশাকে।</li>
+        <li>শিক্ষাগত যোগ্যতায় সবচেয়ে বড় ডিগ্রি আগে লিখুন।</li>
+        <li>অভিজ্ঞতায় শুধু দায়িত্ব নয়, কী অর্জন করেছেন সেটাও লিখুন।</li>
+        <li>মোবাইল নম্বর আর ইমেইল ঠিক আছে কি না দুবার মিলিয়ে নিন।</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
 <!-- ================= বয়স ক্যালকুলেটর ================= -->
 <div class="page" id="p-age" hidden>
   <header class="page-head"><div class="wrap">
@@ -885,7 +1072,7 @@ document.addEventListener("click",e=>{if(!head.contains(e.target)){setMenu(false
 matchMedia("(min-width:960px)").addEventListener("change",e=>{if(e.matches){setMenu(false);setSearch(false)}});
 
 /* ---------- মেনু ---------- */
-const PAGES=["jobs","results","exams","photo","age","alert"];
+const PAGES=["jobs","results","exams","photo","cv","age","alert"];
 const BASE_TITLE=document.title;
 let page="jobs",scrollToList=false;
 function route(){const h=location.hash.slice(1);const p=PAGES.includes(h)?h:"jobs";page=p;
@@ -894,7 +1081,8 @@ function route(){const h=location.hash.slice(1);const p=PAGES.includes(h)?h:"job
   const t=document.querySelector("a[data-p='"+p+"']").textContent.trim();
   document.title=p==="jobs"?BASE_TITLE:t+" — চাকরির খবর";
   setMenu(false);
-  if(p==="alert")renderSaved();}
+  if(p==="alert")renderSaved();
+  if(p==="cv")cvRenderPrev();}
 window.addEventListener("hashchange",()=>{route();
   if(scrollToList){scrollToList=false;$("filters").scrollIntoView({block:"start"})}else window.scrollTo(0,0)});
 
@@ -1142,8 +1330,203 @@ $("dl").onclick=async()=>{if(!img)return;const b=$("dl");b.disabled=true;clearTi
   a.download=(mode==="sign"?"signature":"photo")+"_"+W+"x"+H+".jpg";document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
 draw();
 
+/* ---------- সিভি তৈরি ---------- */
+const CV_LIBS=["https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"];
+const CV_COLORS=["#1d4f91","#006a4e","#8a1c2b","#2f3640","#0f6b75"];
+const CVL={
+  en:{objective:"Career Objective",edu:"Educational Qualification",exp:"Work Experience",train:"Training",skills:"Skills",computer:"Computer Skills",languages:"Language Proficiency",personal:"Personal Information",ref:"References",contact:"Contact",
+    father:"Father's Name",mother:"Mother's Name",dob:"Date of Birth",gender:"Gender",religion:"Religion",marital:"Marital Status",nationality:"Nationality",nid:"National ID No.",blood:"Blood Group",permAddr:"Permanent Address",presentAddr:"Present Address",phone:"Mobile",email:"Email",
+    eh:["Exam / Degree","Institute","Board / University","Group / Subject","Result","Year"],th:["Training Title","Institute","Duration"],
+    g:{m:"Male",f:"Female"},ms:{s:"Unmarried",m:"Married"},
+    decl:"I hereby declare that all the information provided above is true and correct to the best of my knowledge.",sign:"Signature",yourName:"Your Name",
+    mon:["January","February","March","April","May","June","July","August","September","October","November","December"]},
+  bn:{objective:"ক্যারিয়ার উদ্দেশ্য",edu:"শিক্ষাগত যোগ্যতা",exp:"কাজের অভিজ্ঞতা",train:"প্রশিক্ষণ",skills:"দক্ষতা",computer:"কম্পিউটার দক্ষতা",languages:"ভাষাগত দক্ষতা",personal:"ব্যক্তিগত তথ্য",ref:"রেফারেন্স",contact:"যোগাযোগ",
+    father:"পিতার নাম",mother:"মাতার নাম",dob:"জন্ম তারিখ",gender:"লিঙ্গ",religion:"ধর্ম",marital:"বৈবাহিক অবস্থা",nationality:"জাতীয়তা",nid:"জাতীয় পরিচয়পত্র নং",blood:"রক্তের গ্রুপ",permAddr:"স্থায়ী ঠিকানা",presentAddr:"বর্তমান ঠিকানা",phone:"মোবাইল",email:"ইমেইল",
+    eh:["পরীক্ষা / ডিগ্রি","প্রতিষ্ঠান","বোর্ড / বিশ্ববিদ্যালয়","বিভাগ / বিষয়","ফলাফল","সাল"],th:["প্রশিক্ষণের নাম","প্রতিষ্ঠান","সময়কাল"],
+    g:{m:"পুরুষ",f:"মহিলা"},ms:{s:"অবিবাহিত",m:"বিবাহিত"},
+    decl:"আমি এই মর্মে ঘোষণা করছি যে, উপরে প্রদত্ত সকল তথ্য আমার জানামতে সত্য ও সঠিক।",sign:"স্বাক্ষর",yourName:"আপনার নাম",mon:MON}
+};
+const CV_FORM=[
+  {g:"ব্যক্তিগত তথ্য",open:true,f:[["name","পূর্ণ নাম *","text","যেমন: Md. Rakibul Hasan"],["post","যে পদের জন্য (ঐচ্ছিক)","text","যেমন: Office Assistant"],["phone","মোবাইল নম্বর *","tel","01XXXXXXXXX"],["email","ইমেইল","email"],
+    ["father","পিতার নাম"],["mother","মাতার নাম"],["dob","জন্ম তারিখ","date"],["gender","লিঙ্গ","select",[["","—"],["m","পুরুষ"],["f","মহিলা"]]],["religion","ধর্ম"],
+    ["marital","বৈবাহিক অবস্থা","select",[["","—"],["s","অবিবাহিত"],["m","বিবাহিত"]]],["nationality","জাতীয়তা"],["blood","রক্তের গ্রুপ","select",["","A+","A-","B+","B-","O+","O-","AB+","AB-"].map(x=>[x,x||"—"])],
+    ["nid","জাতীয় পরিচয়পত্র নম্বর (ঐচ্ছিক)"],["presentAddr","বর্তমান ঠিকানা","textarea"],["permAddr","স্থায়ী ঠিকানা","textarea"]]},
+  {g:"ক্যারিয়ার উদ্দেশ্য",f:[["objective","২–৩ লাইনে লিখুন — আপনি কী ধরনের কাজ চান আর প্রতিষ্ঠানকে কী দিতে পারবেন","textarea"]]},
+  {g:"শিক্ষাগত যোগ্যতা",rep:"edu",tip:"সবচেয়ে বড় ডিগ্রি আগে লিখুন।"},
+  {g:"কাজের অভিজ্ঞতা",rep:"exp",tip:"অভিজ্ঞতা না থাকলে ফাঁকা রাখুন — সিভিতে এই অংশ দেখাবে না।"},
+  {g:"প্রশিক্ষণ",rep:"train"},
+  {g:"দক্ষতা ও ভাষা",f:[["skills","দক্ষতা (কমা দিয়ে আলাদা করুন)","textarea","যেমন: যোগাযোগ দক্ষতা, দলগত কাজ, হিসাব রাখা"],["computer","কম্পিউটার দক্ষতা (কমা দিয়ে)","textarea","যেমন: MS Word, Excel, বাংলা ও ইংরেজি টাইপিং"],["languages","ভাষা (কমা দিয়ে)","text","যেমন: বাংলা (মাতৃভাষা), ইংরেজি (ভালো)"]]},
+  {g:"রেফারেন্স",rep:"ref",tip:"সাধারণত ২ জন — আত্মীয় নন এমন পরিচিত, সম্মানিত ব্যক্তি।"},
+  {g:"ছবি ও স্বাক্ষর",files:true}
+];
+const CV_REP={
+  edu:{n:"ডিগ্রি",add:"+ আরেকটি ডিগ্রি যোগ করুন",f:[["exam","পরীক্ষা / ডিগ্রি","যেমন: SSC, HSC, BA (Hons)"],["inst","প্রতিষ্ঠানের নাম"],["board","বোর্ড / বিশ্ববিদ্যালয়","যেমন: Barishal Board"],["group","বিভাগ / বিষয়","যেমন: Science"],["result","ফলাফল","যেমন: GPA 4.50"],["year","পাসের সাল","যেমন: 2020"]]},
+  exp:{n:"চাকরি",add:"+ আরেকটি চাকরি যোগ করুন",f:[["post","পদবি"],["org","প্রতিষ্ঠান"],["dur","সময়কাল","যেমন: Jan 2023 – বর্তমান"],["work","দায়িত্ব ও অর্জন (প্রতি লাইনে একটি)","textarea"]]},
+  train:{n:"প্রশিক্ষণ",add:"+ আরেকটি প্রশিক্ষণ যোগ করুন",f:[["title","প্রশিক্ষণের নাম"],["inst","প্রতিষ্ঠান"],["dur","সময়কাল","যেমন: ৩ মাস, ২০২৪"]]},
+  ref:{n:"রেফারেন্স",add:"+ আরেকজন রেফারেন্স যোগ করুন",f:[["name","নাম"],["desig","পদবি"],["org","প্রতিষ্ঠান"],["phone","মোবাইল"]]}
+};
+const CV_EMPTY=()=>({lang:"en",tpl:"classic",color:CV_COLORS[0],name:"",post:"",phone:"",email:"",father:"",mother:"",dob:"",gender:"",religion:"",marital:"",nationality:"Bangladeshi",blood:"",nid:"",presentAddr:"",permAddr:"",objective:"",skills:"",computer:"",languages:"",photo:"",sign:"",
+  edu:[{}],exp:[],train:[],ref:[]});
+const CV_SAMPLE={lang:"en",tpl:"classic",color:CV_COLORS[0],name:"Md. Rakibul Hasan",post:"Office Assistant cum Computer Operator",phone:"01700-000000",email:"rakibul.sample@email.com",
+  father:"Md. Abdul Karim",mother:"Mrs. Hasina Begum",dob:"1999-05-14",gender:"m",religion:"Islam",marital:"s",nationality:"Bangladeshi",blood:"B+",nid:"",
+  presentAddr:"Sadar Road, Bhola Sadar, Bhola",permAddr:"Vill: Charfasson, P.O: Charfasson, Upazila: Charfasson, Dist: Bhola",
+  objective:"To work in a reputed organization where I can use my computer and office management skills, learn continuously and contribute to the organization's success with honesty and dedication.",
+  skills:"Office management, Record keeping, Communication, Teamwork, Customer service",computer:"MS Word, MS Excel, MS PowerPoint, Bangla & English typing (35 wpm), Internet & Email",languages:"Bangla (Native), English (Good)",
+  edu:[{exam:"BSS (Hons)",inst:"Govt. Bhola College",board:"National University",group:"Political Science",result:"CGPA 3.12",year:"2022"},{exam:"HSC",inst:"Bhola Govt. Mohila College",board:"Barishal Board",group:"Humanities",result:"GPA 4.42",year:"2017"},{exam:"SSC",inst:"Bhola Govt. High School",board:"Barishal Board",group:"Humanities",result:"GPA 4.75",year:"2015"}],
+  exp:[{post:"Computer Operator",org:"ABC Trading (sample)",dur:"Feb 2023 – Present",work:"Prepared letters, invoices and reports in MS Word and Excel\nMaintained daily sales and stock records\nHandled customer calls and email"}],
+  train:[{title:"Computer Office Application",inst:"Youth Training Centre, Bhola",dur:"6 months, 2022"}],
+  ref:[{name:"Prof. Md. Example Ali",desig:"Head, Dept. of Political Science",org:"Govt. Bhola College",phone:"01800-000000"},{name:"Mr. Sample Rahman",desig:"Manager",org:"ABC Trading",phone:"01900-000000"}],photo:"",sign:""};
+
+let cvData=Object.assign(CV_EMPTY(),store.get("cvDraft",{}));
+let cvTimer=null;
+function cvSave(){store.set("cvDraft",cvData)}
+function cvChanged(){clearTimeout(cvTimer);cvTimer=setTimeout(()=>{cvSave();cvRenderPrev()},120)}
+
+function cvInput(key,label,type,ph,obj){
+  const w=el("label","field"+(type==="textarea"?" full":""));w.append(document.createTextNode(label));
+  let i;
+  if(type==="textarea"){i=el("textarea");i.rows=3}
+  else if(type==="select"){i=el("select");ph.forEach(([v,t])=>{const o=el("option",null,t);o.value=v;i.append(o)})}
+  else{i=el("input");i.type=type||"text"}
+  if(ph&&type!=="select")i.placeholder=ph;
+  i.value=obj[key]||"";i.addEventListener("input",()=>{obj[key]=i.value;cvChanged()});
+  w.append(i);return w;
+}
+function cvRep(name,box){
+  const R=CV_REP[name];box.replaceChildren();
+  cvData[name].forEach((row,idx)=>{const r=el("div","rep");const h=el("div","rephead");h.append(el("span",null,R.n+" "+bn(idx+1)));
+    const del=el("button","btn small","✕ বাদ দিন");del.type="button";del.onclick=()=>{cvData[name].splice(idx,1);cvRep(name,box);cvChanged()};h.append(del);r.append(h);
+    const g=el("div","fgrid");R.f.forEach(([k,l,p])=>g.append(cvInput(k,l,p==="textarea"?"textarea":"text",p==="textarea"?"":p,row)));r.append(g);box.append(r)});
+  const add=el("button","btn add",R.add);add.type="button";add.onclick=()=>{cvData[name].push({});cvRep(name,box);cvChanged()};box.append(add);
+}
+function cvImage(file,kind,done){
+  if(!file||!file.type.startsWith("image/"))return;const i=new Image();
+  i.onload=()=>{const c=document.createElement("canvas"),g=c.getContext("2d");
+    if(kind==="photo"){const W=360,H=420,s=Math.max(W/i.width,H/i.height);c.width=W;c.height=H;g.fillStyle="#fff";g.fillRect(0,0,W,H);g.drawImage(i,(W-i.width*s)/2,(H-i.height*s)/2,i.width*s,i.height*s)}
+    else{const s=Math.min(1,500/i.width);c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);g.drawImage(i,0,0,c.width,c.height)}
+    done(c.toDataURL("image/jpeg",0.88));URL.revokeObjectURL(i.src)};
+  i.src=URL.createObjectURL(file);
+}
+function cvFiles(box){
+  [["photo","আপনার ছবি (পাসপোর্ট সাইজ)"],["sign","স্বাক্ষর (ঐচ্ছিক — সাদা কাগজে সই করে ছবি তুলুন)"]].forEach(([k,l])=>{
+    const w=el("div","upl");const im=el("img",k==="sign"?"sg":"");im.alt="";im.hidden=!cvData[k];if(cvData[k])im.src=cvData[k];
+    const inp=el("input");inp.type="file";inp.accept="image/*";inp.hidden=true;inp.id="cvf-"+k;
+    const b=el("label","btn",cvData[k]?"বদলান":"📷 "+l);b.htmlFor=inp.id;
+    const rm=el("button","btn small","✕ সরান");rm.type="button";rm.hidden=!cvData[k];
+    inp.onchange=()=>cvImage(inp.files[0],k,d=>{cvData[k]=d;im.src=d;im.hidden=false;rm.hidden=false;b.textContent="বদলান";inp.value="";cvChanged()});
+    rm.onclick=()=>{cvData[k]="";im.hidden=true;rm.hidden=true;b.textContent="📷 "+l;cvChanged()};
+    w.append(im,b,rm,inp);box.append(w)});
+}
+function cvBuildForm(){
+  const f=$("cvForm");f.replaceChildren();
+  CV_FORM.forEach(s=>{const d=el("details");if(s.open)d.open=true;d.append(el("summary",null,s.g));
+    const body=el("div","cvbody");d.append(body);
+    if(s.tip)body.append(el("p","cvtip",s.tip));
+    if(s.f){const g=el("div","fgrid");s.f.forEach(([k,l,t,p])=>g.append(cvInput(k,l,t,p,cvData)));body.append(g)}
+    if(s.rep){const b=el("div");cvRep(s.rep,b);body.append(b)}
+    if(s.files)cvFiles(body);
+    f.append(d)});
+  const seg=(id,key)=>document.querySelectorAll("#"+id+" .btn").forEach(b=>{b.classList.toggle("main",b.dataset.v===cvData[key]);
+    b.onclick=()=>{cvData[key]=b.dataset.v;cvBuildOpts();cvChanged()}});
+  window.cvBuildOpts=()=>{seg("cvTpl","tpl");seg("cvLang","lang");const sw=$("cvColor");sw.replaceChildren();
+    CV_COLORS.forEach(c=>{const b=el("button");b.type="button";b.style.background=c;b.setAttribute("aria-label","রং");b.setAttribute("aria-pressed",c===cvData.color);
+      b.onclick=()=>{cvData.color=c;cvBuildOpts();cvChanged()};sw.append(b)})};
+  cvBuildOpts();
+}
+
+/* সিভির কাগজ বানানো */
+function cvSheet(){
+  const L=CVL[cvData.lang],T=v=>(v||"").trim();
+  const lines=v=>T(v).split(/\n+/).map(x=>x.replace(/^[-•*]\s*/,"").trim()).filter(Boolean);
+  const list=v=>T(v).split(/[,\n]+/).map(x=>x.trim()).filter(Boolean);
+  const E=(t,c,k)=>{const e=el(t,c);if(k!=null)[].concat(k).forEach(x=>{if(x!=null&&x!=="")e.append(typeof x==="string"?document.createTextNode(x):x)});return e};
+  const dob=v=>{if(!v)return"";const [y,m,d]=v.split("-").map(Number);return cvData.lang==="bn"?bn(d)+" "+L.mon[m-1]+" "+bn(y):d+" "+L.mon[m-1]+" "+y};
+  const s=E("div","cv "+cvData.tpl+" "+cvData.lang);s.style.setProperty("--c",cvData.color);
+  const photo=cvData.photo?(()=>{const i=el("img","ph");i.src=cvData.photo;i.alt="";return i})():null;
+  const name=T(cvData.name)?E("div","nm",T(cvData.name)):E("div","nm muted",L.yourName);
+  const sec=(key,nodes)=>{nodes=(nodes||[]).filter(Boolean);if(!nodes.length)return[];return[E("div","hd",L[key]),...nodes]};
+  const edu=cvData.edu.filter(r=>Object.values(r).some(v=>T(v)));
+  const eduN=edu.length?[E("div","row6 hd2",L.eh.map(h=>E("div",null,h))),...edu.map(r=>E("div","row6 avoid",["exam","inst","board","group","result","year"].map(k=>E("div",null,T(r[k])))))]:[];
+  const exp=cvData.exp.filter(r=>Object.values(r).some(v=>T(v))).map(r=>{const w=lines(r.work);
+    return E("div","xp avoid",[E("div","l1",[E("div",null,[E("b",null,T(r.post)),T(r.org)?E("div","org",T(r.org)):null]),E("div","dur",T(r.dur))]),w.length?E("ul",null,w.map(x=>E("li",null,x))):null])});
+  const tr=cvData.train.filter(r=>Object.values(r).some(v=>T(v)));
+  const trN=tr.length?[E("div","row3 hd2",L.th.map(h=>E("div",null,h))),...tr.map(r=>E("div","row3 avoid",["title","inst","dur"].map(k=>E("div",null,T(r[k])))))]:[];
+  const pr=[["father",T(cvData.father)],["mother",T(cvData.mother)],["dob",dob(cvData.dob)],["gender",L.g[cvData.gender]],["religion",T(cvData.religion)],["marital",L.ms[cvData.marital]],["nationality",T(cvData.nationality)],["blood",cvData.blood],["nid",T(cvData.nid)],["permAddr",T(cvData.permAddr)]]
+    .filter(x=>x[1]).map(([k,v])=>E("div","pr avoid",[E("div","k",L[k]),E("div",null,": "+v)]));
+  const refs=cvData.ref.filter(r=>Object.values(r).some(v=>T(v)));
+  const refN=refs.length?[E("div","refs avoid",refs.map(r=>E("div",null,[E("b",null,T(r.name)),T(r.desig)?E("div",null,T(r.desig)):null,T(r.org)?E("div",null,T(r.org)):null,T(r.phone)?E("div",null,L.phone+": "+T(r.phone)):null])))]:[];
+  const sig=(()=>{const box=E("div","sig");const d=E("div");if(cvData.sign){const i=el("img");i.src=cvData.sign;i.alt="";d.append(i)}
+    d.append(E("div","ln",[L.sign,T(cvData.name)?E("div",null,"("+T(cvData.name)+")"):null]));box.append(d);return box})();
+  const decl=E("div","decl avoid",[E("p",null,L.decl),sig]);
+  const chips=v=>list(v).length?E("div","cchips avoid",list(v).map(x=>E("span",null,x))):null;
+  const ul=v=>list(v).length?E("ul","avoid",list(v).map(x=>E("li",null,x))):null;
+  const mainSecs=[...sec("objective",[T(cvData.objective)?E("p","avoid",T(cvData.objective)):null]),...sec("edu",eduN),...sec("exp",exp),...sec("train",trN)];
+  const tail=[...sec("personal",pr),...sec("ref",refN),decl];
+  if(cvData.tpl==="classic"){
+    const ct=E("div","ct",[T(cvData.phone)?E("div",null,L.phone+": "+T(cvData.phone)):null,T(cvData.email)?E("div",null,L.email+": "+T(cvData.email)):null,T(cvData.presentAddr)?E("div",null,L.presentAddr+": "+T(cvData.presentAddr)):null]);
+    s.append(E("div","ctop avoid",[E("div",null,[name,T(cvData.post)?E("div","ps",T(cvData.post)):null,ct]),photo]));
+    s.append(...mainSecs,...sec("skills",[chips(cvData.skills)]),...sec("computer",[chips(cvData.computer)]),...sec("languages",[chips(cvData.languages)]),...tail);
+  }else{
+    const side=E("div","side");if(photo)side.append(photo);
+    const it=(lab,v)=>T(v)?E("div","it avoid",[E("small",null,lab),T(v)]):null;
+    side.append(...sec("contact",[it(L.phone,cvData.phone),it(L.email,cvData.email),it(L.presentAddr,cvData.presentAddr)]),...sec("skills",[ul(cvData.skills)]),...sec("computer",[ul(cvData.computer)]),...sec("languages",[ul(cvData.languages)]));
+    const main=E("div","main",[E("div","mtop avoid",[name,T(cvData.post)?E("div","ps",T(cvData.post)):null]),...mainSecs,...tail]);
+    s.append(side,main);
+  }
+  return s;
+}
+function cvFit(){const w=$("cvPrev"),sh=w.firstChild;if(!sh||!w.clientWidth)return;const k=Math.min(1,w.clientWidth/794);sh.style.transform="scale("+k+")";w.style.height=Math.ceil(sh.offsetHeight*k)+"px"}
+function cvRenderPrev(){if($("p-cv").hidden)return;const w=$("cvPrev");w.replaceChildren(cvSheet());cvFit()}
+window.addEventListener("resize",cvFit);
+if(window.ResizeObserver)new ResizeObserver(()=>cvFit()).observe($("cvPrev"));
+
+/* পাতা ভাগ: কোনো লাইন/সারি যেন দুই পাতার মাঝে না কাটে */
+function cvPaginate(sh){
+  const P=1123,TOP=44,BOT=40,base=()=>sh.getBoundingClientRect().top;
+  sh.querySelectorAll(".avoid").forEach(it=>{
+    let t=it;while(t.previousElementSibling&&t.previousElementSibling.matches(".hd,.hd2"))t=t.previousElementSibling;
+    const b0=base(),top=t.getBoundingClientRect().top-b0,bottom=it.getBoundingClientRect().bottom-b0,pageEnd=(Math.floor(top/P)+1)*P;
+    const mt=parseFloat(getComputedStyle(t).marginTop)||0;
+    if(bottom>pageEnd-BOT&&bottom-top<P-TOP-BOT)t.style.marginTop=(mt+pageEnd-top+TOP)+"px";
+    else if(top>=P&&top%P<TOP)t.style.marginTop=(mt+TOP-top%P)+"px";
+  });
+  sh.style.minHeight=Math.ceil((sh.scrollHeight-1)/P)*P+"px";
+}
+function cvLoad(src){return new Promise((ok,no)=>{const s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=no;document.head.append(s)})}
+async function cvPdf(){
+  const b=$("cvPdf"),old=b.textContent;b.disabled=true;b.textContent="PDF তৈরি হচ্ছে…";$("cvMsg").hidden=true;
+  try{
+    if(!window.html2canvas)await cvLoad(CV_LIBS[0]);if(!window.jspdf)await cvLoad(CV_LIBS[1]);
+    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+    const host=el("div");host.style.cssText="position:absolute;left:-10000px;top:0;width:794px";
+    const sh=cvSheet();host.append(sh);document.body.append(host);cvPaginate(sh);
+    const cnv=await html2canvas(sh,{scale:2,backgroundColor:"#ffffff",logging:false,windowWidth:794});
+    host.remove();
+    const pdf=new window.jspdf.jsPDF({unit:"pt",format:"a4"}),pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+    const pageH=Math.round(cnv.width*1123/794),n=Math.max(1,Math.round(cnv.height/pageH));
+    for(let i=0;i<n;i++){const c=document.createElement("canvas");c.width=cnv.width;c.height=pageH;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);
+      g.drawImage(cnv,0,i*pageH,cnv.width,Math.min(pageH,cnv.height-i*pageH),0,0,cnv.width,Math.min(pageH,cnv.height-i*pageH));
+      if(i)pdf.addPage();pdf.addImage(c.toDataURL("image/jpeg",0.92),"JPEG",0,0,pw,ph)}
+    const fn=(cvData.name||"CV").trim().replace(/[^\wঀ-৿]+/g,"_").replace(/^_|_$/g,"")||"CV";
+    pdf.save(fn+"_CV.pdf");
+  }catch(e){const m=$("cvMsg");m.hidden=false;m.textContent="PDF বানানো যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন, অথবা “প্রিন্ট করুন” চেপে “Save as PDF” বেছে নিন।"}
+  finally{b.disabled=false;b.textContent=old}
+}
+$("cvPdf").onclick=cvPdf;
+$("cvPrintBtn").onclick=()=>{let h=$("cvPrint");h.replaceChildren(cvSheet());window.print()};
+$("cvSample").onclick=()=>{cvData=JSON.parse(JSON.stringify(CV_SAMPLE));cvSave();cvBuildForm();cvRenderPrev();
+  const m=$("cvMsg");m.hidden=false;m.textContent="নমুনা তথ্য বসানো হয়েছে — এখন নিজের তথ্য দিয়ে বদলে নিন।"};
+let cvClearArm=null;
+$("cvClear").onclick=()=>{const b=$("cvClear");
+  if(!cvClearArm){b.textContent="নিশ্চিত? আবার চাপুন";cvClearArm=setTimeout(()=>{b.textContent="সব মুছুন";cvClearArm=null},3000);return}
+  clearTimeout(cvClearArm);cvClearArm=null;b.textContent="সব মুছুন";cvData=CV_EMPTY();cvSave();cvBuildForm();cvRenderPrev();$("cvMsg").hidden=true};
+cvBuildForm();
+
+
+
 /* ---------- শুরু ---------- */
 route();buildChips();render();renderWeek();renderResults();renderExams();renderSocial();renderCounts();age();
 </script>
+<div id="cvPrint"></div>
 </body>
 </html>
