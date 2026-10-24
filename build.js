@@ -23,8 +23,8 @@ const INFO_PAGES = [
   { id: "terms",   title: "শর্তাবলি ও দায়মুক্তি — TathyoNest", desc: "TathyoNest ব্যবহারের শর্তাবলি ও দায়মুক্তি।" },
 ];
 
-async function fetchTable(table, order) {
-  const url = `${SUPABASE_URL}/rest/v1/${table}?select=*&status=eq.published&order=${order}&limit=5000`;
+async function fetchTable(table, order, cols = "*") {
+  const url = `${SUPABASE_URL}/rest/v1/${table}?select=${cols}&status=eq.published&order=${order}&limit=5000`;
   const res = await fetch(url, { headers: { apikey: PUBLISHABLE_KEY, Accept: "application/json" } });
   if (!res.ok) throw new Error(`${table} আনা যায়নি: ${res.status} ${await res.text()}`);
   const rows = await res.json();
@@ -45,8 +45,9 @@ function toJob(r) {
 function toResult(r) {
   return clean({ kind: r.kind, title: r.title, org: r.org, date: r.pub_date, text: r.details, link: r.link, source: r.source, sourceUrl: r.source_url });
 }
+// সঠিক উত্তর ও ব্যাখ্যা পাতায় রাখা হয় না — জমা দিলে সার্ভার (mcq_submit) নম্বর গোনে
 function toMcq(r) {
-  return { c: r.category, q: r.question, o: [r.opt1, r.opt2, r.opt3, r.opt4], a: r.answer, e: r.explanation || "" };
+  return { id: r.id, c: r.category, q: r.question, o: [r.opt1, r.opt2, r.opt3, r.opt4] };
 }
 function toExam(r) {
   const e = clean({ title: r.title, org: r.org, end: r.end_date, when: r.when_text, text: r.details, link: r.link, source: r.source, sourceUrl: r.source_url });
@@ -68,13 +69,13 @@ async function main() {
   // MCQ: টেবিল না থাকলে বা সমস্যা হলে আগের প্রশ্নগুলোই রেখে দেওয়া হয়, বিল্ড থামে না
   let mcqBlock;
   try {
-    const rows = await fetchTable("mcq_questions", "category.asc");
+    const rows = await fetchTable("mcq_questions", "category.asc,created_at.asc", "id,category,question,opt1,opt2,opt3,opt4");
     mcqBlock = `const MCQS = ${js(rows.map(toMcq))};\n`;
     console.log(`✓ MCQ: ${rows.length}টি প্রশ্ন`);
   } catch (e) {
     const cur = fs.readFileSync("index.html", "utf8");
     const m = cur.match(/const MCQS = [\s\S]*?\];\n/);
-    mcqBlock = m ? m[0] : "const MCQS = [];\n";
+    mcqBlock = m && /"id":/.test(m[0]) && !/"a":/.test(m[0]) ? m[0] : "const MCQS = [];\n";
     console.warn("! MCQ আনা যায়নি, আগের প্রশ্ন রাখা হলো:", e.message);
   }
 
