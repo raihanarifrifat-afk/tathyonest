@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light">
+<title>অ্যাডমিন — TathyoNest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#f5f8f6; --surface:#fff; --line:#e1e8e4; --line-2:#cfdad4; --fg:#0f1f19; --fg-2:#2a3a33; --muted:#56665e;
+  --brand:#05664a; --brand-800:#064e3b; --brand-soft:#e8f5ef;
+  --blue:#1e4f8f; --blue-soft:#e9f0fa; --red:#b42330; --red-soft:#fdecee; --amber:#8f520a; --amber-soft:#fdf3e0; --grey-soft:#eef2f0;
+  --r:12px; --sh:0 1px 2px rgba(15,45,33,.05),0 6px 18px -8px rgba(15,45,33,.16);
+  --body:"Noto Sans Bengali","Hind Siliguri",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid #0f766e;outline-offset:2px;border-radius:6px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:600;font-size:15px;padding:9px 16px;border-radius:10px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--fg);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--brand);color:var(--brand)}
+.btn.main{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.main:hover{background:var(--brand-800);color:#fff}
+.btn.danger{color:var(--red);border-color:#efc3c7}
+.btn.danger.arm{background:var(--red);border-color:var(--red);color:#fff}
+.btn.sm{font-size:14px;padding:5px 11px;border-radius:8px}
+.btn[disabled]{opacity:.55;cursor:wait}
+
+/* লগইন */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+.login form{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px 24px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px}
+.login h1{margin:0;font-size:24px}
+.login p{margin:0;color:var(--muted);font-size:14.5px}
+.field{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted);min-width:0}
+.field .lab{font-weight:600;color:var(--fg-2)}
+.field .req{color:var(--red)}
+.field input,.field select,.field textarea{width:100%;font-size:16px;padding:10px 12px;border:1.5px solid var(--line-2);border-radius:10px;background:#fff;color:var(--fg)}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(5,102,74,.12)}
+.field .hint{font-size:13px}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:var(--red)}
+.field .err{color:var(--red);font-size:13px}
+.msg{border-radius:10px;padding:10px 14px;font-size:14.5px}
+.msg.err{background:var(--red-soft);color:var(--red)}
+.msg.ok{background:var(--brand-soft);color:var(--brand-800)}
+.msg.warn{background:var(--amber-soft);color:var(--amber)}
+
+/* হেডার */
+.head{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.head .wrap{display:flex;align-items:center;gap:10px;min-height:62px;flex-wrap:wrap;padding-block:8px}
+.head h1{margin:0;font-size:19px;display:flex;align-items:center;gap:8px}
+.head h1 small{font-size:12.5px;font-weight:600;color:var(--brand);background:var(--brand-soft);padding:1px 8px;border-radius:999px}
+.head .who{font-size:13.5px;color:var(--muted);margin-left:auto;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+.head .acts{display:flex;gap:8px;flex-wrap:wrap}
+main.wrap{padding-block:18px 60px;display:flex;flex-direction:column;gap:16px}
+
+.notice{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+
+.tabs{display:flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;overflow-x:auto}
+.tab{flex:1;min-width:max-content;border:0;background:none;border-radius:9px;padding:9px 12px;font-weight:700;color:var(--muted);cursor:pointer}
+.tab b{font-weight:600;font-size:13px;margin-left:4px;opacity:.85}
+.tab[aria-selected="true"]{background:var(--brand);color:#fff}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools input,.tools select{font-size:15.5px;padding:9px 12px;border:1.5px solid var(--line-2);border-radius:10px;background:#fff}
+.tools input{flex:1 1 220px;min-width:0}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.row{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.row.draft{border-left-color:#9aa8a1}
+.row.expired{border-left-color:var(--amber)}
+.row .top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+.row h3{margin:0;font-size:16.5px;line-height:1.45;min-width:0}
+.row .meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13.5px;color:var(--muted)}
+.row .acts{display:flex;flex-wrap:wrap;gap:6px}
+.pills{display:flex;gap:6px;flex:none}
+.pill{font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.p-pub{background:var(--brand-soft);color:var(--brand)}
+.p-draft{background:var(--grey-soft);color:var(--muted)}
+.p-exp{background:var(--amber-soft);color:var(--amber)}
+.p-gov{background:var(--brand-soft);color:var(--brand-800)}
+.p-pri{background:var(--blue-soft);color:var(--blue)}
+.empty{background:#fff;border:1.5px dashed var(--line-2);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+
+/* সম্পাদনা */
+.editor{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px}
+.editor h2{margin:0;font-size:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid .full{grid-column:1/-1}
+@media (max-width:620px){.grid{grid-template-columns:1fr}.head .who{display:none}}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.checks label{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1.5px solid var(--line-2);border-radius:999px;padding:4px 12px;font-size:14.5px;color:var(--fg);cursor:pointer;background:#fff}
+.checks label:has(input:checked){border-color:var(--brand);background:var(--brand-soft);color:var(--brand-800);font-weight:600}
+.checks input{margin:0;accent-color:var(--brand)}
+.ebar{display:flex;gap:8px;flex-wrap:wrap;position:sticky;bottom:0;background:#fff;padding-top:10px;border-top:1px solid var(--line)}
+.ebar .sp{flex:1}
+
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--fg);color:#fff;padding:10px 18px;border-radius:10px;font-size:15px;z-index:50;box-shadow:var(--sh);max-width:calc(100% - 32px)}
+.loading{color:var(--muted);text-align:center;padding:24px}
+</style>
+</head>
+<body>
+
+<!-- ============ লগইন ============ -->
+<div class="login" id="loginView" hidden>
+  <form id="loginForm" novalidate>
+    <h1>TathyoNest অ্যাডমিন</h1>
+    <p>চাকরি, ফলাফল ও পরীক্ষার তথ্য যোগ ও সম্পাদনা করতে লগইন করুন।</p>
+    <label class="field"><span class="lab">ইমেইল</span><input id="lEmail" type="email" autocomplete="username" required></label>
+    <label class="field"><span class="lab">পাসওয়ার্ড</span><input id="lPass" type="password" autocomplete="current-password" required></label>
+    <div class="msg err" id="lErr" hidden></div>
+    <button class="btn main" id="lBtn" type="submit">লগইন</button>
+  </form>
+</div>
+
+<!-- ============ অ্যাডমিন ============ -->
+<div id="appView" hidden>
+  <header class="head"><div class="wrap">
+    <h1>TathyoNest <small>অ্যাডমিন</small></h1>
+    <span class="who" id="who"></span>
+    <div class="acts">
+      <button class="btn main" id="deployBtn">⟳ সাইট আপডেট করুন</button>
+      <a class="btn" href="https://tathyonest.pages.dev" target="_blank" rel="noopener">সাইট দেখুন ↗</a>
+      <button class="btn" id="logoutBtn">লগ আউট</button>
+    </div>
+  </div></header>
+
+  <main class="wrap">
+    <div class="msg warn notice" id="dirtyMsg" hidden>
+      <span>কিছু পরিবর্তন এখনো সাইটে যায়নি। সাইটে দেখাতে “সাইট আপডেট করুন” চাপুন।</span>
+    </div>
+    <div class="msg" id="deployMsg" hidden></div>
+
+    <div id="listView">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div style="height:12px"></div>
+      <div class="tools">
+        <input id="q" type="search" placeholder="শিরোনাম বা প্রতিষ্ঠান দিয়ে খুঁজুন" aria-label="খুঁজুন">
+        <select id="filter" aria-label="অবস্থা">
+          <option value="all">সব</option>
+          <option value="live">চলমান (প্রকাশিত)</option>
+          <option value="draft">খসড়া</option>
+          <option value="expired">মেয়াদ শেষ</option>
+        </select>
+        <button class="btn main" id="addBtn">+ নতুন যোগ করুন</button>
+      </div>
+      <div style="height:12px"></div>
+      <div class="list" id="list"><div class="loading">লোড হচ্ছে…</div></div>
+    </div>
+
+    <form class="editor" id="editor" hidden novalidate>
+      <h2 id="edTitle">নতুন</h2>
+      <div class="grid" id="edFields"></div>
+      <div class="msg err" id="edErr" hidden></div>
+      <div class="ebar">
+        <button class="btn" type="button" id="edCancel">← বাতিল</button>
+        <span class="sp"></span>
+        <button class="btn" type="button" id="edDraft">খসড়া হিসেবে রাখুন</button>
+        <button class="btn main" type="submit" id="edPub">প্রকাশ করুন</button>
+      </div>
+    </form>
+  </main>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ===================== সেটিং ===================== */
+const SB_URL = "https://jzqathsjweryiwyynxzh.supabase.co";
+const SB_KEY = "sb_publishable_b5yyz-iIHdembZTYe-HEnA_R7507R5a";   // পাবলিক কী — এখানে রাখা নিরাপদ
+const SESSION_KEY = "tn_admin_session";
+
+/* ===================== ছোট সহায়ক ===================== */
+const $ = id => document.getElementById(id);
+const bn = s => String(s).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
+const MON = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+const fmt = s => { if (!s) return ""; const [y,m,d] = s.split("-").map(Number); return bn(d)+" "+MON[m-1]+" "+bn(y); };
+const TODAY = new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { v==null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+function el(tag, cls, txt){ const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+let toastTimer;
+function toast(t){ const x = $("toast"); x.textContent = t; x.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(()=>x.hidden = true, 2600); }
+function showMsg(id, cls, text){ const m = $(id); m.className = "msg " + cls; m.textContent = text; m.hidden = !text; }
+
+/* ===================== লগইন ও API ===================== */
+let session = store.get(SESSION_KEY);
+const now = () => Math.floor(Date.now()/1000);
+
+function bnError(raw){
+  const t = String(raw || "");
+  if (/Invalid login credentials/i.test(t)) return "ইমেইল বা পাসওয়ার্ড ভুল।";
+  if (/Email not confirmed/i.test(t)) return "ইমেইল এখনো নিশ্চিত হয়নি। Supabase-এ ইউজার বানানোর সময় “Auto Confirm User” চালু রাখুন।";
+  if (/row-level security|42501|permission denied/i.test(t)) return "অনুমতি নেই — এই অ্যাকাউন্ট অ্যাডমিন তালিকায় নেই।";
+  if (/Failed to fetch|NetworkError|Load failed/i.test(t)) return "ইন্টারনেট সংযোগ পাওয়া যাচ্ছে না। সংযোগ দেখে আবার চেষ্টা করুন।";
+  if (/deploy hook/i.test(t)) return "Cloudflare deploy hook এখনো বসানো হয়নি — নির্দেশনার ধাপটি করুন।";
+  return "সমস্যা হয়েছে: " + t;
+}
+
+async function authCall(path, body){
+  const r = await fetch(SB_URL + "/auth/v1/" + path, { method:"POST", headers:{ apikey:SB_KEY, "Content-Type":"application/json" }, body: JSON.stringify(body) });
+  const j = await r.json().catch(()=>({}));
+  if (!r.ok) throw new Error(j.error_description || j.msg || j.message || j.error || ("HTTP " + r.status));
+  return j;
+}
+function saveSession(j){
+  session = { access_token:j.access_token, refresh_token:j.refresh_token, expires_at: j.expires_at || (now() + (j.expires_in||3600)), email: j.user && j.user.email };
+  store.set(SESSION_KEY, session);
+}
+async function refreshSession(){
+  if (!session || !session.refresh_token) throw new Error("session");
+  const j = await authCall("token?grant_type=refresh_token", { refresh_token: session.refresh_token });
+  saveSession(j);
+}
+async function api(path, opt = {}, retried = false){
+  if (!session) throw new Error("session");
+  if (session.expires_at - now() < 60) await refreshSession();
+  const headers = { apikey: SB_KEY, Authorization: "Bearer " + session.access_token, "Content-Type": "application/json" };
+  if (opt.prefer) headers.Prefer = opt.prefer;
+  const r = await fetch(SB_URL + "/rest/v1/" + path, { method: opt.method || "GET", headers, body: opt.body ? JSON.stringify(opt.body) : undefined });
+  if (r.status === 401 && !retried) { try { await refreshSession(); return api(path, opt, true); } catch(e){ logout(true); throw new Error("লগইনের মেয়াদ শেষ — আবার লগইন করুন।"); } }
+  const text = await r.text();
+  const data = text ? JSON.parse(text) : null;
+  if (!r.ok) throw new Error((data && (data.message || data.hint)) || ("HTTP " + r.status));
+  return data;
+}
+
+async function login(e){
+  e.preventDefault();
+  const email = $("lEmail").value.trim(), pass = $("lPass").value;
+  if (!email || !pass){ showMsg("lErr","err","ইমেইল ও পাসওয়ার্ড দুটোই লিখুন।"); return; }
+  const b = $("lBtn"); b.disabled = true; b.textContent = "লগইন হচ্ছে…"; $("lErr").hidden = true;
+  try {
+    saveSession(await authCall("token?grant_type=password", { email, password: pass }));
+    await enterApp();
+  } catch(err){ showMsg("lErr","err", bnError(err.message)); session = null; store.set(SESSION_KEY, null); }
+  finally { b.disabled = false; b.textContent = "লগইন"; }
+}
+async function logout(silent){
+  if (session && !silent){ try { await fetch(SB_URL + "/auth/v1/logout", { method:"POST", headers:{ apikey:SB_KEY, Authorization:"Bearer " + session.access_token } }); } catch(e){} }
+  session = null; store.set(SESSION_KEY, null);
+  $("appView").hidden = true; $("loginView").hidden = false; $("lPass").value = "";
+}
+
+async function enterApp(){
+  const isAdmin = await api("rpc/is_admin", { method:"POST", body:{} });
+  if (isAdmin !== true){
+    await logout(false);
+    showMsg("lErr","err","এই অ্যাকাউন্টের অ্যাডমিন অনুমতি নেই। Supabase-এ “admins” তালিকায় যোগ করার ধাপটি করুন।");
+    return;
+  }
+  $("who").textContent = session.email || "";
+  $("loginView").hidden = true; $("appView").hidden = false;
+  showDirty();
+  await loadAll();
+}
+
+/* ===================== টেবিলের গঠন ===================== */
+const DIVS = ["ঢাকা","চট্টগ্রাম","রাজশাহী","খুলনা","বরিশাল","সিলেট","রংপুর","ময়মনসিংহ"];
+const isGov = r => (r.type || "govt") === "govt";
+const T = {
+  jobs: {
+    label: "চাকরি", one: "চাকরি", order: "created_at.desc",
+    expired: r => r.deadline && r.deadline < TODAY,
+    meta: r => [isGov(r) ? "সরকারি" : "বেসরকারি", r.cat, r.org, "শেষ তারিখ: " + fmt(r.deadline) + (r.deadline_time ? ", " + r.deadline_time : "")],
+    fields: [
+      { k:"type", label:"ধরন", type:"select", opts:[["govt","সরকারি"],["private","বেসরকারি"]], def:"govt" },
+      { k:"cat", label:"ক্যাটাগরি", type:"datalist", req:true, ph:"যেমন: পুলিশ ও প্রতিরক্ষা", hint:"আগের ক্যাটাগরি থেকে বাছুন বা নতুন লিখুন" },
+      { k:"title", label:"শিরোনাম", req:true, full:true, ph:"সরকারি: প্রতিষ্ঠানের নাম — পদ / বেসরকারি: পদের নাম" },
+      { k:"org", label:"প্রতিষ্ঠান", full:true, show:r=>!isGov(r), ph:"যেমন: প্রাণ গ্রুপ" },
+      { k:"posts", label:"পদ সংখ্যা", show:isGov, ph:"যেমন: ২২৮" },
+      { k:"salary", label:"বেতন", show:r=>!isGov(r), ph:"যেমন: ১৫,০০০–২০,০০০ টাকা" },
+      { k:"edu", label:"শিক্ষাগত যোগ্যতা", show:r=>!isGov(r), ph:"যেমন: এইচএসসি" },
+      { k:"exp", label:"অভিজ্ঞতা", show:r=>!isGov(r), ph:"যেমন: লাগবে না" },
+      { k:"area", label:"কর্মস্থল (লেখায়)", show:r=>!isGov(r), ph:"যেমন: ঢাকা, চট্টগ্রাম" },
+      { k:"divs", label:"কোন বিভাগে কর্মস্থল", type:"divs", full:true, def:"সারা দেশ" },
+      { k:"deadline", label:"আবেদনের শেষ তারিখ", type:"date", req:true },
+      { k:"deadline_time", label:"শেষ সময়", ph:"যেমন: বিকেল ৫টা" },
+      { k:"apply_url", label:"আবেদনের লিংক (অফিসিয়াল)", type:"url", full:true, ph:"https://xxx.teletalk.com.bd" },
+      { k:"source", label:"সূত্র", ph:"যেমন: প্রথম আলো" },
+      { k:"source_url", label:"সূত্রের লিংক", type:"url", ph:"https://" }
+    ]
+  },
+  results: {
+    label: "ফলাফল ও প্রবেশপত্র", one: "ফলাফল/নোটিশ", order: "pub_date.desc",
+    expired: () => false,
+    meta: r => [r.kind, r.org, "প্রকাশ: " + fmt(r.pub_date)],
+    fields: [
+      { k:"kind", label:"ধরন", type:"select", opts:["ফলাফল","গেজেট","প্রবেশপত্র","নোটিশ"].map(x=>[x,x]), def:"ফলাফল" },
+      { k:"pub_date", label:"প্রকাশের তারিখ", type:"date", req:true, def:TODAY },
+      { k:"title", label:"শিরোনাম", req:true, full:true },
+      { k:"org", label:"প্রতিষ্ঠান", full:true },
+      { k:"details", label:"বিস্তারিত (২–৩ লাইন)", type:"textarea", full:true },
+      { k:"link", label:"অফিসিয়াল লিংক", type:"url", full:true, ph:"https://" },
+      { k:"source", label:"সূত্র", ph:"যেমন: যুগান্তর" },
+      { k:"source_url", label:"সূত্রের লিংক", type:"url", ph:"https://" }
+    ]
+  },
+  exams: {
+    label: "পরীক্ষার তারিখ", one: "পরীক্ষা", order: "created_at.desc",
+    expired: r => { const d = r.end_date || r.exam_date; return !!d && d < TODAY; },
+    meta: r => [r.org, r.exam_date ? "তারিখ: " + fmt(r.exam_date) + (r.end_date ? " – " + fmt(r.end_date) : "") : (r.when_text || "তারিখ ঘোষণা বাকি")],
+    fields: [
+      { k:"title", label:"শিরোনাম", req:true, full:true, ph:"যেমন: ৫১তম বিসিএস — লিখিত পরীক্ষা" },
+      { k:"org", label:"প্রতিষ্ঠান", full:true },
+      { k:"exam_date", label:"পরীক্ষার তারিখ (জানা না থাকলে ফাঁকা)", type:"date" },
+      { k:"end_date", label:"শেষ দিন (কয়েক দিন চললে)", type:"date" },
+      { k:"when_text", label:"তারিখ না জানলে লিখুন", full:true, show:r=>!r.exam_date, ph:"যেমন: নভেম্বর ২০২৬ (সম্ভাব্য)" },
+      { k:"details", label:"বিস্তারিত", type:"textarea", full:true },
+      { k:"link", label:"অফিসিয়াল লিংক", type:"url", full:true, ph:"https://" },
+      { k:"source", label:"সূত্র" },
+      { k:"source_url", label:"সূত্রের লিংক", type:"url", ph:"https://" }
+    ]
+  }
+};
+
+/* ===================== তালিকা ===================== */
+let tab = "jobs";
+const DATA = { jobs:null, results:null, exams:null };
+
+async function loadAll(){
+  await Promise.all(Object.keys(T).map(async t => {
+    try { DATA[t] = await api(t + "?select=*&order=" + T[t].order + "&limit=2000"); }
+    catch(e){ DATA[t] = []; toast(bnError(e.message)); }
+  }));
+  renderTabs(); renderList();
+}
+function renderTabs(){
+  const box = $("tabs"); box.replaceChildren();
+  Object.keys(T).forEach(t => {
+    const b = el("button","tab",T[t].label); b.setAttribute("role","tab"); b.setAttribute("aria-selected", t === tab);
+    if (DATA[t]) b.append(el("b",null,"(" + bn(DATA[t].length) + ")"));
+    b.onclick = () => { tab = t; $("q").value = ""; $("filter").value = "all"; renderTabs(); renderList(); };
+    box.append(b);
+  });
+  $("addBtn").textContent = "+ নতুন " + T[tab].one;
+  $("filter").querySelector('[value="expired"]').hidden = tab === "results";
+}
+function stateOf(r){ if (r.status !== "published") return "draft"; return T[tab].expired(r) ? "expired" : "live"; }
+function renderList(){
+  const L = $("list"); L.replaceChildren();
+  const rows = DATA[tab];
+  if (!rows){ L.append(el("div","loading","লোড হচ্ছে…")); return; }
+  const q = $("q").value.trim().toLowerCase(), f = $("filter").value;
+  const shown = rows.filter(r => (f === "all" || stateOf(r) === f) && (!q || [r.title, r.org, r.cat].join(" ").toLowerCase().includes(q)));
+  if (!shown.length){ L.append(el("div","empty", rows.length ? "এই খোঁজে কিছু পাওয়া যায়নি।" : "এখনো কিছু যোগ করা হয়নি। “+ নতুন” চেপে শুরু করুন।")); return; }
+  shown.forEach(r => L.append(rowCard(r)));
+}
+function rowCard(r){
+  const s = stateOf(r), c = el("article","row " + (s === "draft" ? "draft" : s === "expired" ? "expired" : ""));
+  const top = el("div","top"); top.append(el("h3",null,r.title));
+  const pills = el("div","pills");
+  if (tab === "jobs") pills.append(el("span","pill " + (isGov(r) ? "p-gov" : "p-pri"), isGov(r) ? "সরকারি" : "বেসরকারি"));
+  pills.append(el("span","pill " + (s === "draft" ? "p-draft" : s === "expired" ? "p-exp" : "p-pub"), s === "draft" ? "খসড়া" : s === "expired" ? "মেয়াদ শেষ" : "প্রকাশিত"));
+  top.append(pills); c.append(top);
+  const meta = el("div","meta"); T[tab].meta(r).filter(Boolean).forEach(x => meta.append(el("span",null,x))); c.append(meta);
+  const a = el("div","acts");
+  const edit = el("button","btn sm","সম্পাদনা"); edit.onclick = () => openEditor(r); a.append(edit);
+  const copy = el("button","btn sm","কপি"); copy.title = "এর মতো আরেকটা বানান"; copy.onclick = () => { const x = { ...r }; delete x.id; delete x.created_at; delete x.updated_at; x.status = "draft"; openEditor(x, true); }; a.append(copy);
+  const tog = el("button","btn sm", r.status === "published" ? "খসড়া করুন" : "প্রকাশ করুন");
+  tog.onclick = async () => { tog.disabled = true; try { await saveRow({ ...r, status: r.status === "published" ? "draft" : "published" }, r.id); toast(r.status === "published" ? "খসড়া করা হয়েছে" : "প্রকাশিত হয়েছে"); } catch(e){ toast(bnError(e.message)); tog.disabled = false; } };
+  a.append(tog);
+  const del = el("button","btn sm danger","মুছুন"); let armT;
+  del.onclick = async () => {
+    if (!del.classList.contains("arm")){ del.classList.add("arm"); del.textContent = "নিশ্চিত? আবার চাপুন"; armT = setTimeout(()=>{ del.classList.remove("arm"); del.textContent = "মুছুন"; }, 3000); return; }
+    clearTimeout(armT); del.disabled = true;
+    try { await api(tab + "?id=eq." + encodeURIComponent(r.id), { method:"DELETE" }); DATA[tab] = DATA[tab].filter(x => x.id !== r.id); markDirty(); renderTabs(); renderList(); toast("মুছে ফেলা হয়েছে"); }
+    catch(e){ toast(bnError(e.message)); del.disabled = false; }
+  };
+  a.append(del);
+  c.append(a);
+  return c;
+}
+$("q").addEventListener("input", renderList);
+$("filter").addEventListener("change", renderList);
+
+/* ===================== সম্পাদনা ===================== */
+let editing = null, editId = null;
+function openEditor(row, isCopy){
+  editId = row && row.id && !isCopy ? row.id : null;
+  editing = {};
+  T[tab].fields.forEach(f => editing[f.k] = row && row[f.k] != null ? row[f.k] : (f.def != null ? f.def : ""));
+  $("edTitle").textContent = (editId ? "সম্পাদনা — " : "নতুন ") + T[tab].one;
+  $("edErr").hidden = true;
+  drawFields();
+  $("listView").hidden = true; $("editor").hidden = false; window.scrollTo(0,0);
+  const first = $("edFields").querySelector("input,select,textarea"); if (first) first.focus();
+}
+function closeEditor(){ $("editor").hidden = true; $("listView").hidden = false; editing = null; editId = null; }
+function drawFields(){
+  const box = $("edFields"); box.replaceChildren();
+  T[tab].fields.forEach(f => {
+    if (f.show && !f.show(editing)) return;
+    const w = el("label","field" + (f.full || f.type === "textarea" ? " full" : "")); w.dataset.k = f.k;
+    const lab = el("span","lab",f.label); if (f.req) lab.append(el("span","req"," *")); w.append(lab);
+    let inp;
+    if (f.type === "select"){ inp = el("select"); f.opts.forEach(([v,t]) => { const o = el("option",null,t); o.value = v; inp.append(o); }); }
+    else if (f.type === "textarea"){ inp = el("textarea"); }
+    else if (f.type === "divs"){ inp = divPicker(); }
+    else {
+      inp = el("input"); inp.type = f.type === "date" ? "date" : f.type === "url" ? "url" : "text";
+      if (f.type === "datalist"){ const id = "dl-" + f.k; inp.setAttribute("list", id); const dl = el("datalist"); dl.id = id;
+        [...new Set((DATA[tab] || []).filter(r => (r.type || "govt") === editing.type).map(r => r[f.k]).filter(Boolean))].forEach(v => { const o = el("option"); o.value = v; dl.append(o); }); w.append(dl); }
+    }
+    if (f.type !== "divs"){
+      inp.id = "f-" + f.k; inp.value = editing[f.k] || "";
+      if (f.ph) inp.placeholder = f.ph;
+      inp.addEventListener("input", () => { editing[f.k] = inp.value; w.classList.remove("bad"); const er = w.querySelector(".err"); if (er) er.remove(); if (f.k === "type" || f.k === "exam_date") drawFields(); });
+    }
+    w.append(inp);
+    if (f.hint) w.append(el("span","hint",f.hint));
+    box.append(w);
+  });
+}
+function divPicker(){
+  const box = el("div","checks"); const cur = (editing.divs || "সারা দেশ").split(",").map(s => s.trim());
+  ["সারা দেশ", ...DIVS].forEach(d => {
+    const l = el("label"); const c = el("input"); c.type = "checkbox"; c.checked = cur.includes(d);
+    c.onchange = () => {
+      let set = new Set((editing.divs || "").split(",").map(s => s.trim()).filter(Boolean));
+      if (d === "সারা দেশ"){ set = c.checked ? new Set(["সারা দেশ"]) : new Set(); }
+      else { set.delete("সারা দেশ"); c.checked ? set.add(d) : set.delete(d); }
+      editing.divs = [...set].join(",") || "সারা দেশ"; drawFields();
+    };
+    l.append(c, document.createTextNode(d)); box.append(l);
+  });
+  return box;
+}
+function validate(){
+  const errs = [];
+  const mark = (k, m) => { errs.push(m); const w = $("edFields").querySelector('[data-k="' + k + '"]'); if (w && !w.querySelector(".err")){ w.classList.add("bad"); w.append(el("span","err",m)); } };
+  T[tab].fields.forEach(f => {
+    if (f.show && !f.show(editing)) return;
+    const v = String(editing[f.k] || "").trim();
+    if (f.req && !v) mark(f.k, f.label + " দিতে হবে");
+    if (f.type === "url" && v && !/^https?:\/\/\S+\.\S+/.test(v)) mark(f.k, "লিংক http:// বা https:// দিয়ে শুরু হতে হবে");
+  });
+  if (tab === "exams"){
+    if (!editing.exam_date && !String(editing.when_text || "").trim()) mark("when_text", "তারিখ বা সম্ভাব্য সময় — যেকোনো একটা দিন");
+    if (editing.end_date && editing.exam_date && editing.end_date < editing.exam_date) mark("end_date", "শেষ দিন পরীক্ষার তারিখের আগে হতে পারে না");
+    if (editing.end_date && !editing.exam_date) mark("exam_date", "শেষ দিন দিলে শুরুর তারিখও দিন");
+  }
+  return errs;
+}
+function payload(status){
+  const p = { status };
+  T[tab].fields.forEach(f => {
+    let v = editing[f.k]; v = typeof v === "string" ? v.trim() : v;
+    if (f.show && !f.show(editing)) v = "";
+    if (f.type === "date") v = v || null;
+    p[f.k] = v == null ? (f.type === "date" ? null : "") : v;
+  });
+  if (tab === "jobs" && !p.divs) p.divs = "সারা দেশ";
+  if (tab === "exams" && p.exam_date) p.when_text = "";
+  return p;
+}
+async function saveRow(p, id){
+  const out = id
+    ? await api(tab + "?id=eq." + encodeURIComponent(id), { method:"PATCH", body:p, prefer:"return=representation" })
+    : await api(tab, { method:"POST", body:p, prefer:"return=representation" });
+  const row = Array.isArray(out) ? out[0] : out;
+  if (!row) throw new Error("সংরক্ষণ নিশ্চিত হয়নি");
+  DATA[tab] = id ? DATA[tab].map(x => x.id === id ? row : x) : [row, ...DATA[tab]];
+  markDirty(); renderTabs(); renderList();
+  return row;
+}
+async function submitEditor(status){
+  $("edFields").querySelectorAll(".err").forEach(e => e.remove());
+  $("edFields").querySelectorAll(".bad").forEach(e => e.classList.remove("bad"));
+  const errs = validate();
+  if (errs.length){ showMsg("edErr","err","লাল চিহ্নিত ঘরগুলো ঠিক করুন।"); return; }
+  const btns = [$("edDraft"), $("edPub")]; btns.forEach(b => b.disabled = true);
+  try { await saveRow(payload(status), editId); closeEditor(); toast(status === "published" ? "প্রকাশিত হয়েছে" : "খসড়া হিসেবে রাখা হয়েছে"); }
+  catch(e){ showMsg("edErr","err", bnError(e.message)); }
+  finally { btns.forEach(b => b.disabled = false); }
+}
+$("editor").addEventListener("submit", e => { e.preventDefault(); submitEditor("published"); });
+$("edDraft").onclick = () => submitEditor("draft");
+$("edCancel").onclick = closeEditor;
+$("addBtn").onclick = () => openEditor(null);
+
+/* ===================== সাইট আপডেট ===================== */
+function markDirty(){ try { sessionStorage.setItem("tn_dirty","1"); } catch(e){} showDirty(); }
+function showDirty(){ let d = false; try { d = sessionStorage.getItem("tn_dirty") === "1"; } catch(e){} $("dirtyMsg").hidden = !d; }
+$("deployBtn").onclick = async () => {
+  const b = $("deployBtn"); b.disabled = true; b.textContent = "পাঠানো হচ্ছে…";
+  try {
+    const r = await api("rpc/trigger_deploy", { method:"POST", body:{} });
+    if (r === "wait") showMsg("deployMsg","warn","এইমাত্র একবার আপডেট শুরু হয়েছে। এক মিনিট পর আবার চাপুন।");
+    else { try { sessionStorage.removeItem("tn_dirty"); } catch(e){} showDirty(); showMsg("deployMsg","ok","সাইট আপডেট শুরু হয়েছে। ১–২ মিনিট পর সাইটে নতুন তথ্য দেখা যাবে।"); }
+  } catch(e){ showMsg("deployMsg","err", bnError(e.message)); }
+  finally { b.disabled = false; b.textContent = "⟳ সাইট আপডেট করুন"; }
+};
+
+/* ===================== শুরু ===================== */
+$("loginForm").addEventListener("submit", login);
+$("logoutBtn").onclick = () => logout(false);
+(async () => {
+  if (session){
+    try { await enterApp(); return; } catch(e){ await logout(true); }
+  }
+  $("loginView").hidden = false;
+})();
+</script>
+</body>
+</html>
