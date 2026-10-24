@@ -322,6 +322,22 @@ const T = {
       { k:"source", label:"সূত্র" },
       { k:"source_url", label:"সূত্রের লিংক", type:"url", ph:"https://" }
     ]
+  },
+  mcq_questions: {
+    label: "MCQ", one: "MCQ প্রশ্ন", order: "created_at.desc",
+    titleOf: r => r.question,
+    expired: () => false,
+    meta: r => [r.category, "সঠিক উত্তর: " + ("কখগঘ"[r.answer - 1] || "?") + ". " + (r["opt" + r.answer] || "")],
+    fields: [
+      { k:"category", label:"বিষয়", type:"datalist", req:true, full:true, ph:"যেমন: বাংলাদেশ বিষয়াবলি", hint:"আগের বিষয় থেকে বাছুন — একই বিষয়ের নাম হুবহু এক রাখুন" },
+      { k:"question", label:"প্রশ্ন", type:"textarea", req:true, full:true },
+      { k:"opt1", label:"ক. অপশন", req:true },
+      { k:"opt2", label:"খ. অপশন", req:true },
+      { k:"opt3", label:"গ. অপশন", req:true },
+      { k:"opt4", label:"ঘ. অপশন", req:true },
+      { k:"answer", label:"সঠিক উত্তর", type:"select", opts:[["1","ক"],["2","খ"],["3","গ"],["4","ঘ"]], def:"1" },
+      { k:"explanation", label:"ব্যাখ্যা (কেন এটা সঠিক)", type:"textarea", full:true }
+    ]
   }
 };
 
@@ -353,13 +369,13 @@ function renderList(){
   const rows = DATA[tab];
   if (!rows){ L.append(el("div","loading","লোড হচ্ছে…")); return; }
   const q = $("q").value.trim().toLowerCase(), f = $("filter").value;
-  const shown = rows.filter(r => (f === "all" || stateOf(r) === f) && (!q || [r.title, r.org, r.cat].join(" ").toLowerCase().includes(q)));
+  const shown = rows.filter(r => (f === "all" || stateOf(r) === f) && (!q || [T[tab].titleOf ? T[tab].titleOf(r) : r.title, r.org, r.cat, r.category].join(" ").toLowerCase().includes(q)));
   if (!shown.length){ L.append(el("div","empty", rows.length ? "এই খোঁজে কিছু পাওয়া যায়নি।" : "এখনো কিছু যোগ করা হয়নি। “+ নতুন” চেপে শুরু করুন।")); return; }
   shown.forEach(r => L.append(rowCard(r)));
 }
 function rowCard(r){
   const s = stateOf(r), c = el("article","row " + (s === "draft" ? "draft" : s === "expired" ? "expired" : ""));
-  const top = el("div","top"); top.append(el("h3",null,r.title));
+  const top = el("div","top"); top.append(el("h3",null,T[tab].titleOf ? T[tab].titleOf(r) : r.title));
   const pills = el("div","pills");
   if (tab === "jobs") pills.append(el("span","pill " + (isGov(r) ? "p-gov" : "p-pri"), isGov(r) ? "সরকারি" : "বেসরকারি"));
   pills.append(el("span","pill " + (s === "draft" ? "p-draft" : s === "expired" ? "p-exp" : "p-pub"), s === "draft" ? "খসড়া" : s === "expired" ? "মেয়াদ শেষ" : "প্রকাশিত"));
@@ -411,7 +427,7 @@ function drawFields(){
     else {
       inp = el("input"); inp.type = f.type === "date" ? "date" : f.type === "url" ? "url" : "text";
       if (f.type === "datalist"){ const id = "dl-" + f.k; inp.setAttribute("list", id); const dl = el("datalist"); dl.id = id;
-        [...new Set((DATA[tab] || []).filter(r => (r.type || "govt") === editing.type).map(r => r[f.k]).filter(Boolean))].forEach(v => { const o = el("option"); o.value = v; dl.append(o); }); w.append(dl); }
+        [...new Set((DATA[tab] || []).filter(r => tab !== "jobs" || (r.type || "govt") === editing.type).map(r => r[f.k]).filter(Boolean))].forEach(v => { const o = el("option"); o.value = v; dl.append(o); }); w.append(dl); }
     }
     if (f.type !== "divs"){
       inp.id = "f-" + f.k; inp.value = editing[f.k] || "";
@@ -463,6 +479,7 @@ function payload(status){
   });
   if (tab === "jobs" && !p.divs) p.divs = "সারা দেশ";
   if (tab === "exams" && p.exam_date) p.when_text = "";
+  if (tab === "mcq_questions") p.answer = Number(p.answer) || 1;
   return p;
 }
 async function saveRow(p, id){
