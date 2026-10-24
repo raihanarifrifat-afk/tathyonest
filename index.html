@@ -621,7 +621,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 .home-title{font-family:var(--display);font-weight:700;font-size:clamp(28px,5.4vw,52px);line-height:1.2;margin:0 auto 12px;color:var(--brand-900);letter-spacing:-.01em;text-wrap:balance}
 .home-title span{background:linear-gradient(90deg,var(--brand-600) 0%,var(--teal) 45%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .home-sub{margin:0 auto;max-width:58ch;font-size:clamp(15.5px,2vw,18px);color:var(--fg-2);line-height:1.7}
-.tiles{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:18px 16px;max-width:1120px}
+.tiles{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:18px 14px;max-width:1180px}
 .tiles li{display:flex;flex-direction:column;align-items:center;min-width:0;--c1:#22c285;--c2:#05664a;--soft:#e8f5ef;--ink:#05664a}
 .tiles li.c2{--c1:#60a5fa;--c2:#1e4f8f;--soft:#e9f0fa;--ink:#1e4f8f}
 .tiles li.c3{--c1:#2dd4bf;--c2:#0f766e;--soft:#e2f5f2;--ink:#0f766e}
@@ -664,7 +664,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 .soon-empty{grid-column:1/-1;padding:22px;text-align:center;color:var(--muted);background:#fff;border:1.5px dashed var(--line-2);border-radius:var(--r-lg)}
 .home-trust{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 0 0;font-size:14px;color:var(--muted);text-align:center;flex-wrap:wrap}
 .home-trust .i{color:var(--brand)}
-@media (max-width:1060px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr));max-width:640px;gap:20px 16px}}
+@media (max-width:1060px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr));max-width:540px;gap:20px 16px}}
 @media (max-width:720px){.soon-list{grid-template-columns:1fr}}
 @media (max-width:560px){
   .home .wrap{padding-top:26px;padding-bottom:34px}
@@ -761,6 +761,83 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 
 @media (max-width:959px){.site-head .head-actions{margin-left:auto}}
 .prose .sign-off{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--brand-800)}
+
+/* ---------- MCQ অনুশীলন ---------- */
+.mq{width:100%;max-width:860px;padding-top:28px;padding-bottom:64px}
+.mq-h{font-family:var(--display);font-size:19px;margin:0 0 12px}
+.mq-h:not(:first-child){margin-top:28px}
+.mq-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.mq-cat-btn{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);background:#fff;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.mq-cat-btn:hover{border-color:var(--brand-soft-2);transform:translateY(-1px)}
+.mq-cat-btn b{font-size:16px;line-height:1.35}
+.mq-cat-btn small{font-size:13px;color:var(--muted)}
+.mq-cat-btn .best{font-size:12.5px;font-weight:700;color:var(--amber);background:var(--amber-soft);padding:1px 8px;border-radius:999px}
+.mq-cat-btn[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft);box-shadow:0 0 0 3px rgba(5,102,74,.12)}
+.mq-cat-btn[aria-checked="true"] b{color:var(--brand-800)}
+.mq-opts{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+.mq-n{flex:0 1 220px}
+.mq-toggle{flex:1 1 280px;display:flex;align-items:center;gap:12px;padding:12px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;cursor:pointer}
+.mq-toggle input{width:20px;height:20px;accent-color:var(--brand);flex:none;min-height:0}
+.mq-toggle span{display:flex;flex-direction:column}
+.mq-toggle small{color:var(--muted);font-size:13px}
+.mq-toggle:has(input:checked){border-color:var(--brand);background:var(--brand-soft)}
+.mq-start{margin-top:22px;font-size:17px;padding:13px 26px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
+.mq-note{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:14px;color:var(--muted)}
+.mq-note .i{color:var(--brand)}
+
+.mq-bar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.mq-prog{color:var(--fg)}
+.mq-score{color:var(--muted);font-variant-numeric:tabular-nums}
+.mq-clock{margin-left:auto;padding:3px 12px;border-radius:999px;background:var(--brand-soft);color:var(--brand);font-variant-numeric:tabular-nums}
+.mq-clock.low{background:var(--red-soft);color:var(--red)}
+.mq-track{height:6px;border-radius:6px;background:var(--grey-soft);margin:10px 0 16px;overflow:hidden}
+.mq-track span{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--brand-600),var(--teal));transition:width .3s var(--ease)}
+.mq-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--sh-2)}
+.mq-cat{margin:0 0 8px;font-size:13.5px;font-weight:700;color:var(--brand)}
+.mq-q{margin:0 0 18px;font-family:var(--display);font-size:clamp(19px,2.6vw,23px);line-height:1.55;font-weight:700}
+.mq-ans{display:flex;flex-direction:column;gap:10px}
+.mq-opt{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:16.5px;color:var(--fg);text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+.mq-opt:hover:not(:disabled){border-color:var(--brand);background:var(--soft)}
+.mq-opt .l{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--grey-soft);font-weight:700;color:var(--fg-2)}
+.mq-opt:disabled{cursor:default}
+.mq-opt.ok{border-color:#1f9d6b;background:#e7f7ef}
+.mq-opt.ok .l{background:#1f9d6b;color:#fff}
+.mq-opt.bad{border-color:var(--red);background:var(--red-soft)}
+.mq-opt.bad .l{background:var(--red);color:#fff}
+.mq-opt.dim{opacity:.6}
+.mq-exp{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--soft);border-left:4px solid var(--brand);font-size:15.5px;line-height:1.7}
+.mq-exp.wrong{border-left-color:var(--red)}
+.mq-exp b{display:block;margin-bottom:2px}
+.mq-nav{display:flex;align-items:center;gap:12px;margin-top:16px}
+.mq-nav .btn.main{margin-left:auto;display:inline-flex;align-items:center;gap:8px}
+.mq-key{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.mq-key{display:none}.mq-card{padding:18px 16px}.mq-opt{font-size:16px}}
+
+.mq-res-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--sh-2);text-align:center}
+.mq-ring{--p:0;width:140px;height:140px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;
+  background:conic-gradient(var(--brand-600) calc(var(--p)*1%),var(--grey-soft) 0)}
+.mq-ring span{width:112px;height:112px;border-radius:50%;background:#fff;display:grid;place-items:center;font-family:var(--display);font-size:32px;font-weight:700;color:var(--brand-800)}
+.mq-res-card h2{font-family:var(--display);margin:6px 0 4px;font-size:24px}
+.mq-res-card>p{margin:0;color:var(--muted)}
+.mq-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0 6px}
+.mq-stats div{padding:12px 8px;border-radius:14px;background:var(--soft)}
+.mq-stats b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.mq-stats small{font-size:13px;color:var(--muted)}
+.mq-stats .ok b{color:#1f9d6b}.mq-stats .bad b{color:var(--red)}
+.mq-neg{font-size:14px;color:var(--fg-2);margin-top:8px!important}
+.mq-res-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.mq-res-actions .btn{display:inline-flex;align-items:center;gap:8px}
+.mq-review{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.mq-review h3{font-family:var(--display);font-size:19px;margin:6px 0 2px}
+.mq-rv{padding:14px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red)}
+.mq-rv.mq-skip{border-left-color:var(--amber)}
+.mq-rv p{margin:0 0 4px}
+.mq-rv .q{font-weight:700}
+.mq-rv .you{color:var(--red);font-size:14.5px}
+.mq-rv .right{color:#13794f;font-size:14.5px;font-weight:600}
+.mq-rv .why{color:var(--fg-2);font-size:14.5px}
+@media (max-width:560px){.mq-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tiles li.c9{--c1:#facc15;--c2:#a16207;--soft:#fef7d6;--ink:#854d0e}
 </style>
 </head>
 <body>
@@ -829,6 +906,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
           <a href="#alert" data-p="alert"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>জব অ্যালার্ট</a>
         </div>
       </div>
+      <a href="#mcq" data-p="mcq">MCQ</a>
       <a href="#about" data-p="about">আমাদের সম্পর্কে</a>
       <a href="#contact" data-p="contact">যোগাযোগ</a>
     </nav>
@@ -863,6 +941,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
         <li class="c6"><a class="tile" href="#photo"><span class="tile-ico"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg></span><span class="tile-name">ছবি-স্বাক্ষর রিসাইজ</span></a><span class="tile-tag">টেলিটকের মাপে</span></li>
         <li class="c7"><a class="tile" href="#age"><span class="tile-ico"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg></span><span class="tile-name">বয়স ক্যালকুলেটর</span></a><span class="tile-tag">বয়সসীমা যাচাই</span></li>
         <li class="c8"><a class="tile" href="#alert"><span class="tile-ico"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="tile-name">জব অ্যালার্ট</span></a><span class="tile-tag" id="qSaved"></span></li>
+        <li class="c9"><a class="tile" href="#mcq"><span class="tile-ico"><svg class="i" aria-hidden="true"><use href="#i-grad"/></svg></span><span class="tile-name">MCQ অনুশীলন</span></a><span class="tile-tag" id="qMcq"></span></li>
       </ul>
       <div class="home-cta"><a class="btn main home-btn" href="#jobs">সব চলমান নিয়োগ বিজ্ঞপ্তি দেখুন<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
     </div>
@@ -996,990 +1075,4 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 <!-- ================= ছবি-স্বাক্ষর রিসাইজ ================= -->
 <div class="page" id="p-photo" hidden>
   <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg></span>
-    <div><h1 class="sec">ছবি ও স্বাক্ষর রিসাইজ</h1>
-    <p class="lead">টেলিটকে আবেদনের জন্য ছবি ও স্বাক্ষর ঠিক মাপে আর ঠিক সাইজে (KB) বানিয়ে নিন। আপনার ছবি কোথাও আপলোড হয় না — সব কাজ আপনার ফোনেই হয়।</p></div>
-  </div></header>
-
-  <div class="wrap tool">
-    <section class="box">
-      <div class="seg" id="presets" role="group" aria-label="কী বানাবেন">
-        <button class="btn main" data-w="300" data-h="300" data-kb="100">ছবি <small>৩০০×৩০০, ১০০KB</small></button>
-        <button class="btn" data-w="300" data-h="80" data-kb="60">স্বাক্ষর <small>৩০০×৮০, ৬০KB</small></button>
-        <button class="btn" data-custom="1">নিজের মাপ <small>প্রস্থ, উচ্চতা, KB</small></button>
-      </div>
-      <div class="grid3" id="customBox" hidden>
-        <label class="field">প্রস্থ (পিক্সেল)<input id="cw" type="number" inputmode="numeric" min="50" max="2000" value="300"></label>
-        <label class="field">উচ্চতা (পিক্সেল)<input id="ch" type="number" inputmode="numeric" min="50" max="2000" value="300"></label>
-        <label class="field">সর্বোচ্চ সাইজ (KB)<input id="ckb" type="number" inputmode="numeric" min="10" max="2000" value="100"></label>
-      </div>
-
-      <label class="drop" id="drop" for="file" tabindex="0" role="button" aria-describedby="dropHint">
-        <span class="di"><svg class="i" aria-hidden="true"><use href="#i-upload"/></svg></span>
-        <b>এখানে চাপুন বা ছবি টেনে আনুন</b>
-        <small id="dropHint">JPG বা PNG</small>
-      </label>
-      <input id="file" type="file" accept="image/*" hidden>
-
-      <div class="stage" id="stage" hidden>
-        <div class="canvas-wrap"><canvas id="cv" width="300" height="300" tabindex="0" aria-label="ছবির প্রিভিউ — টেনে বা তীর চিহ্নের বোতাম দিয়ে সরান"></canvas></div>
-        <div class="range"><div class="rh"><label for="zoom">বড়/ছোট করুন (ছবি টেনে সরাতে পারবেন)</label></div><input id="zoom" type="range" min="1" max="4" step="0.01" value="1"></div>
-        <div class="range"><div class="rh"><label for="bright">উজ্জ্বলতা</label></div><input id="bright" type="range" min="70" max="140" step="1" value="100"></div>
-        <div class="meter" id="meter" role="status" aria-live="polite"></div>
-        <div class="actions">
-          <button class="btn main lg" id="dl"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>ডাউনলোড করুন</button>
-          <button class="btn lg" id="again"><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>অন্য ছবি</button>
-        </div>
-      </div>
-    </section>
-    <aside class="tip">
-      <h3><svg class="i" aria-hidden="true"><use href="#i-info"/></svg>মনে রাখুন</h3>
-      <p class="small" style="margin:0">মাপ সব বিজ্ঞপ্তিতে এক নয় — আবেদনের আগে বিজ্ঞপ্তিতে লেখা মাপ মিলিয়ে নিন।</p>
-      <ul class="small">
-        <li>ছবি: ৩০০×৩০০ পিক্সেল, সর্বোচ্চ ১০০KB</li>
-        <li>স্বাক্ষর: ৩০০×৮০ পিক্সেল, সর্বোচ্চ ৬০KB</li>
-        <li>ফাইল JPG হিসেবে ডাউনলোড হবে।</li>
-      </ul>
-    </aside>
-  </div>
-</div>
-
-<!-- ================= সিভি তৈরি ================= -->
-<div class="page" id="p-cv" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg></span>
-    <div><h1 class="sec">সিভি তৈরি করুন</h1>
-    <p class="lead">নিজের তথ্য লিখুন — নিচে সাথে সাথে সিভি তৈরি হবে, তারপর PDF ডাউনলোড করুন। আপনার তথ্য কোথাও পাঠানো হয় না, শুধু আপনার ফোন/কম্পিউটারেই থাকে।</p></div>
-  </div></header>
-  <div class="wrap cvtool">
-    <div class="cvbar">
-      <button class="btn" type="button" id="cvSample">✨ নমুনা দিয়ে দেখুন</button>
-      <button class="btn cvdanger" type="button" id="cvClear">সব মুছুন</button>
-    </div>
-    <p class="lead cvmsg" id="cvMsg" hidden aria-live="polite"></p>
-    <div class="cvlayout">
-      <div class="cvleft">
-        <div class="cvform" id="cvForm"></div>
-        <section class="box">
-          <h3>ডিজাইন বেছে নিন</h3>
-          <div class="cvopts">
-            <div><span class="olab">ডিজাইন</span>
-              <div class="seg" id="cvTpl"><button class="btn" type="button" data-v="classic">ক্লাসিক</button><button class="btn" type="button" data-v="modern">মডার্ন</button><button class="btn" type="button" data-v="executive">এক্সিকিউটিভ</button><button class="btn" type="button" data-v="banner">ব্যানার</button><button class="btn" type="button" data-v="timeline">টাইমলাইন</button></div></div>
-            <div><span class="olab">সিভির শিরোনাম কোন ভাষায়</span>
-              <div class="seg" id="cvLang"><button class="btn" type="button" data-v="en">English</button><button class="btn" type="button" data-v="bn">বাংলা</button></div></div>
-            <div><span class="olab">রং</span><div class="swatches" id="cvColor"></div></div>
-          </div>
-        </section>
-      </div>
-      <aside class="cvright" aria-label="সিভির প্রিভিউ">
-        <div class="cvrhead"><h2 class="sec" id="cvPrevTitle">আপনার সিভি</h2><span class="cvlive">লাইভ প্রিভিউ</span></div>
-        <div class="cvprev" id="cvPrev"></div>
-        <div class="actions cvdl">
-          <button class="btn main" type="button" id="cvPdf">⬇ PDF ডাউনলোড করুন</button>
-          <button class="btn" type="button" id="cvPrintBtn">🖨 প্রিন্ট করুন</button>
-        </div>
-        <p class="cvhint">PDF ডাউনলোড না হলে (যেমন ফেসবুকের ভেতরের ব্রাউজারে) সাইটটি Chrome-এ খুলুন। অথবা “প্রিন্ট করুন” চেপে প্রিন্টারের জায়গায় <b>Save as PDF</b> বেছে নিন।</p>
-      </aside>
-    </div>
-    <section class="box">
-      <h3>ভালো সিভির জন্য কয়েকটি পরামর্শ</h3>
-      <ul>
-        <li>সিভি ১–২ পাতার মধ্যে রাখুন। দরকারি তথ্য আগে দিন।</li>
-        <li>ছবি হোক সাম্প্রতিক, সাদা বা হালকা ব্যাকগ্রাউন্ডের, ফরমাল পোশাকে।</li>
-        <li>শিক্ষাগত যোগ্যতায় সবচেয়ে বড় ডিগ্রি আগে লিখুন।</li>
-        <li>অভিজ্ঞতায় শুধু দায়িত্ব নয়, কী অর্জন করেছেন সেটাও লিখুন।</li>
-        <li>মোবাইল নম্বর আর ইমেইল ঠিক আছে কি না দুবার মিলিয়ে নিন।</li>
-      </ul>
-    </section>
-  </div>
-</div>
-
-<!-- ================= বয়স ক্যালকুলেটর ================= -->
-<div class="page" id="p-age" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg></span>
-    <div><h1 class="sec">বয়স ক্যালকুলেটর</h1>
-    <p class="lead">জন্ম তারিখ দিন — দেখুন বিজ্ঞপ্তির তারিখে আপনার বয়স কত আর আবেদন করতে পারবেন কি না।</p></div>
-  </div></header>
-  <div class="wrap tool">
-    <section class="box">
-      <div class="grid2">
-        <label class="field">জন্ম তারিখ<input id="dob" type="date"></label>
-        <label class="field">কোন তারিখে বয়স হিসাব করবেন<input id="ref" type="date"></label>
-        <label class="field">সর্বোচ্চ বয়সসীমা (বছর)<select id="lim">
-          <option value="32">৩২ বছর — সাধারণ সরকারি চাকরি ও বিসিএস</option>
-          <option value="30">৩০ বছর</option><option value="35">৩৫ বছর</option>
-          <option value="40">৪০ বছর</option><option value="45">৪৫ বছর</option>
-          <option value="0">নিজে লিখব</option></select></label>
-        <label class="field" id="limOwnBox" hidden>বয়সসীমা লিখুন (বছর)<input id="limOwn" type="number" inputmode="numeric" min="15" max="70" value="32"></label>
-      </div>
-      <div id="ageOut" class="result" hidden aria-live="polite"></div>
-      <div class="empty" id="ageEmpty"><span class="ei"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg></span><p>জন্ম তারিখ দিলেই এখানে আপনার বয়স আর আবেদনের যোগ্যতা দেখা যাবে।</p></div>
-    </section>
-    <aside class="tip">
-      <h3><svg class="i" aria-hidden="true"><use href="#i-info"/></svg>বয়সসীমা নিয়ে</h3>
-      <p class="small" style="margin:0">সরকারি চাকরিতে প্রবেশের সাধারণ সর্বোচ্চ বয়স ৩২ বছর। তবে যেসব পদে আগে থেকে বেশি বয়সসীমা আছে, এবং প্রতিরক্ষা ও আইনশৃঙ্খলা বাহিনীর জন্য আলাদা নিয়ম চলে। প্রতিটি বিজ্ঞপ্তিতে লেখা বয়সসীমা ও তারিখই চূড়ান্ত — সাধারণত বিজ্ঞপ্তি প্রকাশের তারিখ বা নির্দিষ্ট একটি তারিখে বয়স ধরা হয়।</p>
-    </aside>
-  </div>
-</div>
-
-<!-- ================= জব অ্যালার্ট ================= -->
-<div class="page" id="p-alert" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span>
-    <div><h1 class="sec">জব অ্যালার্ট</h1>
-    <p class="lead">নতুন চাকরির খবর সবার আগে পেতে যুক্ত হোন, আর পছন্দের চাকরি সেভ করে শেষ তারিখ মনে রাখুন।</p></div>
-  </div></header>
-  <div class="wrap page-body narrow">
-    <section class="box" id="socialBox">
-      <div class="box-h"><span class="bi"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span><h3>প্রতিদিনের চাকরির খবর পেতে যুক্ত হোন</h3></div>
-      <div class="social" id="social"></div>
-    </section>
-    <section class="box">
-      <div class="box-h"><span class="bi" style="background:var(--amber-soft);color:var(--amber)"><svg class="i fill" aria-hidden="true"><use href="#i-star"/></svg></span><h3>আমার সেভ করা চাকরি</h3></div>
-      <p class="lead small">যেকোনো চাকরির কার্ডে “সেভ করুন” চাপলে এখানে থাকবে। শেষ তারিখ কাছে এলে সাইটে ঢুকলেই উপরে মনে করিয়ে দেবে। “রিমাইন্ডার” চাপলে ফোনের ক্যালেন্ডারে শেষ তারিখের আগের দিন অ্যালার্ম যোগ হবে।</p>
-      <div class="list" id="savedList"></div>
-    </section>
-  </div>
-</div>
-
-<!-- ================= আমাদের সম্পর্কে ================= -->
-<div class="page" id="p-about" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg></span>
-    <div><h1 class="sec">আমাদের সম্পর্কে</h1>
-    <p class="lead">TathyoNest — প্রয়োজনীয় সব তথ্য, এক জায়গায়।</p></div>
-  </div></header>
-  <div class="wrap prose">
-    <p><b>TathyoNest</b> একটি তথ্যভিত্তিক অনলাইন প্ল্যাটফর্ম, যার লক্ষ্য হলো মানুষের প্রয়োজনীয় তথ্য ও ডিজিটাল সেবাগুলো সহজে এক জায়গায় পৌঁছে দেওয়া।</p>
-    <p>বর্তমান সময়ে চাকরির বিজ্ঞপ্তি খোঁজা, পরীক্ষার প্রস্তুতি নেওয়া, প্রয়োজনীয় ডকুমেন্ট তৈরি করা কিংবা ভ্রমণ ও যাতায়াতের তথ্য জানা—এসব কাজ সহজ করতে TathyoNest কাজ করছে।</p>
-    <h2>আমাদের উদ্দেশ্য</h2>
-    <p>আমাদের মূল উদ্দেশ্য হলো প্রয়োজনীয় তথ্য সহজ, গোছানো ও ব্যবহারবান্ধবভাবে উপস্থাপন করা, যাতে ব্যবহারকারীরা কম সময়ে তাঁদের প্রয়োজনীয় তথ্য খুঁজে পেতে পারেন।</p>
-    <h2>আমাদের সেবাসমূহ</h2>
-    <ul>
-      <li><b>চাকরির তথ্য:</b> সরকারি ও বেসরকারি চাকরির বিজ্ঞপ্তি, আবেদনের সময়সীমা, পরীক্ষার ফলাফল ও প্রবেশপত্রের তথ্য।</li>
-      <li><b>পরীক্ষা ও প্রস্তুতি:</b> MCQ অনুশীলন, মডেল টেস্ট এবং পরীক্ষার প্রস্তুতিতে সহায়ক উপকরণ।</li>
-      <li><b>অনলাইন টুলস:</b> CV তৈরি, বয়স গণনা, ছবি ও স্বাক্ষরের আকার পরিবর্তনসহ প্রয়োজনীয় ডিজিটাল টুলস।</li>
-      <li><b>ভ্রমণ ও যাতায়াত:</b> বাস ও ট্রেনের রুট, ভাড়া, সময়সূচি এবং পর্যটনস্থল সম্পর্কিত তথ্য।</li>
-      <li><b>জব অ্যালার্ট:</b> নতুন চাকরির বিজ্ঞপ্তি ও গুরুত্বপূর্ণ সময়সীমা সম্পর্কে আপডেট পাওয়ার সুবিধা।</li>
-    </ul>
-    <h2>আমাদের লক্ষ্য</h2>
-    <p>আমরা চাই TathyoNest এমন একটি নির্ভরযোগ্য ও সহজে ব্যবহারযোগ্য প্ল্যাটফর্ম হয়ে উঠুক, যেখানে চাকরিপ্রার্থী, শিক্ষার্থী এবং সাধারণ ব্যবহারকারীরা তাঁদের প্রয়োজনীয় তথ্য ও অনলাইন সেবা সহজে খুঁজে পাবেন।</p>
-    <h2>তথ্যের নির্ভরযোগ্যতা</h2>
-    <p>আমরা তথ্য যথাসম্ভব সঠিক ও হালনাগাদ রাখার চেষ্টা করি। তবে চাকরির যোগ্যতা, আবেদনের সময়সীমা, পরীক্ষার তারিখ, ভাড়া ও অন্যান্য গুরুত্বপূর্ণ তথ্য ব্যবহারের আগে সংশ্লিষ্ট সরকারি বা প্রাতিষ্ঠানিক উৎস থেকে যাচাই করে নেওয়ার অনুরোধ করছি।</p>
-  </div>
-</div>
-
-<!-- ================= যোগাযোগ ================= -->
-<div class="page" id="p-contact" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span>
-    <div><h1 class="sec">যোগাযোগ</h1>
-    <p class="lead">প্রশ্ন, পরামর্শ, ভুল তথ্যের খবর বা বিজ্ঞাপনের জন্য আমাদের লিখুন।</p></div>
-  </div></header>
-  <div class="wrap prose">
-    <div class="contact-cards" id="contactCards"></div>
-    <h2>লেখার সময় যা দেবেন</h2>
-    <ul>
-      <li>ভুল তথ্য জানাতে: বিজ্ঞপ্তির নাম আর সঠিক তথ্যের লিংক।</li>
-      <li>নতুন বিজ্ঞপ্তি যোগ করতে বলতে: অফিসিয়াল বিজ্ঞপ্তি বা পত্রিকার প্রতিবেদনের লিংক।</li>
-      <li>বিজ্ঞাপন বা স্পনসরড পোস্টের জন্য: প্রতিষ্ঠানের নাম ও যোগাযোগের নম্বর।</li>
-    </ul>
-    <div class="note-box"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><p>আমরা চাকরির আবেদন গ্রহণ করি না এবং চাকরি দেওয়ার কথা বলে কখনো টাকা চাই না। TathyoNest-এর নাম করে কেউ টাকা চাইলে সেটা প্রতারণা।</p></div>
-  </div>
-</div>
-
-<!-- ================= গোপনীয়তা নীতি ================= -->
-<div class="page" id="p-privacy" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
-    <div><h1 class="sec">গোপনীয়তা নীতি</h1>
-    <p class="lead">Privacy Policy · সর্বশেষ হালনাগাদ: ২৪ অক্টোবর ২০২৬</p></div>
-  </div></header>
-  <div class="wrap prose">
-    <p>TathyoNest-এ আপনাকে স্বাগতম। আপনার ব্যক্তিগত তথ্যের গোপনীয়তা ও নিরাপত্তা আমাদের কাছে গুরুত্বপূর্ণ। এই গোপনীয়তা নীতিতে ব্যাখ্যা করা হয়েছে, আপনি আমাদের ওয়েবসাইট ব্যবহার করার সময় কী ধরনের তথ্য সংগ্রহ করা হতে পারে, কীভাবে তা ব্যবহার করা হয় এবং কীভাবে সুরক্ষিত রাখার চেষ্টা করা হয়।</p>
-    <p>TathyoNest ব্যবহার করার মাধ্যমে আপনি এই নীতিতে বর্ণিত বিষয়গুলো সম্পর্কে অবগত হচ্ছেন।</p>
-    <h2>১. আমরা কী ধরনের তথ্য সংগ্রহ করতে পারি?</h2>
-    <p>আমাদের ওয়েবসাইটের বিভিন্ন সেবা ব্যবহারের ওপর নির্ভর করে নিম্নলিখিত তথ্য সংগ্রহ বা সংরক্ষণ করা হতে পারে:</p>
-    <ul>
-      <li><b>অ্যাকাউন্টের তথ্য:</b> ভবিষ্যতে লগইন ও অ্যাকাউন্ট সেবা চালু হলে নাম, ইমেইল ঠিকানা এবং প্রোফাইল-সংক্রান্ত তথ্য।</li>
-      <li><b>পরীক্ষার তথ্য:</b> লগইনসহ পরীক্ষা চালু হলে আপনার উত্তর, স্কোর, পরীক্ষার ইতিহাস এবং ফলাফল।</li>
-      <li><b>ব্যবহারকারীর পাঠানো তথ্য:</b> যোগাযোগ ফর্মের মাধ্যমে পাঠানো বার্তা বা মতামত।</li>
-      <li><b>প্রযুক্তিগত তথ্য:</b> ওয়েবসাইটের নিরাপত্তা, কার্যকারিতা ও ত্রুটি শনাক্ত করার প্রয়োজনে ব্রাউজার, ডিভাইস বা ব্যবহারের কিছু তথ্য সংগ্রহ হতে পারে।</li>
-    </ul>
-    <p>আমরা প্রয়োজনের অতিরিক্ত ব্যক্তিগত তথ্য সংগ্রহ না করার চেষ্টা করি।</p>
-    <h2>২. আপনার তথ্য কীভাবে ব্যবহার করা হয়?</h2>
-    <p>সংগৃহীত তথ্য প্রযোজ্য ক্ষেত্রে নিম্নলিখিত উদ্দেশ্যে ব্যবহার করা হতে পারে:</p>
-    <ul>
-      <li>ওয়েবসাইট ও এর সেবাগুলো পরিচালনা এবং উন্নত করা।</li>
-      <li>ব্যবহারকারীর অ্যাকাউন্ট ও লগইন ব্যবস্থা পরিচালনা করা।</li>
-      <li>পরীক্ষার উত্তর, স্কোর ও ফলাফল সংরক্ষণ করা।</li>
-      <li>ব্যবহারকারীর প্রশ্ন, অভিযোগ ও মতামতের উত্তর দেওয়া।</li>
-      <li>নিরাপত্তা নিশ্চিত করা এবং অপব্যবহার শনাক্ত করা।</li>
-      <li>প্রযোজ্য আইনগত বাধ্যবাধকতা পূরণ করা।</li>
-    </ul>
-    <h2>৩. CV Builder ও অনলাইন টুলস</h2>
-    <p>TathyoNest-এ CV তৈরি, ছবি ও স্বাক্ষর রিসাইজ এবং অন্যান্য অনলাইন টুলস থাকতে পারে।</p>
-    <p>আপনি এসব টুলে ব্যক্তিগত তথ্য বা ফাইল ব্যবহার করলে সেগুলো কীভাবে প্রক্রিয়াকরণ করা হয়, তা সংশ্লিষ্ট টুলের বাস্তব প্রযুক্তিগত ব্যবস্থার ওপর নির্ভর করে। কোনো ফাইল শুধু আপনার ব্রাউজারেই প্রক্রিয়াকরণ করা হয়—এমন নিশ্চয়তা আমরা কেবল তখনই দেব, যখন সেই ব্যবস্থা যাচাই করা থাকবে।</p>
-    <p>তাই সংবেদনশীল ব্যক্তিগত তথ্য বা ডকুমেন্ট আপলোড করার আগে সংশ্লিষ্ট টুল কীভাবে কাজ করে তা জেনে নেওয়ার অনুরোধ করছি।</p>
-    <h2>৪. তথ্য সংরক্ষণ ও নিরাপত্তা</h2>
-    <p>আমরা ব্যবহারকারীর তথ্য অননুমোদিত প্রবেশ, পরিবর্তন, প্রকাশ বা ক্ষতি থেকে সুরক্ষিত রাখার জন্য উপযুক্ত প্রযুক্তিগত ও সাংগঠনিক ব্যবস্থা গ্রহণের চেষ্টা করি।</p>
-    <p>তবে ইন্টারনেটের মাধ্যমে তথ্য আদান-প্রদান বা ইলেকট্রনিক সংরক্ষণের কোনো পদ্ধতিই শতভাগ নিরাপদ বলে নিশ্চয়তা দেওয়া সম্ভব নয়।</p>
-    <h2>৫. তৃতীয় পক্ষের সেবা ও লিংক</h2>
-    <p>TathyoNest-এ Supabase-এর মতো প্রযুক্তিগত সেবা অথবা চাকরির আবেদন, ফলাফল ও অন্যান্য তথ্যের জন্য তৃতীয় পক্ষের ওয়েবসাইটের লিংক থাকতে পারে।</p>
-    <p>আপনি অন্য কোনো ওয়েবসাইটে প্রবেশ করলে সেই ওয়েবসাইটের নিজস্ব গোপনীয়তা নীতি ও শর্তাবলি প্রযোজ্য হবে। তৃতীয় পক্ষের ওয়েবসাইট কীভাবে আপনার তথ্য সংগ্রহ বা ব্যবহার করে, তার জন্য তাদের নীতি পর্যালোচনা করুন।</p>
-    <h2>৬. Cookies ও অনুরূপ প্রযুক্তি</h2>
-    <p>ওয়েবসাইটের কার্যকারিতা, নিরাপত্তা, ব্যবহারকারীর পছন্দ সংরক্ষণ অথবা পরিসংখ্যান বিশ্লেষণের জন্য Cookies বা অনুরূপ প্রযুক্তি ব্যবহার করা হতে পারে, যদি সংশ্লিষ্ট ব্যবস্থা চালু থাকে।</p>
-    <p>আপনার ব্রাউজারের সেটিংস থেকে Cookies নিয়ন্ত্রণ করা যেতে পারে। তবে কিছু Cookies বন্ধ করলে ওয়েবসাইটের নির্দিষ্ট ফিচার সঠিকভাবে কাজ নাও করতে পারে।</p>
-    <h2>৬ক. বিজ্ঞাপন ও Google AdSense</h2>
-    <p>ওয়েবসাইটের খরচ চালাতে TathyoNest-এ Google AdSense-সহ তৃতীয় পক্ষের বিজ্ঞাপন দেখানো হতে পারে।</p>
-    <ul>
-      <li>Google-সহ তৃতীয় পক্ষের বিজ্ঞাপনদাতারা Cookies ব্যবহার করে আপনার এই ওয়েবসাইট ও অন্যান্য ওয়েবসাইটে আগের ভিজিটের ভিত্তিতে বিজ্ঞাপন দেখাতে পারে।</li>
-      <li>Google-এর বিজ্ঞাপন Cookies ব্যবহারের মাধ্যমে Google ও তার অংশীদাররা TathyoNest বা ইন্টারনেটের অন্যান্য ওয়েবসাইটে আপনার ভিজিটের ভিত্তিতে আপনাকে বিজ্ঞাপন দেখাতে পারে।</li>
-      <li>আপনি চাইলে <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google বিজ্ঞাপন সেটিংস (Ads Settings)</a> থেকে ব্যক্তিগতকৃত বিজ্ঞাপন বন্ধ করতে পারেন, অথবা <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">www.aboutads.info</a> থেকে তৃতীয় পক্ষের বিজ্ঞাপনদাতাদের Cookies বন্ধ করতে পারেন।</li>
-      <li>Google কীভাবে তথ্য ব্যবহার করে, তা জানতে দেখুন: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google-এর অংশীদার সাইটের নীতি</a>।</li>
-    </ul>
-    <h2>৭. ব্যক্তিগত তথ্যের প্রকাশ</h2>
-    <p>আমরা ব্যক্তিগত তথ্য বিক্রি করার উদ্দেশ্যে এই নীতি তৈরি করিনি। তবে প্রযুক্তিগত সেবা পরিচালনা, ব্যবহারকারীর সম্মতি, নিরাপত্তা রক্ষা অথবা প্রযোজ্য আইনগত বাধ্যবাধকতার ক্ষেত্রে প্রয়োজন অনুযায়ী তথ্য প্রক্রিয়াকরণ বা প্রকাশ করা হতে পারে।</p>
-    <h2>৮. শিশুদের গোপনীয়তা</h2>
-    <p>TathyoNest ব্যবহার করার সময় শিশু ও অপ্রাপ্তবয়স্ক ব্যবহারকারীদের ব্যক্তিগত তথ্যের বিষয়ে সতর্ক থাকা প্রয়োজন। অভিভাবকদের উচিত শিশুদের ব্যক্তিগত তথ্য অনলাইনে দেওয়ার ক্ষেত্রে প্রয়োজনীয় তদারকি করা।</p>
-    <h2>৯. আপনার অধিকার</h2>
-    <p>প্রযোজ্য আইন ও আমাদের বাস্তব প্রযুক্তিগত ব্যবস্থার সীমার মধ্যে আপনি আপনার ব্যক্তিগত তথ্য সম্পর্কে জানতে, ভুল তথ্য সংশোধন করতে অথবা তথ্য মুছে ফেলার অনুরোধ জানাতে পারেন।</p>
-    <p>কোনো অ্যাকাউন্ট বা সংরক্ষিত তথ্য মুছে ফেলার ব্যবস্থা চালু হলে সংশ্লিষ্ট প্রক্রিয়া অনুসরণ করতে হবে। আইনগত বা নিরাপত্তাজনিত কারণে কিছু তথ্য সংরক্ষণ করা প্রয়োজন হতে পারে।</p>
-    <h2>১০. গোপনীয়তা নীতির পরিবর্তন</h2>
-    <p>ওয়েবসাইটের সেবা, প্রযুক্তি বা আইনগত প্রয়োজন পরিবর্তিত হলে এই গোপনীয়তা নীতি হালনাগাদ করা হতে পারে। পরিবর্তিত নীতিটি এই পেজে প্রকাশ করা হবে এবং প্রয়োজন অনুযায়ী হালনাগাদের তারিখ পরিবর্তন করা হবে।</p>
-    <h2>১১. যোগাযোগ</h2>
-    <p>এই গোপনীয়তা নীতি বা আপনার ব্যক্তিগত তথ্য সম্পর্কে কোনো প্রশ্ন, অভিযোগ বা অনুরোধ থাকলে TathyoNest-এর <a href="#contact">Contact পেজের</a> মাধ্যমে আমাদের সঙ্গে যোগাযোগ করতে পারেন।</p>
-    <p class="sign-off"><b>TathyoNest — প্রয়োজনীয় সব তথ্য, এক জায়গায়।</b></p>
-  </div>
-</div>
-
-<!-- ================= শর্তাবলি ও দায়মুক্তি ================= -->
-<div class="page" id="p-terms" hidden>
-  <header class="page-head"><div class="wrap">
-    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></span>
-    <div><h1 class="sec">শর্তাবলি ও দায়মুক্তি</h1>
-    <p class="lead">Terms of Use &amp; Disclaimer · সর্বশেষ হালনাগাদ: ২৪ অক্টোবর ২০২৬</p></div>
-  </div></header>
-  <div class="wrap prose">
-    <p>TathyoNest-এ আপনাকে স্বাগতম। এই ওয়েবসাইট ব্যবহার করার মাধ্যমে আপনি নিচে উল্লেখিত শর্তাবলি মেনে চলতে সম্মত হচ্ছেন। আপনি যদি কোনো শর্তের সঙ্গে একমত না হন, তাহলে সংশ্লিষ্ট সেবা ব্যবহার করা থেকে বিরত থাকতে পারেন।</p>
-    <h2>১. ওয়েবসাইট ব্যবহারের শর্ত</h2>
-    <p>TathyoNest-এর তথ্য ও সেবাগুলো ব্যক্তিগত, শিক্ষামূলক এবং সাধারণ তথ্যের প্রয়োজনে ব্যবহার করা যাবে। ওয়েবসাইটের নিরাপত্তা নষ্ট করা, অননুমোদিতভাবে তথ্য পরিবর্তন করা, অন্যের অ্যাকাউন্টে প্রবেশের চেষ্টা করা কিংবা ওয়েবসাইটের অপব্যবহার করা যাবে না।</p>
-    <h2>২. চাকরির বিজ্ঞপ্তি ও নিয়োগসংক্রান্ত তথ্য</h2>
-    <p>TathyoNest-এ সরকারি ও বেসরকারি চাকরির বিজ্ঞপ্তি, যোগ্যতা, আবেদনের সময়সীমা, পরীক্ষার ফলাফল, প্রবেশপত্র এবং সংশ্লিষ্ট তথ্য প্রকাশ করা হতে পারে।</p>
-    <p>আমরা তথ্য যথাসম্ভব সঠিক ও হালনাগাদ রাখার চেষ্টা করি। তবে নিয়োগকারী প্রতিষ্ঠান যেকোনো সময় বিজ্ঞপ্তি, যোগ্যতা, পরীক্ষার তারিখ বা আবেদনের সময়সীমা পরিবর্তন করতে পারে।</p>
-    <p><b>চাকরির জন্য আবেদন করার আগে সংশ্লিষ্ট প্রতিষ্ঠানের অফিসিয়াল বিজ্ঞপ্তি যাচাই করুন।</b> ভুল বা পুরোনো তথ্যের কারণে আবেদন বাতিল হওয়া, সময় নষ্ট হওয়া কিংবা অন্য কোনো ক্ষতির ঝুঁকি এড়াতে মূল উৎসের তথ্য অনুসরণ করুন।</p>
-    <h2>৩. পরীক্ষা ও শিক্ষামূলক উপকরণ</h2>
-    <p>TathyoNest-এর MCQ, মডেল টেস্ট, প্রশ্নোত্তর ও অন্যান্য প্রস্তুতিমূলক উপকরণ শেখা এবং অনুশীলনের সহায়ক হিসেবে দেওয়া হয়।</p>
-    <p>এসব উপকরণ কোনো সরকারি বা নিয়োগকারী প্রতিষ্ঠানের প্রকৃত পরীক্ষার প্রশ্ন, নিশ্চিত কমন প্রশ্ন কিংবা পরীক্ষায় সাফল্যের নিশ্চয়তা নয়। পরীক্ষার প্রস্তুতির ক্ষেত্রে সংশ্লিষ্ট প্রতিষ্ঠানের সিলেবাস, নির্দেশনা ও অফিসিয়াল তথ্য অনুসরণ করুন।</p>
-    <h2>৪. অনলাইন টুলস ব্যবহারের শর্ত</h2>
-    <p>TathyoNest-এ CV Builder, বয়স ক্যালকুলেটর, ছবি ও স্বাক্ষর রিসাইজ এবং অন্যান্য ডিজিটাল টুলস থাকতে পারে।</p>
-    <p>এসব টুল থেকে পাওয়া ফলাফল ব্যবহার করার আগে নিজ দায়িত্বে যাচাই করুন। বিশেষ করে চাকরির আবেদন, বয়সের যোগ্যতা, ডকুমেন্টের মাপ এবং অন্যান্য গুরুত্বপূর্ণ কাজে সংশ্লিষ্ট প্রতিষ্ঠানের নির্দেশনা অনুসরণ করুন।</p>
-    <p>কোনো টুলের ফলাফল ভুল হলে বা প্রত্যাশিতভাবে কাজ না করলে তার ভিত্তিতে নেওয়া সিদ্ধান্তের ক্ষেত্রে সতর্ক থাকুন।</p>
-    <h2>৫. ভ্রমণ ও যাতায়াতের তথ্য</h2>
-    <p>ওয়েবসাইটে বাস ও ট্রেনের রুট, ভাড়া, সময়সূচি, যাতায়াতের নির্দেশনা এবং পর্যটনস্থল সম্পর্কিত তথ্য দেওয়া হতে পারে।</p>
-    <p>ভাড়া, সময়সূচি, রুট এবং পরিবহনসেবা পরিবর্তিত হতে পারে। যাত্রার আগে সংশ্লিষ্ট পরিবহন কর্তৃপক্ষ বা সেবাদাতার কাছ থেকে সর্বশেষ তথ্য যাচাই করে নিন।</p>
-    <h2>৬. দায়মুক্তি ও দায়বদ্ধতার সীমা</h2>
-    <p>TathyoNest-এর তথ্য ও সেবাগুলো সাধারণ তথ্যের ভিত্তিতে প্রদান করা হয়। আমরা তথ্যের নির্ভুলতা ও প্রাসঙ্গিকতা বজায় রাখার চেষ্টা করলেও সব তথ্য সর্বদা সম্পূর্ণ, নির্ভুল বা হালনাগাদ থাকবে—এমন নিশ্চয়তা দিতে পারি না।</p>
-    <p>প্রযোজ্য আইন অনুমতি দিলে, ওয়েবসাইটের তথ্য ব্যবহার, তথ্যের ভুল বা অসম্পূর্ণতা, সেবার সাময়িক অপ্রাপ্যতা কিংবা তৃতীয় পক্ষের সেবার ওপর নির্ভরতার কারণে সৃষ্ট ক্ষতির জন্য আমাদের দায় সীমিত হতে পারে। তবে এই শর্ত প্রযোজ্য আইনে যে দায় বাদ দেওয়া বা সীমিত করা যায় না, তা বাতিল করে না।</p>
-    <h2>৭. তৃতীয় পক্ষের ওয়েবসাইট ও লিংক</h2>
-    <p>TathyoNest-এ সরকারি ওয়েবসাইট, নিয়োগকারী প্রতিষ্ঠান, পরীক্ষার ফলাফল, আবেদন পোর্টাল বা অন্যান্য তৃতীয় পক্ষের ওয়েবসাইটের লিংক থাকতে পারে।</p>
-    <p>এসব ওয়েবসাইটের বিষয়বস্তু, নিরাপত্তা, প্রাপ্যতা ও গোপনীয়তা নীতি সংশ্লিষ্ট কর্তৃপক্ষের নিয়ন্ত্রণাধীন। কোনো বাহ্যিক লিংক দেওয়া মানেই সেই প্রতিষ্ঠানের সঙ্গে TathyoNest-এর আনুষ্ঠানিক সম্পর্ক বা তাদের সব তথ্যের প্রতি সমর্থন বোঝায় না।</p>
-    <h2>৮. মেধাস্বত্ব</h2>
-    <p>TathyoNest-এর নিজস্ব লেখা, ডিজাইন, লোগো ও অন্যান্য মৌলিক উপকরণ প্রযোজ্য মেধাস্বত্ব আইন দ্বারা সুরক্ষিত হতে পারে।</p>
-    <p>পূর্বানুমতি বা প্রযোজ্য আইনগত অনুমতি ছাড়া আমাদের মৌলিক উপকরণ বাণিজ্যিকভাবে কপি, পুনঃপ্রকাশ বা বিতরণ করা যাবে না। তৃতীয় পক্ষের লোগো, বিজ্ঞপ্তি ও উপকরণের অধিকার সংশ্লিষ্ট মালিকের কাছে সংরক্ষিত থাকবে।</p>
-    <h2>৯. ব্যবহারকারীর দায়িত্ব</h2>
-    <p>ওয়েবসাইট ব্যবহার করার সময় আপনি:</p>
-    <ul>
-      <li>সঠিক তথ্য ব্যবহার ও প্রদান করার চেষ্টা করবেন।</li>
-      <li>অন্যের অধিকার, গোপনীয়তা ও মেধাস্বত্ব সম্মান করবেন।</li>
-      <li>ওয়েবসাইটের নিরাপত্তা বা কার্যক্রম ব্যাহত করার চেষ্টা করবেন না।</li>
-      <li>গুরুত্বপূর্ণ তথ্য ও আবেদনের শর্ত মূল উৎস থেকে যাচাই করবেন।</li>
-      <li>প্রযোজ্য আইন ও ওয়েবসাইটের নীতিমালা মেনে চলবেন।</li>
-    </ul>
-    <h2>১০. সেবা পরিবর্তন বা বন্ধ করা</h2>
-    <p>TathyoNest প্রয়োজন অনুযায়ী ওয়েবসাইটের কোনো ফিচার, তথ্য বা সেবা পরিবর্তন, স্থগিত বা বন্ধ করতে পারে। সম্ভব হলে গুরুত্বপূর্ণ পরিবর্তনের বিষয়ে ওয়েবসাইটে বিজ্ঞপ্তি দেওয়া হবে।</p>
-    <h2>১১. শর্তাবলির পরিবর্তন</h2>
-    <p>প্রযুক্তিগত, কার্যক্রমগত বা আইনগত প্রয়োজন অনুসারে এই শর্তাবলি হালনাগাদ করা হতে পারে। সংশোধিত শর্তাবলি এই পেজে প্রকাশিত হওয়ার পর থেকে প্রযোজ্য হবে, প্রযোজ্য আইন সাপেক্ষে।</p>
-    <h2>১২. যোগাযোগ</h2>
-    <p>এই শর্তাবলি বা দায়মুক্তি সম্পর্কে কোনো প্রশ্ন, মতামত বা অভিযোগ থাকলে TathyoNest-এর <a href="#contact">Contact পেজের</a> মাধ্যমে আমাদের সঙ্গে যোগাযোগ করুন।</p>
-    <p class="sign-off"><b>TathyoNest — প্রয়োজনীয় সব তথ্য, এক জায়গায়।</b></p>
-  </div>
-</div>
-
-</main>
-
-<footer class="site-foot">
-  <div class="wrap foot-grid">
-    <div>
-      <a class="logo" href="#home" aria-label="TathyoNest — প্রথম পাতা"><img class="logo-img" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIxMiA2MiAxMTY2IDI3NiI+PGRlZnM+PHN0eWxlPiAgICAgIC5zdDAgeyAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQyKTsgICAgICB9ICAgICAgLnN0MSB7ICAgICAgICBmaWxsOiAjMGU2YjUwOyAgICAgIH0gICAgICAuc3QyIHsgICAgICAgIGZpbGw6ICNmZmZmZmY7ICAgICAgfSAgICAgIC5zdDMgeyAgICAgICAgc3Ryb2tlLXdpZHRoOiAxOXB4OyAgICAgIH0gICAgICAuc3QzLCAuc3Q0LCAuc3Q1LCAuc3Q2IHsgICAgICAgIGZpbGw6IG5vbmU7ICAgICAgfSAgICAgIC5zdDMsIC5zdDYgeyAgICAgICAgc3Ryb2tlOiAjZmZmOyAgICAgIH0gICAgICAuc3Q3LCAuc3Q4IHsgICAgICAgIGZpbGw6ICNmZmY7ICAgICAgfSAgICAgIC5zdDkgeyAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQxKTsgICAgICB9ICAgICAgLnN0MTAgeyAgICAgICAgZmlsbDogI2NkZWJkZDsgICAgICB9ICAgICAgLnN0OCB7ICAgICAgICBzdHJva2U6ICMwYjVhNDU7ICAgICAgICBzdHJva2Utd2lkdGg6IDlweDsgICAgICB9ICAgICAgLnN0NCB7ICAgICAgICBzdHJva2U6ICM3YmUwYjI7ICAgICAgICBzdHJva2Utd2lkdGg6IDNweDsgICAgICB9ICAgICAgLnN0NCwgLnN0NSwgLnN0NiB7ICAgICAgICBzdHJva2UtbGluZWNhcDogcm91bmQ7ICAgICAgfSAgICAgIC5zdDExIHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50NCk7ICAgICAgfSAgICAgIC5zdDEyIHsgICAgICAgIGZpbGw6ICNlNmZhZjE7ICAgICAgfSAgICAgIC5zdDEzIHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50Myk7ICAgICAgfSAgICAgIC5zdDUgeyAgICAgICAgc3Ryb2tlOiAjMGU4YTVmOyAgICAgICAgc3Ryb2tlLXdpZHRoOiA1cHg7ICAgICAgfSAgICAgIC5zdDE0IHsgICAgICAgIGZpbGw6ICMwZThhNWY7ICAgICAgfSAgICAgIC5zdDE1IHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50KTsgICAgICB9ICAgICAgLnN0NiB7ICAgICAgICBzdHJva2Utd2lkdGg6IDE2cHg7ICAgICAgfSAgICA8L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iLTI1NiIgeTE9IjEyNjIuNCIgeDI9Ii0yNTUiIHkyPSIxMjYxLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjY1ODMgMzI4MzA2KSBzY2FsZSgyNjAgLTI2MCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwZjhhNjYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTRlM2MiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50MSIgeDE9Ii0yNTQuMyIgeTE9IjEyNzQuOCIgeDI9Ii0yNTMuMyIgeTI9IjEyNzMuOCIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgyNDc5Ni41MDEgLTEzMzk5OC44MDUzKSBzY2FsZSg5NC4yIDEwNS4zKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQyIiB4MT0iLTI1My45IiB5MT0iMTI3Ni44IiB4Mj0iLTI1Mi45IiB5Mj0iMTI3NS44IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDIyMjc5LjgwMDggLTEwOTY5MC40MDQzKSBzY2FsZSg4NCA4Ni4xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQzIiB4MT0iLTI1My40IiB5MT0iMTI3Ni44IiB4Mj0iLTI1Mi40IiB5Mj0iMTI3NS44IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDE5NDAxLjQ1MDcgLTEwOTY5MC40MDQzKSBzY2FsZSg3Mi40NSA4Ni4xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQ0IiB4MT0iLTI1Mi4xIiB5MT0iMTI3NSIgeDI9Ii0yNTEuMSIgeTI9IjEyNzQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQ0MzAuNTUwNiAtMTMyNDc5LjYwNTIpIHNjYWxlKDUyLjggMTA0LjEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJjMjg1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGU4YTVmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGc+PHJlY3QgY2xhc3M9InN0MTUiIHg9IjIwIiB5PSI3MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIyNjAiIHJ4PSI2MiIgcnk9IjYyIi8+PGc+PHBhdGggY2xhc3M9InN0NyIgZD0iTTg3LDEwNy41aDY1bDM4LDM4djExMGMwLDEyLjItOS44LDIyLTIyLDIyaC04MWMtMTIuMiwwLTIyLTkuOC0yMi0yMnYtMTI2YzAtMTIuMiw5LjgtMjIsMjItMjJaIi8+PHBhdGggY2xhc3M9InN0MTAiIGQ9Ik0xNTIsMTA3LjV2MzhoMzhsLTM4LTM4WiIvPjxnPjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik04Ny4xLDEzNy41aDU3LjZjMi4zLDAsNC4xLDIsNC4xLDQuNWgwYzAsMi41LTEuOCw0LjUtNC4xLDQuNWgtNTcuNmMtMi4zLDAtNC4xLTItNC4xLTQuNWgwYzAtMi41LDEuOC00LjUsNC4xLTQuNVoiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNODcuNSwxNTkuNWg2M2MyLjUsMCw0LjUsMiw0LjUsNC41aDBjMCwyLjUtMiw0LjUtNC41LDQuNWgtNjNjLTIuNSwwLTQuNS0yLTQuNS00LjVoMGMwLTIuNSwyLTQuNSw0LjUtNC41WiIvPjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik04Ny41LDE4MS41aDQxYzIuNSwwLDQuNSwyLDQuNSw0LjVoMGMwLDIuNS0yLDQuNS00LjUsNC41aC00MWMtMi41LDAtNC41LTItNC41LTQuNWgwYzAtMi41LDItNC41LDQuNS00LjVaIi8+PHBhdGggY2xhc3M9InN0MSIgZD0iTTg3LjUsMjAzLjVoMzNjMi41LDAsNC41LDIsNC41LDQuNWgwYzAsMi41LTIsNC41LTQuNSw0LjVoLTMzYy0yLjUsMC00LjUtMi00LjUtNC41aDBjMC0yLjUsMi00LjUsNC41LTQuNVoiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNODcuNSwyMjUuNWgyN2MyLjUsMCw0LjUsMiw0LjUsNC41aDBjMCwyLjUtMiw0LjUtNC41LDQuNWgtMjdjLTIuNSwwLTQuNS0yLTQuNS00LjVoMGMwLTIuNSwyLTQuNSw0LjUtNC41WiIvPjwvZz48bGluZSBjbGFzcz0ic3Q2IiB4MT0iMTk3IiB5MT0iMjU0LjUiIHgyPSIyMzUiIHkyPSIyOTIuNSIvPjxjaXJjbGUgY2xhc3M9InN0MyIgY3g9IjE2NSIgY3k9IjIyMi41IiByPSI0OCIvPjxjaXJjbGUgY2xhc3M9InN0OCIgY3g9IjE2NSIgY3k9IjIyMi41IiByPSI0OCIvPjxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0xNTcsMjA1LjV2LTdjMC0yLjIsMS44LTQsNC00aDhjMi4yLDAsNCwxLjgsNCw0djciLz48cmVjdCBjbGFzcz0ic3QxNCIgeD0iMTM5IiB5PSIyMDUuNSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjM2IiByeD0iNyIgcnk9IjciLz48cGF0aCBjbGFzcz0ic3Q0IiBkPSJNMTM5LDIyMC41YzE3LjMsNiwzNC43LDYsNTIsMCIvPjxyZWN0IGNsYXNzPSJzdDEyIiB4PSIxNjEiIHk9IjIxOS41IiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiByeD0iMiIgcnk9IjIiLz48L2c+PC9nPjxnPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0zOTUuMSwxMzQuN3YyMC42aC0yNy45djg0LjhoLTI1Ljd2LTg0LjhoLTI3Ljl2LTIwLjZoODEuNVoiLz48cGF0aCBjbGFzcz0ic3QyIiBkPSJNNDM2LjcsMTU1LjFjNS45LDAsMTEuMSwxLjIsMTUuNSwzLjZzNy45LDUuNiwxMC4zLDkuNXYtMTEuOWgyNS43djgzLjdoLTI1Ljd2LTExLjljLTIuNSwzLjktNiw3LjEtMTAuNCw5LjVzLTkuNiwzLjYtMTUuNSwzLjYtMTMtMS44LTE4LjYtNS4zYy01LjYtMy42LTEwLTguNi0xMy4zLTE1LjItMy4zLTYuNi00LjktMTQuMS00LjktMjIuN3MxLjYtMTYuMSw0LjktMjIuN2MzLjItNi41LDcuNy0xMS41LDEzLjMtMTUsNS42LTMuNSwxMS45LTUuMywxOC44LTUuM1pNNDQ0LjIsMTc3LjRjLTUuMSwwLTkuNCwxLjgtMTMsNS41LTMuNiwzLjctNS4zLDguNy01LjMsMTUuMXMxLjgsMTEuNSw1LjMsMTUuMmMzLjUsMy44LDcuOSw1LjYsMTMsNS42czkuNC0xLjgsMTMtNS42LDUuMy04LjcsNS4zLTE1LjItMS44LTExLjUtNS4zLTE1LjItNy45LTUuNi0xMy01LjZaIi8+PHBhdGggY2xhc3M9InN0MiIgZD0iTTU1MC41LDIxOC4ydjIxLjhoLTEzLjFjLTkuMywwLTE2LjUtMi4zLTIxLjgtNi44LTUuMi00LjYtNy44LTEyLTcuOC0yMi4zdi0zMy4zaC0xMC4ydi0yMS4zaDEwLjJ2LTIwLjRoMjUuN3YyMC40aDE2Ljh2MjEuM2gtMTYuOHYzMy42YzAsMi41LjYsNC4zLDEuOCw1LjRzMy4yLDEuNyw2LDEuN2g5LjJaIi8+PHBhdGggY2xhc3M9InN0MiIgZD0iTTY0NSwxOTEuMXY0OC45aC0yNS41di00NS41YzAtNS42LTEuNC0xMC00LjQtMTMuMXMtNi44LTQuNy0xMS43LTQuNy04LjgsMS42LTExLjcsNC43Yy0yLjksMy4xLTQuNCw3LjQtNC40LDEzLjF2NDUuNWgtMjUuN3YtMTExaDI1Ljd2MzguNmMyLjYtMy43LDYuMi02LjYsMTAuNy04LjlzOS41LTMuMywxNS4yLTMuM2M5LjYsMCwxNy4zLDMuMiwyMy4xLDkuNSw1LjgsNi40LDguNywxNS4xLDguNywyNi4yWiIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03NDUuMywxNTYuM2wtNTIuNSwxMjMuNWgtMjcuNmwxOS4yLTQyLjYtMzQuMS04MC45aDI4LjdsMTkuNCw1Mi40LDE5LjItNTIuNGgyNy44WiIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03NDYuNSwxOTguMWMwLTguNiwxLjktMTYuMiw1LjctMjIuNywzLjgtNi41LDktMTEuNiwxNS42LTE1LjEsNi42LTMuNSwxNC01LjMsMjIuMi01LjNzMTUuNiwxLjgsMjIuMiw1LjNjNi42LDMuNSwxMS44LDguNSwxNS42LDE1LjFzNS43LDE0LjEsNS43LDIyLjctMS45LDE2LjItNS44LDIyLjdjLTMuOSw2LjUtOS4xLDExLjYtMTUuOCwxNS4xLTYuNywzLjUtMTQuMSw1LjMtMjIuMyw1LjNzLTE1LjYtMS44LTIyLjEtNS4zYy02LjUtMy41LTExLjctOC41LTE1LjUtMTUtMy44LTYuNS01LjYtMTQuMS01LjYtMjIuOFpNODA3LjQsMTk4LjFjMC02LjctMS43LTExLjktNS0xNS41cy03LjUtNS40LTEyLjQtNS40LTkuMiwxLjgtMTIuNSw1LjMtNSw4LjctNSwxNS41LDEuNiwxMS45LDQuOSwxNS41YzMuMiwzLjYsNy4zLDUuNCwxMi4yLDUuNHM5LjEtMS44LDEyLjUtNS40LDUuMi04LjcsNS4yLTE1LjVaIi8+PHBhdGggY2xhc3M9InN0OSIgZD0iTTkzOC4zLDI0MGgtMjUuN2wtNDIuOS02NXY2NWgtMjUuN3YtMTA1LjNoMjUuN2w0Mi45LDY1LjN2LTY1LjNoMjUuN3YxMDUuM1oiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAzMi4zLDIwNC4zaC01OC4xYy40LDUuMiwyLjEsOS4yLDUsMTEuOXM2LjYsNC4xLDEwLjksNC4xYzYuNCwwLDEwLjktMi43LDEzLjQtOC4xaDI3LjNjLTEuNCw1LjUtMy45LDEwLjUtNy42LDE0LjktMy43LDQuNC04LjIsNy45LTEzLjcsMTAuNC01LjUsMi41LTExLjYsMy44LTE4LjUsMy44cy0xNS41LTEuOC0yMS45LTUuM2MtNi40LTMuNS0xMS40LTguNS0xNS0xNS0zLjYtNi41LTUuNC0xNC4xLTUuNC0yMi44czEuOC0xNi4zLDUuMy0yMi44YzMuNS02LjUsOC41LTExLjUsMTQuOS0xNSw2LjQtMy41LDEzLjgtNS4zLDIyLjEtNS4zczE1LjMsMS43LDIxLjYsNS4xYzYuMywzLjQsMTEuMiw4LjMsMTQuOCwxNC42czUuMywxMy43LDUuMywyMi4xLS4yLDQuOS0uNSw3LjVaTTEwMDYuNSwxOTBjMC00LjQtMS41LTcuOS00LjUtMTAuNXMtNi44LTMuOS0xMS4zLTMuOS03LjksMS4zLTEwLjksMy44LTQuOCw2LjEtNS41LDEwLjdoMzIuMVoiLz48cGF0aCBjbGFzcz0ic3QxMyIgZD0iTTEwMzguOCwyMTIuNWgyNS40Yy4zLDIuOSwxLjcsNS4zLDQuMSw3LjFzNS4zLDIuNyw4LjksMi43LDUuNy0uNiw3LjQtMS45YzEuNy0xLjIsMi42LTIuOSwyLjYtNC45cy0xLjMtNC4yLTMuOC01LjMtNi41LTIuNC0xMi4yLTMuOGMtNi0xLjQtMTEtMi45LTE1LTQuNC00LTEuNi03LjQtNC0xMC40LTcuNC0yLjktMy40LTQuNC03LjktNC40LTEzLjZzMS4zLTkuMiw0LTEzLjFjMi42LTQsNi41LTcuMSwxMS43LTkuNCw1LjEtMi4zLDExLjMtMy41LDE4LjQtMy41LDEwLjUsMCwxOC44LDIuNiwyNC44LDcuOCw2LjEsNS4yLDkuNSwxMi4xLDEwLjQsMjAuN2gtMjMuN2MtLjQtMi45LTEuNy01LjItMy44LTYuOXMtNS0yLjYtOC41LTIuNi01LjMuNi02LjksMS43LTIuNCwyLjctMi40LDQuNywxLjMsNC4yLDMuOCw1LjQsNi41LDIuNCwxMS45LDMuNmM2LjIsMS42LDExLjMsMy4yLDE1LjIsNC43czcuMyw0LjEsMTAuMyw3LjUsNC41LDguMSw0LjYsMTMuOWMwLDQuOS0xLjQsOS4zLTQuMSwxMy4xLTIuOCwzLjktNi43LDYuOS0xMS45LDkuMS01LjIsMi4yLTExLjEsMy4zLTE3LjksMy4zcy0xMy44LTEuMy0xOS41LTMuOGMtNS43LTIuNS0xMC4yLTUuOS0xMy41LTEwLjNzLTUuMi05LjItNS42LTE0LjZaIi8+PHBhdGggY2xhc3M9InN0MTEiIGQ9Ik0xMTcwLjgsMjE4LjJ2MjEuOGgtMTMuMWMtOS4zLDAtMTYuNS0yLjMtMjEuOC02LjgtNS4yLTQuNi03LjgtMTItNy44LTIyLjN2LTMzLjNoLTEwLjJ2LTIxLjNoMTAuMnYtMjAuNGgyNS43djIwLjRoMTYuOHYyMS4zaC0xNi44djMzLjZjMCwyLjUuNiw0LjMsMS44LDUuNHMzLjIsMS43LDYsMS43aDkuMloiLz48L2c+PC9zdmc+" alt="TathyoNest" width="200" height="47"></a>
-      <p>প্রতিটি বিজ্ঞপ্তি প্রথম আলো, যুগান্তর, কালের কণ্ঠ, ঢাকা পোস্ট, জাগো নিউজের মতো জাতীয় সংবাদমাধ্যমের প্রতিবেদন দিয়ে মিলিয়ে নেওয়া; সরকারি আবেদনের লিংক টেলিটক পোর্টাল বা প্রতিষ্ঠানের নিজের ওয়েবসাইটের।</p>
-      <p>তথ্যে ভুল থাকলে অফিসিয়াল বিজ্ঞপ্তিই চূড়ান্ত।</p>
-    </div>
-    <nav aria-label="ফুটার মেনু">
-      <h2>সেবাসমূহ</h2>
-      <ul class="foot-links">
-        <li><a href="#home">হোম</a></li>
-        <li><a href="#jobs">চাকরি</a></li>
-        <li><a href="#results">ফলাফল ও প্রবেশপত্র</a></li>
-        <li><a href="#exams">পরীক্ষার তারিখ</a></li>
-        <li><a href="#photo">ছবি-স্বাক্ষর রিসাইজ</a></li>
-        <li><a href="#age">বয়স ক্যালকুলেটর</a></li>
-        <li><a href="#cv">সিভি তৈরি</a></li>
-        <li><a href="#alert">জব অ্যালার্ট</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="তথ্য">
-      <h2>তথ্য</h2>
-      <ul class="foot-links one">
-        <li><a href="#about">আমাদের সম্পর্কে</a></li>
-        <li><a href="#contact">যোগাযোগ</a></li>
-        <li><a href="#privacy">গোপনীয়তা নীতি</a></li>
-        <li><a href="#terms">শর্তাবলি ও দায়মুক্তি</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div class="wrap foot-bar">
-    <span>সর্বশেষ হালনাগাদ: <span id="updated"></span>।</span>
-    <span>© Copyright 2026, TathyoNest</span>
-  </div>
-</footer>
-
-<script>
-/* ======================================================================
-   ★ এখানে আপনার তথ্য বসান ★
-   ====================================================================== */
-/* জব অ্যালার্টের জন্য আপনার পেজ/গ্রুপের লিংক দিন। খালি রাখলে বোতাম দেখাবে না। */
-const SOCIAL = {
-  telegram: "",   // যেমন: "https://t.me/apnar_channel"
-  whatsapp: "",   // যেমন: "https://whatsapp.com/channel/....."
-  facebook: ""    // যেমন: "https://facebook.com/apnar_page"
-};
-
-/* যোগাযোগ পাতায় যা দেখাবে — খালি রাখলে ওই ঘর দেখাবে না */
-const CONTACT = {
-  email: "",        // যেমন: "contact@tathyonest.com"
-  phone: "",        // যেমন: "01XXXXXXXXX"
-  address: "বাংলাদেশ"
-};
-const POLICY_DATE = "2026-10-24";   // গোপনীয়তা নীতি ও শর্তাবলি কার্যকরের তারিখ
-
-/*DATA:START — এই অংশ admin প্যানেল থেকে নিজে নিজে বদলায়। এখানে হাতে কিছু লিখবেন না। */
-const UPDATED = "2026-10-17";
-
-/* চাকরির তালিকা
-   type  : "govt" (সরকারি) অথবা "private" (বেসরকারি)
-   date  : আবেদনের শেষ তারিখ (বছর-মাস-দিন)
-   divs  : কোন বিভাগে কর্মস্থল — "সারা দেশ" অথবা "ঢাকা,খুলনা" এভাবে কমা দিয়ে */
-const JOBS = [
-  /* -------- সরকারি -------- */
-  {divs:"সারা দেশ", type:"govt", title:"পেট্রোবাংলা ও এর ১২ কোম্পানি (৯ম–১০ম গ্রেড)", cat:"কোম্পানি ও সংস্থা", posts:"৭৫৩", date:"2026-11-17", time:"বিকেল ৫টা", apply:"http://bogmc.teletalk.com.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/7jftrhwpeh"},
-  {divs:"সারা দেশ", type:"govt", title:"বাংলাদেশ কেমিক্যাল ইন্ডাস্ট্রিজ করপোরেশন (বিসিআইসি)", cat:"কোম্পানি ও সংস্থা", posts:"২৭৪", date:"2026-11-12", time:"বিকেল ৫টা", apply:"http://bcic.teletalk.com.bd", source:"কালের কণ্ঠ", sourceUrl:"https://www.kalerkantho.com/online/jobs/2026/10/13/1752289"},
-  {divs:"ময়মনসিংহ", type:"govt", title:"নেত্রকোনা জেলা প্রশাসন (ইউনিয়ন পরিষদ)", cat:"জেলা প্রশাসন", posts:"৮৬", date:"2026-11-12", time:"বিকেল ৫টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/kx6v9z3wta"},
-  {divs:"সারা দেশ", type:"govt", title:"সিআইডি, বাংলাদেশ পুলিশ", cat:"পুলিশ ও প্রতিরক্ষা", posts:"১৮", date:"2026-11-08", time:"বিকেল ৪টা", apply:"http://cid.teletalk.com.bd", source:"কালের কণ্ঠ", sourceUrl:"https://www.kalerkantho.com/online/jobs/2026/10/13/1752289"},
-  {divs:"সারা দেশ", type:"govt", title:"বাংলাদেশ কোস্ট গার্ড", cat:"পুলিশ ও প্রতিরক্ষা", posts:"৩৮", date:"2026-10-31", time:"বিকেল ৫টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/n56jgyjfhq"},
-  {divs:"সারা দেশ", type:"govt", title:"বাংলাদেশ পুলিশ — ট্রেইনি রিক্রুট কনস্টেবল (TRC)", cat:"পুলিশ ও প্রতিরক্ষা", posts:"৬৪ জেলায়", date:"2026-10-30", time:"বিকেল ৫টা", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/national/1166532"},
-  {divs:"ঢাকা", type:"govt", title:"নরসিংদী সিভিল সার্জনের কার্যালয়", cat:"স্বাস্থ্য", posts:"১১৯", date:"2026-10-30", time:"বিকেল ৫টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/ttuiyc4tfv"},
-  {divs:"ঢাকা", type:"govt", title:"যুব ও ক্রীড়া মন্ত্রণালয়", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"৪৩", date:"2026-10-30", time:"বিকেল ৪টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/e7heyv8sbq"},
-  {divs:"সারা দেশ", type:"govt", title:"বাংলাদেশ আনসার ও গ্রাম প্রতিরক্ষা বাহিনী", cat:"পুলিশ ও প্রতিরক্ষা", posts:"২২৮", date:"2026-10-29", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/n1r0ukeq2y"},
-  {divs:"বরিশাল", type:"govt", title:"পায়রা বন্দর কর্তৃপক্ষ (আউটসোর্সিং)", cat:"কোম্পানি ও সংস্থা", posts:"৫৮", date:"2026-10-29", apply:"https://ppa.gov.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/qjpz415ydq"},
-  {divs:"ঢাকা", type:"govt", title:"নৌপরিবহন মন্ত্রণালয়", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"৩৫", date:"2026-10-27", time:"বিকেল ৪টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/5gx08e2zty"},
-  {divs:"রংপুর", type:"govt", title:"নীলফামারী জেলা প্রশাসকের কার্যালয়", cat:"জেলা প্রশাসন", posts:"১২", date:"2026-10-26", time:"বিকেল ৫টা", apply:"https://dcnilphamari.teletalk.com.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/ecnmkmrsap"},
-  {divs:"সারা দেশ", type:"govt", title:"৫১তম বিসিএস (বিশেষ) — সরকারি কর্ম কমিশন", cat:"বিসিএস ও পিএসসি", posts:"চিকিৎসক", date:"2026-10-25", time:"সন্ধ্যা ৬টা", apply:"http://bpsc.teletalk.com.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/th3r0ccmtx"},
-  {divs:"ঢাকা", type:"govt", title:"ঢাকা কর অঞ্চল-২৫", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"৬১", date:"2026-10-25", time:"বিকেল ৪টা", apply:"http://tax25.teletalk.com.bd", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1167435"},
-  {divs:"সারা দেশ", type:"govt", title:"বিমান বাংলাদেশ এয়ারলাইনস", cat:"কোম্পানি ও সংস্থা", posts:"২৩৪", date:"2026-10-20", time:"বিকেল ৫টা", apply:"http://bbal.teletalk.com.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/z9efpbb70u"},
-  {divs:"বরিশাল", type:"govt", title:"বাংলাদেশ পল্লী উন্নয়ন বোর্ড — বরিশাল বিভাগ", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"২১", date:"2026-10-19", apply:"http://www.brdb.gov.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/hp6tc2etkq"},
-  {divs:"সারা দেশ", type:"govt", title:"বাংলাদেশ ব্যাংক (ব্যাংকার্স সিলেকশন কমিটি, ৬–১০ গ্রেড)", cat:"সরকারি ব্যাংক", posts:"২২০", date:"2026-10-18", time:"রাত ১১:৫৯", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/advazz3b83"},
-  {divs:"ঢাকা", type:"govt", title:"জাহাঙ্গীরনগর বিশ্ববিদ্যালয় (৬–২০ গ্রেড)", cat:"বিশ্ববিদ্যালয়", posts:"১০০", date:"2026-10-18", apply:"https://jobs.juniv.edu", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/f5485agzkj"},
-  {divs:"ঢাকা", type:"govt", title:"মহিলা ও শিশুবিষয়ক মন্ত্রণালয়", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"১৬", date:"2026-10-17", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/huqy98at5j"},
-  {divs:"ঢাকা", type:"govt", title:"বাংলাদেশ শিশু হাসপাতাল ও ইনস্টিটিউট", cat:"স্বাস্থ্য", posts:"১০৮", date:"2026-10-17", time:"দুপুর ২টা", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/hguya1f1xn"},
-  {divs:"ঢাকা", type:"govt", title:"জাতীয় বিশ্ববিদ্যালয়", cat:"বিশ্ববিদ্যালয়", posts:"৩৮", date:"2026-10-15", time:"বিকেল ৪টা", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1161636"},
-  {divs:"ঢাকা", type:"govt", title:"শ্রম ও কর্মসংস্থান মন্ত্রণালয়", cat:"মন্ত্রণালয় ও অধিদপ্তর", posts:"১৫", date:"2026-10-14", apply:"http://mole.teletalk.com.bd", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1160275"},
-
-  /* -------- বেসরকারি -------- */
-  {divs:"সারা দেশ", type:"private", title:"সেলস রিপ্রেজেন্টেটিভ (১৫০ জন)", org:"আবুল খায়ের গ্রুপ", cat:"কোম্পানি", salary:"১১,০০০–২২,০০০ টাকা", edu:"এইচএসসি", exp:"লাগবে না", area:"যেকোনো জেলা", date:"2026-10-31", apply:"https://bdjobs.com/h/details/1543366", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1167539"},
-  {divs:"ঢাকা", type:"private", title:"অ্যাসিস্ট্যান্ট অফিসার/অফিসার (শুধু নারী)", org:"এসিআই", cat:"কোম্পানি", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতক", exp:"না থাকলেও চলবে", area:"ঢাকা", date:"2026-10-31", apply:"https://bdjobs.com/h/details/1543951?ln=1", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1167863"},
-  {divs:"রাজশাহী,ঢাকা,সিলেট,ময়মনসিংহ", type:"private", title:"প্রধান শিক্ষক, ব্র্যাক মাধ্যমিক স্কুল", org:"ব্র্যাক", cat:"এনজিও", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতকোত্তর", exp:"৩–৪ বছর", area:"বগুড়া, ফরিদপুর, হবিগঞ্জ, ময়মনসিংহ, পাবনা", date:"2026-10-29", apply:"https://bdjobs.com/h/details/1544691?ln=1", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1168779"},
-  {type:"private", title:"হেড অব কমপ্লায়েন্স", org:"ব্র্যাক ব্যাংক", cat:"ব্যাংক", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতক/স্নাতকোত্তর", exp:"১৫ বছর", date:"2026-10-28", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1169758"},
-  {divs:"ঢাকা,খুলনা,সিলেট,চট্টগ্রাম", type:"private", title:"টেকনিক্যাল সার্ভিস অফিসার (১৫ জন)", org:"প্রাণ গ্রুপ", cat:"কোম্পানি", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতক", exp:"না থাকলেও চলবে", area:"ফরিদপুর, যশোর, খুলনা, নোয়াখালী, সিলেটসহ ৮ জেলা", date:"2026-10-26", apply:"https://www.pranfoods.net", source:"ঢাকা পোস্ট", sourceUrl:"https://www.dhakapost.com/jobs-career/489312"},
-  {type:"private", title:"ম্যানেজমেন্ট ট্রেইনি অফিসার (MTO)", org:"আল-আরাফাহ্ ইসলামী ব্যাংক", cat:"ব্যাংক", salary:"আকর্ষণীয়", edu:"স্নাতকোত্তর / বিএসসি ইঞ্জিনিয়ারিং", exp:"লাগবে না", date:"2026-10-25", apply:"https://career.aibl.com.bd", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1167434"},
-  {divs:"সারা দেশ", type:"private", title:"ম্যানেজমেন্ট ট্রেইনি অফিসার", org:"প্রাণ গ্রুপ", cat:"কোম্পানি", salary:"আলোচনা সাপেক্ষে", edu:"বিবিএ/এমবিএ", exp:"লাগবে না", area:"যেকোনো জেলা", date:"2026-10-25", source:"ঢাকা পোস্ট", sourceUrl:"https://www.dhakapost.com/jobs-career/489760"},
-  {type:"private", title:"সেলস অফিসার, কোল্ড চেইন", org:"স্কয়ার ফুড অ্যান্ড বেভারেজ", cat:"কোম্পানি", salary:"আলোচনা সাপেক্ষে", edu:"এইচএসসি", exp:"উল্লেখ নেই", date:"2026-10-25", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1169759"},
-  {divs:"সারা দেশ", type:"private", title:"ইউনিট হেড, ট্রানজ্যাকশন ব্যাংকিং", org:"ব্যাংক এশিয়া", cat:"ব্যাংক", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতক", exp:"১২ বছর", date:"2026-10-25", apply:"https://bdjobs.com/h/details/1545334?ln=1", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1169884"},
-  {divs:"ঢাকা", type:"private", title:"ক্যাবল সেলস কো-অর্ডিনেটর", org:"ওয়ালটন হাই-টেক ইন্ডাস্ট্রিজ", cat:"কোম্পানি", salary:"৬০,০০০–১,০০,০০০ টাকা", edu:"বিএসসি/এমবিএ", exp:"৫–১০ বছর", area:"ঢাকা", date:"2026-10-23", apply:"https://bdjobs.com/h/details/1544817", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1169261"},
-  {divs:"বরিশাল,রাজশাহী,চট্টগ্রাম,ঢাকা,রংপুর,খুলনা", type:"private", title:"সেলস অ্যাসোসিয়েট (৫০০ জন)", org:"আড়ং", cat:"কোম্পানি", salary:"১০,০০০–১২,০০০ টাকা", edu:"এইচএসসি", exp:"১ বছর পর্যন্ত", area:"বরিশাল, চট্টগ্রাম, খুলনাসহ ১৫ জেলা", date:"2026-10-20", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/kvff5kq6ob"},
-  {divs:"সারা দেশ", type:"private", title:"জোনাল ম্যানেজার", org:"মেঘনা গ্রুপ", cat:"কোম্পানি", salary:"আলোচনা সাপেক্ষে", edu:"স্নাতক", exp:"৩ বছর", area:"যেকোনো জেলা", date:"2026-10-20", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/job-seek/1168485"},
-  {divs:"সারা দেশ", type:"private", title:"ব্রাঞ্চ ম্যানেজার", org:"এসবিএসি ব্যাংক", cat:"ব্যাংক", salary:"উল্লেখ নেই", edu:"স্নাতক/স্নাতকোত্তর", exp:"কমপক্ষে ৫ বছর (ব্যাংকে)", area:"সারা দেশ", date:"2026-10-18", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/employment/nc18vmgznx"}
-];
-
-/* ফলাফল, গেজেট ও প্রবেশপত্রের খবর
-   kind: "ফলাফল" / "গেজেট" / "প্রবেশপত্র" / "নোটিশ"   date: প্রকাশের তারিখ */
-const RESULTS = [
-  {kind:"গেজেট", title:"৪৫তম বিসিএসের চূড়ান্ত গেজেট প্রকাশ — সুপারিশ পেলেন ১,৭০২ জন", org:"জনপ্রশাসন মন্ত্রণালয়", date:"2026-10-14", text:"নিয়োগপ্রাপ্তদের ১ নভেম্বর ২০২৬-এর মধ্যে নির্ধারিত অফিসে যোগ দিতে হবে।", source:"কালের কণ্ঠ", sourceUrl:"https://www.kalerkantho.com/online/jobs/2026/10/15/1753269"},
-  {kind:"ফলাফল", title:"পুলিশ ক্যাডেট এএসআই (নিরস্ত্র) নিয়োগের লিখিত ও মনস্তাত্ত্বিক পরীক্ষার ফল", org:"বাংলাদেশ পুলিশ", date:"2026-09-17", text:"উত্তীর্ণদের পরের ধাপ কম্পিউটার দক্ষতা পরীক্ষা। তারিখ পরে পুলিশের ওয়েবসাইটে জানানো হবে।", link:"https://www.police.gov.bd", source:"যুগান্তর", sourceUrl:"https://www.jugantor.com/national/1156096"},
-  {kind:"ফলাফল", title:"তোশাখানা জাদুঘরে নিয়োগের এমসিকিউ পরীক্ষার ফল", org:"মন্ত্রিপরিষদ বিভাগ", date:"2026-08-31", text:"লিখিত পরীক্ষার তারিখ ও কেন্দ্র পরে জানানো হবে।", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/chakri-news/d4k76ec2yv"}
-];
-
-/* পরীক্ষার তারিখ
-   date: পরীক্ষার তারিখ (জানা না থাকলে "" দিন এবং when-এ লিখুন)   end: কয়েক দিন ধরে চললে শেষ দিন */
-const EXAMS = [
-  {title:"৫১তম বিসিএস (বিশেষ) — লিখিত (এমসিকিউ) পরীক্ষা", org:"সরকারি কর্ম কমিশন", date:"", when:"নভেম্বর ২০২৬ (সম্ভাব্য, তারিখ এখনো ঘোষণা হয়নি)", text:"প্রিলিমিনারি নেই। ২০০ নম্বরের ২০০ প্রশ্ন, প্রতি ভুলে ০.৫০ কাটা যাবে। পরে ১০০ নম্বরের মৌখিক।", link:"http://bpsc.teletalk.com.bd", source:"জাগো নিউজ", sourceUrl:"https://www.jagonews24.com/education/news/1160796"},
-  {title:"৪৫তম বিসিএস — নিয়োগপ্রাপ্তদের যোগদানের শেষ দিন", org:"জনপ্রশাসন মন্ত্রণালয়", date:"2026-11-01", text:"গেজেটে নাম থাকলে নিজ ক্যাডারের নির্ধারিত অফিসে যোগ দিন।", source:"কালের কণ্ঠ", sourceUrl:"https://www.kalerkantho.com/online/jobs/2026/10/15/1753269"},
-  {title:"৩ ব্যাংকে ৬৪ পদে মৌখিক পরীক্ষা (ব্যাংকার্স সিলেকশন কমিটি)", org:"বাংলাদেশ ব্যাংক", date:"2026-09-28", end:"2026-10-19", text:"কেন্দ্র: বাংলাদেশ ব্যাংক প্রধান কার্যালয়, মতিঝিল, ঢাকা।", link:"https://erecruitment.bb.org.bd", source:"প্রথম আলো", sourceUrl:"https://www.prothomalo.com/chakri/chakri-news/2mot4pemqt"},
-  {title:"সহকারী উপজেলা যুব উন্নয়ন কর্মকর্তা — বাছাই পরীক্ষা (নতুন তারিখে)", org:"যুব উন্নয়ন অধিদপ্তর", date:"2026-10-16", text:"আগের পরীক্ষা বাতিল হওয়ার পর নতুন তারিখে নেওয়া হয়েছে। ফলের অপেক্ষা।", source:"কালের কণ্ঠ", sourceUrl:"https://www.kalerkantho.com/online/national/2026/10/16/1753752"}
-];
-/*DATA:END*/
-/* ======================================================================
-   নিচের কোড বদলানোর দরকার নেই
-   ====================================================================== */
-const $=id=>document.getElementById(id);
-const bn=s=>String(s).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
-const MON=["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
-const fmt=s=>{const [y,m,d]=s.split("-").map(Number);return bn(d)+" "+MON[m-1]+" "+bn(y)};
-const TODAY=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-const dn=s=>Math.round(Date.parse(s+"T00:00:00Z")/864e5);
-const left=s=>dn(s)-dn(TODAY);
-function st(j){const l=left(j.date);
-  if(l<0)return{k:"over",t:"আবেদন শেষ"};
-  if(l===0)return{k:"today",t:"আজই শেষ দিন"};
-  if(l<=3)return{k:"soon",t:"আর "+bn(l)+" দিন বাকি"};
-  return{k:"run",t:"আর "+bn(l)+" দিন বাকি"};}
-const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const jid=j=>(j.org||"")+"|"+j.title;
-let saved=new Set(store.get("savedJobs",[]));
-function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
-const SVGNS="http://www.w3.org/2000/svg";
-function ico(n,cls){const s=document.createElementNS(SVGNS,"svg");s.setAttribute("class","i"+(cls?" "+cls:""));s.setAttribute("aria-hidden","true");
-  const u=document.createElementNS(SVGNS,"use");u.setAttribute("href","#i-"+n);s.append(u);return s}
-function link(href,txt,cls,icon){const a=el("a","btn "+(cls||""),txt);a.href=href;a.target="_blank";a.rel="noopener";
-  if(icon)a.append(ico(icon));return a}
-function empty(txt,icon){const e=el("div","empty");const i=el("span","ei");i.append(ico(icon||"search"));e.append(i,el("p",null,txt));return e}
-$("todayLine").textContent="আজ "+fmt(TODAY);
-["updated","updated2","updated3"].forEach(id=>{const e=$(id);if(e)e.textContent=fmt(UPDATED)});
-
-/* ---------- হেডার: মোবাইল মেনু ও খোঁজ ---------- */
-const head=$("head"),menuBtn=$("menuBtn"),searchBtn=$("searchBtn");
-function setMenu(open){head.classList.toggle("menu-open",open);menuBtn.setAttribute("aria-expanded",open);
-  menuBtn.setAttribute("aria-label",open?"মেনু বন্ধ করুন":"মেনু খুলুন");menuBtn.querySelector("use").setAttribute("href",open?"#i-x":"#i-menu");
-  if(open)setSearch(false);}
-function setSearch(open){head.classList.toggle("search-open",open);searchBtn.setAttribute("aria-expanded",open);
-  if(open){setMenu(false);$("hq").focus()}}
-menuBtn.onclick=()=>setMenu(!head.classList.contains("menu-open"));
-searchBtn.onclick=()=>setSearch(!head.classList.contains("search-open"));
-document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;
-  if(head.classList.contains("menu-open")){setMenu(false);menuBtn.focus()}
-  else if(head.classList.contains("search-open")){setSearch(false);searchBtn.focus()}});
-document.addEventListener("click",e=>{if(!head.contains(e.target)){setMenu(false);if(!$("hq").value)setSearch(false)}});
-matchMedia("(min-width:960px)").addEventListener("change",e=>{if(e.matches){setMenu(false);setSearch(false)}});
-
-/* ---------- মেনু ---------- */
-const PAGES=["home","jobs","results","exams","photo","cv","age","alert","about","contact","privacy","terms"];
-const BASE_TITLE=document.title;
-let page="home",scrollToList=false;
-function route(){const h=location.hash.slice(1);const p=PAGES.includes(h)?h:(PAGES.includes(window.START_PAGE)?window.START_PAGE:"home");page=p;
-  PAGES.forEach(x=>$("p-"+x).hidden=x!==p);
-  document.querySelectorAll("a[data-p]").forEach(a=>{if(a.dataset.p===p)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
-  const h1=$("p-"+p).querySelector("h1"),t=h1?h1.textContent.trim():"";
-  document.title=p==="home"?BASE_TITLE:t+" — চাকরির খবর";
-  document.querySelectorAll(".dd").forEach(d=>{d.classList.toggle("cur",d.dataset.pages.split(" ").includes(p));closeDD(d)});
-  setMenu(false);
-  if(p==="alert")renderSaved();
-  if(p==="cv")cvRenderPrev();}
-window.addEventListener("hashchange",()=>{route();
-  if(scrollToList){scrollToList=false;$("filters").scrollIntoView({block:"start"})}else window.scrollTo(0,0)});
-
-/* হেডারের খোঁজ — চাকরি পেজের খোঁজের সাথে মিলে থাকে */
-function headSearch(){const v=$("hq").value;$("q").value=v;render();
-  if(page!=="jobs"){scrollToList=true;location.hash="jobs"}
-  else $("filters").scrollIntoView({block:"start"});}
-$("hsearch").onsubmit=e=>{e.preventDefault();headSearch();if(innerWidth<960){setSearch(false);$("q").focus({preventScroll:true})}};
-$("hq").addEventListener("input",()=>{if(page==="jobs"){$("q").value=$("hq").value;render()}});
-
-/* ---------- ক্যালেন্ডার রিমাইন্ডার (.ics) ---------- */
-function ics(j){
-  const d=j.date.replace(/-/g,""),prev=new Date(Date.parse(j.date+"T00:00:00Z")-864e5).toISOString().slice(0,10).replace(/-/g,"");
-  const txt=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//chakrir-khobor//bn","BEGIN:VEVENT","UID:"+d+"-"+Math.random().toString(36).slice(2)+"@chakri",
-    "DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z","DTSTART;VALUE=DATE:"+prev,"DTEND;VALUE=DATE:"+d,
-    "SUMMARY:আবেদনের শেষ দিন আগামীকাল: "+(j.org?j.org+" — ":"")+j.title,"DESCRIPTION:শেষ তারিখ "+fmt(j.date)+(j.time?", "+j.time:"")+". "+(j.apply||j.sourceUrl||""),
-    "BEGIN:VALARM","TRIGGER:PT9H","ACTION:DISPLAY","DESCRIPTION:আবেদনের শেষ দিন আগামীকাল","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
-  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([txt],{type:"text/calendar"}));a.download="reminder.ics";document.body.append(a);a.click();
-  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
-}
-
-/* ---------- চাকরির কার্ড ---------- */
-function saveBtn(sv,on){sv.className="btn"+(on?" saved":"");sv.setAttribute("aria-pressed",on);sv.replaceChildren(ico("star",on?"fill":""),document.createTextNode(on?"সেভ করা":"সেভ করুন"))}
-function card(j){
-  const s=st(j),p=j.type==="private",c=el("article","card"+(p?" p":"")+(s.k==="run"?"":" "+s.k));
-  const top=el("div","card-top"),tags=el("div","tags");
-  const ct=el("span","tag cat");ct.append(ico("tag"),document.createTextNode(j.cat));tags.append(ct);
-  if(j.divs){const lt=el("span","tag loc");lt.append(ico("pin"),document.createTextNode(j.divs==="সারা দেশ"?"সারা দেশ":j.divs.split(",").join(", ")+" বিভাগ"));tags.append(lt)}
-  if(page==="alert")tags.append(el("span","tag kind",p?"বেসরকারি":"সরকারি"));
-  top.append(tags,el("span","badge b-"+s.k,s.t));c.append(top);
-  c.append(el("h3",null,j.title));
-  if(p){const o=el("div","org");o.append(ico("building"),document.createTextNode(j.org));c.append(o)}
-  const dl=el("dl","facts");
-  const f=(k,v,i,cls,tm)=>{if(!v)return;const d=el("div",cls);const w=el("div","fw");const dd=el("dd",null,v);if(tm)dd.append(el("span","tm",tm));w.append(el("dt",null,k),dd);const ic=el("span","fi");ic.append(ico(i));d.append(ic,w);dl.append(d)};
-  if(p){f("বেতন",j.salary,"wallet");f("শিক্ষাগত যোগ্যতা",j.edu,"grad");f("অভিজ্ঞতা",j.exp,"layers");f("কর্মস্থল",j.area,"pin")}else f("পদ সংখ্যা",j.posts,"users");
-  f("শেষ তারিখ",fmt(j.date),"cal","dead",j.time);c.append(dl);
-  const act=el("div","actions");
-  if(j.apply&&s.k!=="over")act.append(link(j.apply,"আবেদন করুন","apply","arrow"));
-  if(j.sourceUrl)act.append(link(j.sourceUrl,"বিস্তারিত ("+j.source+")","","ext"));
-  if(s.k!=="over"){
-    const push=el("div","push");
-    const sv=el("button");saveBtn(sv,saved.has(jid(j)));
-    sv.onclick=()=>{const k=jid(j);saved.has(k)?saved.delete(k):saved.add(k);store.set("savedJobs",[...saved]);
-      saveBtn(sv,saved.has(k));renderWeek();renderCounts();if(page==="alert"){renderSaved();render()}};
-    push.append(sv);
-    if(left(j.date)>=1){const r=el("button","btn ghost");r.append(ico("bell"),document.createTextNode("রিমাইন্ডার"));r.title="ফোনের ক্যালেন্ডারে শেষ তারিখের আগের দিন অ্যালার্ম যোগ করুন";r.onclick=()=>ics(j);push.append(r)}
-    act.append(push);
-  }
-  c.append(act);return c;
-}
-
-/* ---------- চাকরি পেজ ---------- */
-let type="govt",quick="all",cat="সব";
-function buildChips(){const chips=$("chips");chips.replaceChildren();
-  ["সব",...new Set(JOBS.filter(j=>j.type===type).map(j=>j.cat))].forEach(c=>{const b=el("button","chip",c);b.setAttribute("aria-pressed",c===cat);
-    b.onclick=()=>{cat=c;buildChips();render();chips.querySelector("[aria-pressed=true]").focus()};chips.append(b)});}
-function render(){
-  const q=$("q").value.trim().toLowerCase(),dv=$("div").value;
-  const mine=JOBS.filter(j=>j.type===type),live=mine.filter(j=>st(j).k!=="over"),old=mine.filter(j=>st(j).k==="over");
-  const lc=t=>JOBS.filter(j=>j.type===t&&st(j).k!=="over").length;
-  $("tGov").textContent=bn(lc("govt"))+"টি চলমান";$("tPriv").textContent=bn(lc("private"))+"টি চলমান";
-  $("nToday").textContent=bn(live.filter(j=>st(j).k==="today").length);
-  $("nSoon").textContent=bn(live.filter(j=>st(j).k==="soon").length);
-  $("nAll").textContent=bn(live.length);
-  const inDiv=j=>!dv||(j.divs&&(j.divs==="সারা দেশ"||j.divs.split(",").includes(dv)));
-  const match=j=>(cat==="সব"||j.cat===cat)&&inDiv(j)&&(!q||[j.title,j.org,j.cat,j.area].join(" ").toLowerCase().includes(q));
-  const rows=live.filter(j=>(quick==="all"||(quick==="week"?(left(j.date)>=0&&left(j.date)<=7):st(j).k===quick))&&match(j)).sort((a,b)=>a.date.localeCompare(b.date));
-  const list=$("list");list.replaceChildren();
-  if(!rows.length)list.append(empty(dv?"এই মুহূর্তে "+dv+" বিভাগে এই ধরনের কোনো চলমান বিজ্ঞপ্তি নেই। অন্য বিভাগ বা “সারা বাংলাদেশ” বেছে দেখুন।":"এই খোঁজে কোনো চলমান বিজ্ঞপ্তি পাওয়া যায়নি। অন্য নাম বা “সব” দিয়ে চেষ্টা করুন।"));
-  rows.forEach(j=>list.append(card(j)));
-  $("count").textContent=bn(rows.length)+"টি বিজ্ঞপ্তি — যেগুলোর সময় আগে শেষ হবে সেগুলো আগে";
-  const ol=$("oldList");ol.replaceChildren();old.filter(match).sort((a,b)=>b.date.localeCompare(a.date)).forEach(j=>ol.append(card(j)));
-  $("oldSum").textContent="আবেদনের সময় শেষ হয়ে গেছে ("+bn(old.length)+"টি)";
-  $("privNote").hidden=type!=="private";$("howGov").hidden=type!=="govt";$("howPriv").hidden=type!=="private";
-  list.setAttribute("aria-labelledby","tab-"+type);
-}
-const tabs=[...document.querySelectorAll(".tab")];
-function setType(t){type=t;cat="সব";
-  tabs.forEach(x=>{const on=x.dataset.t===t;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1});buildChips();render()}
-tabs.forEach((b,i)=>{b.onclick=()=>setType(b.dataset.t);
-  b.onkeydown=e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;e.preventDefault();const n=tabs[(i+1)%tabs.length];setType(n.dataset.t);n.focus()}});
-document.querySelectorAll(".stat").forEach(b=>b.onclick=()=>{quick=b.dataset.q;
-  document.querySelectorAll(".stat").forEach(x=>x.setAttribute("aria-pressed",x===b));render()});
-$("q").oninput=()=>{$("hq").value=$("q").value;render()};$("div").onchange=render;
-document.querySelectorAll("[data-go]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();
-  quick=a.dataset.week?"week":"all";
-  document.querySelectorAll(".stat").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.q===quick)));
-  setType(a.dataset.go);
-  if(page!=="jobs"){scrollToList=true;location.hash="jobs"}else $("filters").scrollIntoView({block:"start"})}));
-
-/* ---------- হিরো ও দ্রুত লিংকের সংখ্যা ---------- */
-const upExams=()=>EXAMS.filter(e=>!e.date||left(e.end||e.date)>=0);
-function renderCounts(){
-  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v};
-  const live=t=>JOBS.filter(j=>j.type===t&&left(j.date)>=0).length;
-  set("hGov",bn(live("govt")));set("hPriv",bn(live("private")));
-  set("hWeek",bn(JOBS.filter(j=>{const l=left(j.date);return l>=0&&l<=7}).length));
-  set("hExam",bn(upExams().length));
-  const newRes=RESULTS.filter(r=>r.date&&left(r.date)>=-7).length;
-  set("qRes",newRes?"নতুন "+bn(newRes)+"টি":bn(RESULTS.length)+"টি খবর");
-  set("qExam",bn(upExams().length)+"টি আসন্ন");
-  const n=JOBS.filter(j=>saved.has(jid(j))).length;
-  set("qSaved",n?"সেভ করা "+bn(n)+"টি":"রিমাইন্ডার");
-  set("savedNum",bn(n));
-}
-
-/* ---------- হোম: শীঘ্রই আবেদন শেষ ---------- */
-function renderSoon(){
-  const l=$("soonList");if(!l)return;l.replaceChildren();
-  const js=JOBS.filter(j=>left(j.date)>=0).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,6);
-  if(!js.length){l.append(el("li","soon-empty","এই মুহূর্তে চলমান কোনো বিজ্ঞপ্তি নেই। শিগগিরই নতুন বিজ্ঞপ্তি যোগ হবে।"));return}
-  js.forEach(j=>{const s=st(j),li=el("li"),a=el("a","soon-item s-"+s.k);a.href="#jobs";
-    const d=el("span","soon-days",left(j.date)===0?"আজ শেষ":"আর "+bn(left(j.date))+" দিন");
-    const tx=el("span","soon-text");tx.append(el("b",null,j.title),el("small",null,(j.type==="private"?(j.org||"বেসরকারি"):"সরকারি")+" · শেষ তারিখ "+fmt(j.date)));
-    a.append(d,tx,ico("arrow"));
-    a.onclick=e=>{e.preventDefault();setType(j.type);$("q").value=j.title;$("hq").value=j.title;render();scrollToList=true;location.hash="jobs"};
-    li.append(a);l.append(li)});
-}
-
-/* ---------- এই সপ্তাহে ---------- */
-function renderWeek(){
-  const w=$("week");w.replaceChildren();
-  const h=el("div","box-h"),bi=el("span","bi");bi.append(ico("cal"));h.append(bi,el("h3",null,"এই সপ্তাহে যা জানা দরকার"));w.append(h);
-  const ul=el("ul");
-  const close=JOBS.filter(j=>{const l=left(j.date);return l>=0&&l<=7});
-  const g=close.filter(j=>j.type==="govt").length,p=close.length-g;
-  ul.append(el("li",null,"আগামী ৭ দিনে আবেদন শেষ হচ্ছে "+bn(close.length)+"টি চাকরির ("+bn(g)+"টি সরকারি, "+bn(p)+"টি বেসরকারি)।"));
-  const today=JOBS.filter(j=>left(j.date)===0);if(today.length)ul.append(el("li",null,"আজই শেষ দিন: "+today.map(j=>j.org||j.title).join(", ")+"।"));
-  EXAMS.filter(e=>e.date&&left(e.end||e.date)>=0&&left(e.date)<=7).forEach(e=>ul.append(el("li",null,"পরীক্ষা: "+e.title+" — "+fmt(e.date)+(e.end?" থেকে "+fmt(e.end):""))));
-  const mySoon=JOBS.filter(j=>saved.has(jid(j))&&left(j.date)>=0&&left(j.date)<=3);
-  if(mySoon.length)ul.append(el("li","mine","আপনার সেভ করা চাকরির শেষ তারিখ কাছে: "+mySoon.map(j=>(j.org||j.title)+" ("+st(j).t+")").join(", ")));
-  w.append(ul);
-}
-
-/* ---------- ফলাফল ---------- */
-function meta(items){const m=el("div","meta");items.forEach(([i,t])=>{if(!t)return;const s=el("span");s.append(ico(i),document.createTextNode(t));m.append(s)});return m}
-function renderResults(){const l=$("resList");l.replaceChildren();
-  [...RESULTS].sort((a,b)=>b.date.localeCompare(a.date)).forEach(r=>{const c=el("article","card");
-    const top=el("div","card-top");top.append(el("span","badge b-info",r.kind));c.append(top);
-    c.append(el("h3",null,r.title));
-    c.append(meta([["building",r.org],["cal","প্রকাশ: "+fmt(r.date)]]));if(r.text)c.append(el("p",null,r.text));
-    const a=el("div","actions");if(r.link)a.append(link(r.link,"অফিসিয়াল সাইট","apply","arrow"));if(r.sourceUrl)a.append(link(r.sourceUrl,"বিস্তারিত ("+r.source+")","","ext"));
-    c.append(a);l.append(c)});
-  if(!RESULTS.length)l.append(empty("এখনো কোনো ফলাফল যোগ করা হয়নি।","result"));}
-
-/* ---------- পরীক্ষার তারিখ ---------- */
-function examCard(e){const c=el("article","card has-date");
-  let b,over=false;if(!e.date)b=el("span","badge b-info","তারিখ ঘোষণা বাকি");
-  else{const l=left(e.date),le=left(e.end||e.date);
-    if(le<0){b=el("span","badge b-over","হয়ে গেছে");over=true}
-    else if(l<=0)b=el("span","badge b-today",e.end?"চলছে":"আজ");
-    else b=el("span","badge "+(l<=3?"b-soon":"b-run"),"আর "+bn(l)+" দিন");}
-  if(over)c.classList.add("over");
-  const t=el("div","dtile"+(e.date?"":" tbd"));t.setAttribute("aria-hidden","true");
-  if(e.date){const [y,m,d]=e.date.split("-").map(Number);t.append(el("span",null,MON[m-1]),el("b",null,bn(d)),el("small",null,bn(y)))}
-  else t.append(el("span",null,"তারিখ"),el("b",null,"?"),el("small",null,"ঘোষণা বাকি"));
-  const body=el("div","cbody");
-  const top=el("div","card-top");top.append(b);body.append(top,el("h3",null,e.title));
-  body.append(meta([["building",e.org],["cal",e.date?fmt(e.date)+(e.end?" থেকে "+fmt(e.end):""):e.when]]));
-  if(e.text)body.append(el("p",null,e.text));
-  const a=el("div","actions");if(e.link)a.append(link(e.link,"অফিসিয়াল সাইট","apply","arrow"));if(e.sourceUrl)a.append(link(e.sourceUrl,"বিস্তারিত ("+e.source+")","","ext"));
-  body.append(a);c.append(t,body);return c;}
-function renderExams(){const up=upExams().sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));
-  const done=EXAMS.filter(e=>e.date&&left(e.end||e.date)<0).sort((a,b)=>b.date.localeCompare(a.date));
-  $("examList").replaceChildren(...(up.length?up.map(examCard):[empty("এই মুহূর্তে আসন্ন কোনো পরীক্ষার তারিখ যোগ করা নেই।","cal")]));
-  $("examOld").replaceChildren(...done.map(examCard));$("examOldSum").textContent="যে পরীক্ষাগুলো হয়ে গেছে ("+bn(done.length)+"টি)";
-  $("examOld").closest("details").hidden=!done.length;}
-
-/* ---------- জব অ্যালার্ট ---------- */
-function renderSocial(){const s=$("social");s.replaceChildren();
-  if(SOCIAL.telegram)s.append(link(SOCIAL.telegram,"টেলিগ্রাম চ্যানেলে যুক্ত হোন","main","send"));
-  if(SOCIAL.whatsapp)s.append(link(SOCIAL.whatsapp,"হোয়াটসঅ্যাপ চ্যানেলে যুক্ত হোন","main","send"));
-  if(SOCIAL.facebook)s.append(link(SOCIAL.facebook,"ফেসবুক পেজে যুক্ত হোন","main","send"));
-  $("socialBox").hidden=!s.childNodes.length;}
-function renderSaved(){const l=$("savedList");l.replaceChildren();
-  const js=JOBS.filter(j=>saved.has(jid(j))).sort((a,b)=>a.date.localeCompare(b.date));
-  if(!js.length){const e=empty("এখনো কিছু সেভ করেননি। চাকরি পেজে কার্ডের “সেভ করুন” চাপুন।","star");
-    const a=el("a","btn main","চাকরি দেখুন");a.href="#jobs";a.append(ico("arrow"));e.append(a);l.append(e);return}
-  js.forEach(j=>l.append(card(j)));}
-
-/* ---------- বয়স ক্যালকুলেটর ---------- */
-$("ref").value=TODAY;
-function ymd(a,b){let y=b.y-a.y,m=b.m-a.m,d=b.d-a.d;
-  if(d<0){m--;d+=new Date(Date.UTC(b.y,b.m-1,0)).getUTCDate()}
-  if(m<0){y--;m+=12}return{y,m,d}}
-const parts=s=>{const [y,m,d]=s.split("-").map(Number);return{y,m,d}};
-function age(){
-  const o=$("ageOut");$("limOwnBox").hidden=$("lim").value!=="0";
-  if(!$("dob").value||!$("ref").value){o.hidden=true;$("ageEmpty").hidden=false;return}
-  $("ageEmpty").hidden=true;
-  const lim=$("lim").value==="0"?Number($("limOwn").value):Number($("lim").value);
-  const A=parts($("dob").value),B=parts($("ref").value);
-  if(dn($("dob").value)>dn($("ref").value)){o.hidden=false;o.className="result no";o.textContent="জন্ম তারিখটা হিসাবের তারিখের পরে হয়ে গেছে — তারিখ দুটো আবার দেখুন।";return}
-  if(!lim){o.hidden=false;o.className="result no";o.textContent="বয়সসীমা (বছর) লিখুন।";return}
-  const g=ymd(A,B);
-  /* শেষ দিন: যেদিন বয়স (lim) বছর পূর্ণ হয়ে ১ দিন বেশি হবে তার আগের দিন */
-  const lastY=A.y+lim, limitDay=new Date(Date.UTC(lastY,A.m-1,A.d)).toISOString().slice(0,10);
-  const ok=dn($("ref").value)<=dn(limitDay);
-  o.hidden=false;o.className="result "+(ok?"ok":"no");o.replaceChildren();
-  o.append(el("span","rl","আপনার বয়স ("+fmt($("ref").value)+" তারিখে)"));
-  o.append(el("big",null,bn(g.y)+" বছর "+bn(g.m)+" মাস "+bn(g.d)+" দিন"));
-  const msg=el("div");
-  if(ok){const rest=ymd(B,parts(limitDay));msg.append(el("b",null,"✓ আবেদন করতে পারবেন। "),document.createTextNode((rest.y+rest.m+rest.d===0?"আজই "+bn(lim)+" বছর পূর্ণ হলো — এই তারিখ পর্যন্ত আবেদন চলবে।":bn(lim)+" বছরের সীমা পার হতে আরও "+bn(rest.y)+" বছর "+bn(rest.m)+" মাস "+bn(rest.d)+" দিন বাকি (শেষ দিন "+fmt(limitDay)+")।")))}
-  else{const over=ymd(parts(limitDay),B);msg.append(el("b",null,"✗ বয়সসীমা পার হয়ে গেছে। "),document.createTextNode(bn(lim)+" বছরের সীমার চেয়ে "+bn(over.y)+" বছর "+bn(over.m)+" মাস "+bn(over.d)+" দিন বেশি। কোটা বা বিশেষ ছাড় থাকলে বিজ্ঞপ্তি দেখুন।"))}
-  o.append(msg);
-}
-["dob","ref","lim","limOwn"].forEach(i=>$(i).addEventListener("input",age));
-$("lim").addEventListener("change",age);
-
-/* ---------- ছবি-স্বাক্ষর রিসাইজ ---------- */
-const cv=$("cv"),cx=cv.getContext("2d");
-let W=300,H=300,KB=100,img=null,zoom=1,ox=0,oy=0,lastBlob=null,mode="photo";
-function readCustom(){W=Math.min(2000,Math.max(50,+$("cw").value||300));H=Math.min(2000,Math.max(50,+$("ch").value||300));KB=Math.max(10,+$("ckb").value||100)}
-function setPreset(b){document.querySelectorAll("#presets .btn").forEach(x=>{x.classList.toggle("main",x===b);x.setAttribute("aria-pressed",x===b)});
-  const custom=!!b.dataset.custom;$("customBox").hidden=!custom;
-  if(custom){readCustom();mode="custom"}else{W=+b.dataset.w;H=+b.dataset.h;KB=+b.dataset.kb;mode=H<W/2?"sign":"photo"}
-  cv.width=W;cv.height=H;ox=oy=0;draw();}
-document.querySelectorAll("#presets .btn").forEach(b=>{b.setAttribute("aria-pressed",b.classList.contains("main"));b.onclick=()=>setPreset(b)});
-["cw","ch","ckb"].forEach(i=>$(i).addEventListener("input",()=>{readCustom();cv.width=W;cv.height=H;draw()}));
-function load(file){if(!file||!file.type.startsWith("image/"))return;const u=URL.createObjectURL(file),i=new Image();
-  i.onload=()=>{img=i;zoom=1;ox=oy=0;$("zoom").value=1;$("bright").value=100;$("stage").hidden=false;$("drop").hidden=true;draw()};i.src=u;}
-$("file").onchange=e=>load(e.target.files[0]);
-const drop=$("drop");["dragover","dragenter"].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add("over")}));
-["dragleave","drop"].forEach(t=>drop.addEventListener(t,()=>drop.classList.remove("over")));
-drop.addEventListener("drop",e=>{e.preventDefault();load(e.dataTransfer.files[0])});
-drop.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();$("file").click()}});
-$("again").onclick=()=>{$("file").value="";$("file").click()};
-$("zoom").oninput=e=>{zoom=+e.target.value;draw()};$("bright").oninput=draw;
-let drag=null;
-cv.addEventListener("pointerdown",e=>{if(!img)return;drag={x:e.clientX,y:e.clientY,ox,oy};cv.setPointerCapture(e.pointerId)});
-cv.addEventListener("pointermove",e=>{if(!drag)return;const k=W/cv.getBoundingClientRect().width;ox=drag.ox+(e.clientX-drag.x)*k;oy=drag.oy+(e.clientY-drag.y)*k;draw()});
-cv.addEventListener("pointerup",()=>{drag=null;draw(true)});
-cv.addEventListener("pointercancel",()=>{drag=null});
-cv.addEventListener("keydown",e=>{const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!m||!img)return;
-  e.preventDefault();ox+=m[0]*8;oy+=m[1]*8;draw()});
-let timer=null,encSeq=0;
-function draw(){
-  cx.fillStyle="#fff";cx.fillRect(0,0,W,H);
-  if(!img)return;
-  const s=Math.max(W/img.width,H/img.height)*zoom,dw=img.width*s,dh=img.height*s;
-  const maxX=(dw-W)/2,maxY=(dh-H)/2;ox=Math.max(-maxX,Math.min(maxX,ox));oy=Math.max(-maxY,Math.min(maxY,oy));
-  cx.filter="brightness("+$("bright").value+"%)";
-  cx.drawImage(img,(W-dw)/2+ox,(H-dh)/2+oy,dw,dh);cx.filter="none";
-  clearTimeout(timer);timer=setTimeout(encode,150);
-}
-function toBlob(q){return new Promise(r=>cv.toBlob(r,"image/jpeg",q))}
-/* একাধিক হিসাব একসাথে চললে শুধু সর্বশেষটার ফল রাখা হয় */
-async function encode(){
-  if(!img)return;const my=++encSeq,mt=$("meter");mt.className="meter";mt.textContent="সাইজ হিসাব হচ্ছে…";
-  let lo=0.3,hi=0.95,best=await toBlob(lo);if(my!==encSeq)return;
-  if(best.size>KB*1024){mt.className="meter bad";mt.textContent="⚠ সর্বনিম্ন মানেও "+bn(Math.ceil(best.size/1024))+"KB হচ্ছে — মাপ ছোট করুন।";lastBlob=best;return}
-  for(let i=0;i<7;i++){const m=(lo+hi)/2,b=await toBlob(m);if(my!==encSeq)return;if(b.size<=KB*1024){best=b;lo=m}else hi=m}
-  const top=await toBlob(0.95);if(my!==encSeq)return;if(top.size<=KB*1024)best=top;
-  lastBlob=best;
-  mt.textContent="✓ মাপ "+bn(W)+"×"+bn(H)+" পিক্সেল · সাইজ "+bn(Math.ceil(best.size/1024))+"KB (সীমা "+bn(KB)+"KB)";
-}
-/* ডাউনলোডের আগে সর্বশেষ অবস্থার ছবি নতুন করে বানানো হয়, যাতে পুরোনো ছবি না নামে */
-$("dl").onclick=async()=>{if(!img)return;const b=$("dl");b.disabled=true;clearTimeout(timer);
-  try{await encode()}finally{b.disabled=false}
-  if(!lastBlob)return;const a=document.createElement("a");a.href=URL.createObjectURL(lastBlob);
-  a.download=(mode==="sign"?"signature":"photo")+"_"+W+"x"+H+".jpg";document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
-draw();
-
-/* ---------- সিভি তৈরি ---------- */
-const CV_LIBS=["https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"];
-const CV_COLORS=["#1d4f91","#006a4e","#8a1c2b","#2f3640","#0f6b75"];
-const CVL={
-  en:{objective:"Career Objective",edu:"Educational Qualification",exp:"Work Experience",train:"Training",skills:"Skills",computer:"Computer Skills",languages:"Language Proficiency",personal:"Personal Information",ref:"References",contact:"Contact",
-    father:"Father's Name",mother:"Mother's Name",dob:"Date of Birth",gender:"Gender",religion:"Religion",marital:"Marital Status",nationality:"Nationality",nid:"National ID No.",blood:"Blood Group",permAddr:"Permanent Address",presentAddr:"Present Address",phone:"Mobile",email:"Email",
-    eh:["Exam / Degree","Institute","Board / University","Group / Subject","Result","Year"],th:["Training Title","Institute","Duration"],
-    g:{m:"Male",f:"Female"},ms:{s:"Unmarried",m:"Married"},
-    decl:"I hereby declare that all the information provided above is true and correct to the best of my knowledge.",sign:"Signature",yourName:"Your Name",
-    mon:["January","February","March","April","May","June","July","August","September","October","November","December"]},
-  bn:{objective:"ক্যারিয়ার উদ্দেশ্য",edu:"শিক্ষাগত যোগ্যতা",exp:"কাজের অভিজ্ঞতা",train:"প্রশিক্ষণ",skills:"দক্ষতা",computer:"কম্পিউটার দক্ষতা",languages:"ভাষাগত দক্ষতা",personal:"ব্যক্তিগত তথ্য",ref:"রেফারেন্স",contact:"যোগাযোগ",
-    father:"পিতার নাম",mother:"মাতার নাম",dob:"জন্ম তারিখ",gender:"লিঙ্গ",religion:"ধর্ম",marital:"বৈবাহিক অবস্থা",nationality:"জাতীয়তা",nid:"জাতীয় পরিচয়পত্র নং",blood:"রক্তের গ্রুপ",permAddr:"স্থায়ী ঠিকানা",presentAddr:"বর্তমান ঠিকানা",phone:"মোবাইল",email:"ইমেইল",
-    eh:["পরীক্ষা / ডিগ্রি","প্রতিষ্ঠান","বোর্ড / বিশ্ববিদ্যালয়","বিভাগ / বিষয়","ফলাফল","সাল"],th:["প্রশিক্ষণের নাম","প্রতিষ্ঠান","সময়কাল"],
-    g:{m:"পুরুষ",f:"মহিলা"},ms:{s:"অবিবাহিত",m:"বিবাহিত"},
-    decl:"আমি এই মর্মে ঘোষণা করছি যে, উপরে প্রদত্ত সকল তথ্য আমার জানামতে সত্য ও সঠিক।",sign:"স্বাক্ষর",yourName:"আপনার নাম",mon:MON}
-};
-const CV_FORM=[
-  {g:"ব্যক্তিগত তথ্য",open:true,f:[["name","পূর্ণ নাম *","text","যেমন: Md. Rakibul Hasan"],["post","যে পদের জন্য (ঐচ্ছিক)","text","যেমন: Office Assistant"],["phone","মোবাইল নম্বর *","tel","01XXXXXXXXX"],["email","ইমেইল","email"],
-    ["father","পিতার নাম"],["mother","মাতার নাম"],["dob","জন্ম তারিখ","date"],["gender","লিঙ্গ","select",[["","—"],["m","পুরুষ"],["f","মহিলা"]]],["religion","ধর্ম"],
-    ["marital","বৈবাহিক অবস্থা","select",[["","—"],["s","অবিবাহিত"],["m","বিবাহিত"]]],["nationality","জাতীয়তা"],["blood","রক্তের গ্রুপ","select",["","A+","A-","B+","B-","O+","O-","AB+","AB-"].map(x=>[x,x||"—"])],
-    ["nid","জাতীয় পরিচয়পত্র নম্বর (ঐচ্ছিক)"],["presentAddr","বর্তমান ঠিকানা","textarea"],["permAddr","স্থায়ী ঠিকানা","textarea"]]},
-  {g:"ক্যারিয়ার উদ্দেশ্য",f:[["objective","২–৩ লাইনে লিখুন — আপনি কী ধরনের কাজ চান আর প্রতিষ্ঠানকে কী দিতে পারবেন","textarea"]]},
-  {g:"শিক্ষাগত যোগ্যতা",rep:"edu",tip:"সবচেয়ে বড় ডিগ্রি আগে লিখুন।"},
-  {g:"কাজের অভিজ্ঞতা",rep:"exp",tip:"অভিজ্ঞতা না থাকলে ফাঁকা রাখুন — সিভিতে এই অংশ দেখাবে না।"},
-  {g:"প্রশিক্ষণ",rep:"train"},
-  {g:"দক্ষতা ও ভাষা",f:[["skills","দক্ষতা (কমা দিয়ে আলাদা করুন)","textarea","যেমন: যোগাযোগ দক্ষতা, দলগত কাজ, হিসাব রাখা"],["computer","কম্পিউটার দক্ষতা (কমা দিয়ে)","textarea","যেমন: MS Word, Excel, বাংলা ও ইংরেজি টাইপিং"],["languages","ভাষা (কমা দিয়ে)","text","যেমন: বাংলা (মাতৃভাষা), ইংরেজি (ভালো)"]]},
-  {g:"রেফারেন্স",rep:"ref",tip:"সাধারণত ২ জন — আত্মীয় নন এমন পরিচিত, সম্মানিত ব্যক্তি।"},
-  {g:"ছবি ও স্বাক্ষর",files:true}
-];
-const CV_REP={
-  edu:{n:"ডিগ্রি",add:"+ আরেকটি ডিগ্রি যোগ করুন",f:[["exam","পরীক্ষা / ডিগ্রি","যেমন: SSC, HSC, BA (Hons)"],["inst","প্রতিষ্ঠানের নাম"],["board","বোর্ড / বিশ্ববিদ্যালয়","যেমন: Barishal Board"],["group","বিভাগ / বিষয়","যেমন: Science"],["result","ফলাফল","যেমন: GPA 4.50"],["year","পাসের সাল","যেমন: 2020"]]},
-  exp:{n:"চাকরি",add:"+ আরেকটি চাকরি যোগ করুন",f:[["post","পদবি"],["org","প্রতিষ্ঠান"],["dur","সময়কাল","যেমন: Jan 2023 – বর্তমান"],["work","দায়িত্ব ও অর্জন (প্রতি লাইনে একটি)","textarea"]]},
-  train:{n:"প্রশিক্ষণ",add:"+ আরেকটি প্রশিক্ষণ যোগ করুন",f:[["title","প্রশিক্ষণের নাম"],["inst","প্রতিষ্ঠান"],["dur","সময়কাল","যেমন: ৩ মাস, ২০২৪"]]},
-  ref:{n:"রেফারেন্স",add:"+ আরেকজন রেফারেন্স যোগ করুন",f:[["name","নাম"],["desig","পদবি"],["org","প্রতিষ্ঠান"],["phone","মোবাইল"]]}
-};
-const CV_EMPTY=()=>({lang:"en",tpl:"classic",color:CV_COLORS[0],name:"",post:"",phone:"",email:"",father:"",mother:"",dob:"",gender:"",religion:"",marital:"",nationality:"Bangladeshi",blood:"",nid:"",presentAddr:"",permAddr:"",objective:"",skills:"",computer:"",languages:"",photo:"",sign:"",
-  edu:[{}],exp:[],train:[],ref:[]});
-const CV_SAMPLE={lang:"en",tpl:"classic",color:CV_COLORS[0],name:"Md. Rakibul Hasan",post:"Office Assistant cum Computer Operator",phone:"01700-000000",email:"rakibul.sample@email.com",
-  father:"Md. Abdul Karim",mother:"Mrs. Hasina Begum",dob:"1999-05-14",gender:"m",religion:"Islam",marital:"s",nationality:"Bangladeshi",blood:"B+",nid:"",
-  presentAddr:"Sadar Road, Bhola Sadar, Bhola",permAddr:"Vill: Charfasson, P.O: Charfasson, Upazila: Charfasson, Dist: Bhola",
-  objective:"To work in a reputed organization where I can use my computer and office management skills, learn continuously and contribute to the organization's success with honesty and dedication.",
-  skills:"Office management, Record keeping, Communication, Teamwork, Customer service",computer:"MS Word, MS Excel, MS PowerPoint, Bangla & English typing (35 wpm), Internet & Email",languages:"Bangla (Native), English (Good)",
-  edu:[{exam:"BSS (Hons)",inst:"Govt. Bhola College",board:"National University",group:"Political Science",result:"CGPA 3.12",year:"2022"},{exam:"HSC",inst:"Bhola Govt. Mohila College",board:"Barishal Board",group:"Humanities",result:"GPA 4.42",year:"2017"},{exam:"SSC",inst:"Bhola Govt. High School",board:"Barishal Board",group:"Humanities",result:"GPA 4.75",year:"2015"}],
-  exp:[{post:"Computer Operator",org:"ABC Trading (sample)",dur:"Feb 2023 – Present",work:"Prepared letters, invoices and reports in MS Word and Excel\nMaintained daily sales and stock records\nHandled customer calls and email"}],
-  train:[{title:"Computer Office Application",inst:"Youth Training Centre, Bhola",dur:"6 months, 2022"}],
-  ref:[{name:"Prof. Md. Example Ali",desig:"Head, Dept. of Political Science",org:"Govt. Bhola College",phone:"01800-000000"},{name:"Mr. Sample Rahman",desig:"Manager",org:"ABC Trading",phone:"01900-000000"}],photo:"",sign:""};
-
-let cvData=Object.assign(CV_EMPTY(),store.get("cvDraft",{}));
-let cvTimer=null;
-function cvSave(){store.set("cvDraft",cvData)}
-function cvChanged(){clearTimeout(cvTimer);cvTimer=setTimeout(()=>{cvSave();cvRenderPrev()},120)}
-
-function cvInput(key,label,type,ph,obj){
-  const w=el("label","field"+(type==="textarea"?" full":""));w.append(document.createTextNode(label));
-  let i;
-  if(type==="textarea"){i=el("textarea");i.rows=3}
-  else if(type==="select"){i=el("select");ph.forEach(([v,t])=>{const o=el("option",null,t);o.value=v;i.append(o)})}
-  else{i=el("input");i.type=type||"text"}
-  if(ph&&type!=="select")i.placeholder=ph;
-  i.value=obj[key]||"";i.addEventListener("input",()=>{obj[key]=i.value;cvChanged()});
-  w.append(i);return w;
-}
-function cvRep(name,box){
-  const R=CV_REP[name];box.replaceChildren();
-  cvData[name].forEach((row,idx)=>{const r=el("div","rep");const h=el("div","rephead");h.append(el("span",null,R.n+" "+bn(idx+1)));
-    const del=el("button","btn small","✕ বাদ দিন");del.type="button";del.onclick=()=>{cvData[name].splice(idx,1);cvRep(name,box);cvChanged()};h.append(del);r.append(h);
-    const g=el("div","fgrid");R.f.forEach(([k,l,p])=>g.append(cvInput(k,l,p==="textarea"?"textarea":"text",p==="textarea"?"":p,row)));r.append(g);box.append(r)});
-  const add=el("button","btn add",R.add);add.type="button";add.onclick=()=>{cvData[name].push({});cvRep(name,box);cvChanged()};box.append(add);
-}
-function cvImage(file,kind,done){
-  if(!file||!file.type.startsWith("image/"))return;const i=new Image();
-  i.onload=()=>{const c=document.createElement("canvas"),g=c.getContext("2d");
-    if(kind==="photo"){const W=360,H=420,s=Math.max(W/i.width,H/i.height);c.width=W;c.height=H;g.fillStyle="#fff";g.fillRect(0,0,W,H);g.drawImage(i,(W-i.width*s)/2,(H-i.height*s)/2,i.width*s,i.height*s)}
-    else{const s=Math.min(1,500/i.width);c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);g.drawImage(i,0,0,c.width,c.height)}
-    done(c.toDataURL("image/jpeg",0.88));URL.revokeObjectURL(i.src)};
-  i.src=URL.createObjectURL(file);
-}
-function cvFiles(box){
-  [["photo","আপনার ছবি (পাসপোর্ট সাইজ)"],["sign","স্বাক্ষর (ঐচ্ছিক — সাদা কাগজে সই করে ছবি তুলুন)"]].forEach(([k,l])=>{
-    const w=el("div","upl");const im=el("img",k==="sign"?"sg":"");im.alt="";im.hidden=!cvData[k];if(cvData[k])im.src=cvData[k];
-    const inp=el("input");inp.type="file";inp.accept="image/*";inp.hidden=true;inp.id="cvf-"+k;
-    const b=el("label","btn",cvData[k]?"বদলান":"📷 "+l);b.htmlFor=inp.id;
-    const rm=el("button","btn small","✕ সরান");rm.type="button";rm.hidden=!cvData[k];
-    inp.onchange=()=>cvImage(inp.files[0],k,d=>{cvData[k]=d;im.src=d;im.hidden=false;rm.hidden=false;b.textContent="বদলান";inp.value="";cvChanged()});
-    rm.onclick=()=>{cvData[k]="";im.hidden=true;rm.hidden=true;b.textContent="📷 "+l;cvChanged()};
-    w.append(im,b,rm,inp);box.append(w)});
-}
-function cvBuildForm(){
-  const f=$("cvForm");f.replaceChildren();
-  CV_FORM.forEach(s=>{const d=el("details");if(s.open)d.open=true;d.append(el("summary",null,s.g));
-    const body=el("div","cvbody");d.append(body);
-    if(s.tip)body.append(el("p","cvtip",s.tip));
-    if(s.f){const g=el("div","fgrid");s.f.forEach(([k,l,t,p])=>g.append(cvInput(k,l,t,p,cvData)));body.append(g)}
-    if(s.rep){const b=el("div");cvRep(s.rep,b);body.append(b)}
-    if(s.files)cvFiles(body);
-    f.append(d)});
-  const seg=(id,key)=>document.querySelectorAll("#"+id+" .btn").forEach(b=>{b.classList.toggle("main",b.dataset.v===cvData[key]);
-    b.onclick=()=>{cvData[key]=b.dataset.v;cvBuildOpts();cvChanged()}});
-  window.cvBuildOpts=()=>{seg("cvTpl","tpl");seg("cvLang","lang");const sw=$("cvColor");sw.replaceChildren();
-    CV_COLORS.forEach(c=>{const b=el("button");b.type="button";b.style.background=c;b.setAttribute("aria-label","রং");b.setAttribute("aria-pressed",c===cvData.color);
-      b.onclick=()=>{cvData.color=c;cvBuildOpts();cvChanged()};sw.append(b)})};
-  cvBuildOpts();
-}
-
-/* সিভির কাগজ বানানো */
-function cvSheet(){
-  const L=CVL[cvData.lang],T=v=>(v||"").trim();
-  const lines=v=>T(v).split(/\n+/).map(x=>x.replace(/^[-•*]\s*/,"").trim()).filter(Boolean);
-  const list=v=>T(v).split(/[,\n]+/).map(x=>x.trim()).filter(Boolean);
-  const E=(t,c,k)=>{const e=el(t,c);if(k!=null)[].concat(k).forEach(x=>{if(x!=null&&x!=="")e.append(typeof x==="string"?document.createTextNode(x):x)});return e};
-  const dob=v=>{if(!v)return"";const [y,m,d]=v.split("-").map(Number);return cvData.lang==="bn"?bn(d)+" "+L.mon[m-1]+" "+bn(y):d+" "+L.mon[m-1]+" "+y};
-  const s=E("div","cv "+cvData.tpl+" "+cvData.lang);s.style.setProperty("--c",cvData.color);
-  const photo=cvData.photo?(()=>{const i=el("img","ph");i.src=cvData.photo;i.alt="";return i})():null;
-  const name=T(cvData.name)?E("div","nm",T(cvData.name)):E("div","nm muted",L.yourName);
-  const sec=(key,nodes)=>{nodes=(nodes||[]).filter(Boolean);if(!nodes.length)return[];return[E("div","hd",L[key]),...nodes]};
-  const edu=cvData.edu.filter(r=>Object.values(r).some(v=>T(v)));
-  const eduN=edu.length?[E("div","row6 hd2",L.eh.map(h=>E("div",null,h))),...edu.map(r=>E("div","row6 avoid",["exam","inst","board","group","result","year"].map(k=>E("div",null,T(r[k])))))]:[];
-  const exp=cvData.exp.filter(r=>Object.values(r).some(v=>T(v))).map(r=>{const w=lines(r.work);
-    return E("div","xp avoid",[E("div","l1",[E("div",null,[E("b",null,T(r.post)),T(r.org)?E("div","org",T(r.org)):null]),E("div","dur",T(r.dur))]),w.length?E("ul",null,w.map(x=>E("li",null,x))):null])});
-  const tr=cvData.train.filter(r=>Object.values(r).some(v=>T(v)));
-  const trN=tr.length?[E("div","row3 hd2",L.th.map(h=>E("div",null,h))),...tr.map(r=>E("div","row3 avoid",["title","inst","dur"].map(k=>E("div",null,T(r[k])))))]:[];
-  const pr=[["father",T(cvData.father)],["mother",T(cvData.mother)],["dob",dob(cvData.dob)],["gender",L.g[cvData.gender]],["religion",T(cvData.religion)],["marital",L.ms[cvData.marital]],["nationality",T(cvData.nationality)],["blood",cvData.blood],["nid",T(cvData.nid)],["permAddr",T(cvData.permAddr)]]
-    .filter(x=>x[1]).map(([k,v])=>E("div","pr avoid",[E("div","k",L[k]),E("div",null,": "+v)]));
-  const refs=cvData.ref.filter(r=>Object.values(r).some(v=>T(v)));
-  const refN=refs.length?[E("div","refs avoid",refs.map(r=>E("div",null,[E("b",null,T(r.name)),T(r.desig)?E("div",null,T(r.desig)):null,T(r.org)?E("div",null,T(r.org)):null,T(r.phone)?E("div",null,L.phone+": "+T(r.phone)):null])))]:[];
-  const sig=(()=>{const box=E("div","sig");const d=E("div");if(cvData.sign){const i=el("img");i.src=cvData.sign;i.alt="";d.append(i)}
-    d.append(E("div","ln",[L.sign,T(cvData.name)?E("div",null,"("+T(cvData.name)+")"):null]));box.append(d);return box})();
-  const decl=E("div","decl avoid",[E("p",null,L.decl),sig]);
-  const chips=v=>list(v).length?E("div","cchips avoid",list(v).map(x=>E("span",null,x))):null;
-  const ul=v=>list(v).length?E("ul","avoid",list(v).map(x=>E("li",null,x))):null;
-  const mainSecs=[...sec("objective",[T(cvData.objective)?E("p","avoid",T(cvData.objective)):null]),...sec("edu",eduN),...sec("exp",exp),...sec("train",trN)];
-  const tail=[...sec("personal",pr),...sec("ref",refN),decl];
-  const TP=cvData.tpl;
-  const ci=[[L.phone,cvData.phone],[L.email,cvData.email],[L.presentAddr,cvData.presentAddr]].filter(x=>T(x[1])).map(x=>E("div",null,x[0]+": "+T(x[1])));
-  if(TP==="executive"){
-    s.append(E("div","ehead avoid",[photo,name,T(cvData.post)?E("div","ps",T(cvData.post)):null,ci.length?E("div","ct",ci):null]));
-    s.append(...mainSecs,...sec("skills",[chips(cvData.skills)]),...sec("computer",[chips(cvData.computer)]),...sec("languages",[chips(cvData.languages)]),...tail);
-  }else if(TP==="banner"){
-    s.append(E("div","bhead",[E("div",null,[name,T(cvData.post)?E("div","ps",T(cvData.post)):null,ci.length?E("div","ct",ci):null]),photo]));
-    const bmain=E("div","bmain",[...mainSecs,...sec("ref",refN),decl]);
-    const bside=E("div","bside",[...sec("skills",[ul(cvData.skills)]),...sec("computer",[ul(cvData.computer)]),...sec("languages",[ul(cvData.languages)]),...sec("personal",pr)]);
-    s.append(E("div","bbody",[bmain,bside]));
-  }else if(TP==="classic"||TP==="timeline"){
-    const ct=E("div","ct",[T(cvData.phone)?E("div",null,L.phone+": "+T(cvData.phone)):null,T(cvData.email)?E("div",null,L.email+": "+T(cvData.email)):null,T(cvData.presentAddr)?E("div",null,L.presentAddr+": "+T(cvData.presentAddr)):null]);
-    s.append(E("div","ctop avoid",[E("div",null,[name,T(cvData.post)?E("div","ps",T(cvData.post)):null,ct]),photo]));
-    s.append(...mainSecs,...sec("skills",[chips(cvData.skills)]),...sec("computer",[chips(cvData.computer)]),...sec("languages",[chips(cvData.languages)]),...tail);
-  }else{
-    const side=E("div","side");if(photo)side.append(photo);
-    const it=(lab,v)=>T(v)?E("div","it avoid",[E("small",null,lab),T(v)]):null;
-    side.append(...sec("contact",[it(L.phone,cvData.phone),it(L.email,cvData.email),it(L.presentAddr,cvData.presentAddr)]),...sec("skills",[ul(cvData.skills)]),...sec("computer",[ul(cvData.computer)]),...sec("languages",[ul(cvData.languages)]));
-    const main=E("div","main",[E("div","mtop avoid",[name,T(cvData.post)?E("div","ps",T(cvData.post)):null]),...mainSecs,...tail]);
-    s.append(side,main);
-  }
-  return s;
-}
-function cvFit(){const w=$("cvPrev"),sh=w.firstChild;if(!sh||!w.clientWidth)return;const k=Math.min(1,w.clientWidth/794);sh.style.transform="scale("+k+")";w.style.height=Math.ceil(sh.offsetHeight*k)+"px"}
-function cvRenderPrev(){if($("p-cv").hidden)return;const w=$("cvPrev");w.replaceChildren(cvSheet());cvFit()}
-window.addEventListener("resize",cvFit);
-if(window.ResizeObserver)new ResizeObserver(()=>cvFit()).observe($("cvPrev"));
-
-/* পাতা ভাগ: কোনো লাইন/সারি যেন দুই পাতার মাঝে না কাটে */
-function cvPaginate(sh){
-  const P=1123,TOP=44,BOT=40,base=()=>sh.getBoundingClientRect().top;
-  sh.querySelectorAll(".avoid").forEach(it=>{
-    let t=it;while(t.previousElementSibling&&t.previousElementSibling.matches(".hd,.hd2"))t=t.previousElementSibling;
-    const b0=base(),top=t.getBoundingClientRect().top-b0,bottom=it.getBoundingClientRect().bottom-b0,pageEnd=(Math.floor(top/P)+1)*P;
-    const mt=parseFloat(getComputedStyle(t).marginTop)||0;
-    if(bottom>pageEnd-BOT&&bottom-top<P-TOP-BOT)t.style.marginTop=(mt+pageEnd-top+TOP)+"px";
-    else if(top>=P&&top%P<TOP)t.style.marginTop=(mt+TOP-top%P)+"px";
-  });
-  sh.style.minHeight=Math.ceil((sh.scrollHeight-1)/P)*P+"px";
-}
-function cvLoad(src){return new Promise((ok,no)=>{const s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=no;document.head.append(s)})}
-async function cvPdf(){
-  const b=$("cvPdf"),old=b.textContent;b.disabled=true;b.textContent="PDF তৈরি হচ্ছে…";$("cvMsg").hidden=true;
-  try{
-    if(!window.html2canvas)await cvLoad(CV_LIBS[0]);if(!window.jspdf)await cvLoad(CV_LIBS[1]);
-    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
-    const host=el("div");host.style.cssText="position:absolute;left:-10000px;top:0;width:794px";
-    const sh=cvSheet();host.append(sh);document.body.append(host);cvPaginate(sh);
-    const cnv=await html2canvas(sh,{scale:2,backgroundColor:"#ffffff",logging:false,windowWidth:794});
-    host.remove();
-    const pdf=new window.jspdf.jsPDF({unit:"pt",format:"a4"}),pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-    const pageH=Math.round(cnv.width*1123/794),n=Math.max(1,Math.round(cnv.height/pageH));
-    for(let i=0;i<n;i++){const c=document.createElement("canvas");c.width=cnv.width;c.height=pageH;const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);
-      g.drawImage(cnv,0,i*pageH,cnv.width,Math.min(pageH,cnv.height-i*pageH),0,0,cnv.width,Math.min(pageH,cnv.height-i*pageH));
-      if(i)pdf.addPage();pdf.addImage(c.toDataURL("image/jpeg",0.92),"JPEG",0,0,pw,ph)}
-    const fn=(cvData.name||"CV").trim().replace(/[^\wঀ-৿]+/g,"_").replace(/^_|_$/g,"")||"CV";
-    pdf.save(fn+"_CV.pdf");
-  }catch(e){const m=$("cvMsg");m.hidden=false;m.textContent="PDF বানানো যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন, অথবা “প্রিন্ট করুন” চেপে “Save as PDF” বেছে নিন।"}
-  finally{b.disabled=false;b.textContent=old}
-}
-$("cvPdf").onclick=cvPdf;
-$("cvPrintBtn").onclick=()=>{let h=$("cvPrint");h.replaceChildren(cvSheet());window.print()};
-$("cvSample").onclick=()=>{cvData=JSON.parse(JSON.stringify(CV_SAMPLE));cvSave();cvBuildForm();cvRenderPrev();
-  const m=$("cvMsg");m.hidden=false;m.textContent="নমুনা তথ্য বসানো হয়েছে — এখন নিজের তথ্য দিয়ে বদলে নিন।"};
-let cvClearArm=null;
-$("cvClear").onclick=()=>{const b=$("cvClear");
-  if(!cvClearArm){b.textContent="নিশ্চিত? আবার চাপুন";cvClearArm=setTimeout(()=>{b.textContent="সব মুছুন";cvClearArm=null},3000);return}
-  clearTimeout(cvClearArm);cvClearArm=null;b.textContent="সব মুছুন";cvData=CV_EMPTY();cvSave();cvBuildForm();cvRenderPrev();$("cvMsg").hidden=true};
-cvBuildForm();
-
-
-
-
-/* ---------- হেডারের ড্রপডাউন ---------- */
-function closeDD(d){d.classList.remove("open");d.querySelector(".dd-btn").setAttribute("aria-expanded","false")}
-document.querySelectorAll(".dd").forEach(d=>{
-  const b=d.querySelector(".dd-btn");
-  b.addEventListener("click",e=>{e.stopPropagation();const open=!d.classList.contains("open");
-    document.querySelectorAll(".dd").forEach(closeDD);if(open){d.classList.add("open");b.setAttribute("aria-expanded","true")}});
-  d.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDD(d);b.focus()}});
-});
-document.addEventListener("click",e=>{document.querySelectorAll(".dd.open").forEach(d=>{if(!d.contains(e.target))closeDD(d)})});
-
-/* ---------- যোগাযোগ ও নীতির তারিখ ---------- */
-function renderContact(){
-  const box=$("contactCards");if(!box)return;box.replaceChildren();
-  const card=(href,icon,label,value)=>{const a=el(href?"a":"div","ccard");if(href){a.href=href;if(/^https?:/.test(href)){a.target="_blank";a.rel="noopener"}}
-    const ci=el("span","ci");ci.append(ico(icon));const t=el("span");t.append(el("small",null,label),el("b",null,value));a.append(ci,t);box.append(a)};
-  if(CONTACT.email)card("mailto:"+CONTACT.email,"send","ইমেইল",CONTACT.email);
-  if(CONTACT.phone)card("tel:"+CONTACT.phone,"info","ফোন",CONTACT.phone);
-  if(SOCIAL.facebook)card(SOCIAL.facebook,"users","ফেসবুক পেজ","মেসেজ পাঠান");
-  if(SOCIAL.telegram)card(SOCIAL.telegram,"send","টেলিগ্রাম","চ্যানেলে যুক্ত হোন");
-  if(SOCIAL.whatsapp)card(SOCIAL.whatsapp,"send","হোয়াটসঅ্যাপ","চ্যানেলে যুক্ত হোন");
-  if(CONTACT.address)card("","pin","ঠিকানা",CONTACT.address);
-}
-document.querySelectorAll(".policy-date").forEach(e=>e.textContent=fmt(POLICY_DATE));
-
-/* ---------- শুরু ---------- */
-route();buildChips();render();renderWeek();renderSoon();renderContact();renderResults();renderExams();renderSocial();renderCounts();age();
-</script>
-<div id="cvPrint"></div>
-</body>
-</html>
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use 
