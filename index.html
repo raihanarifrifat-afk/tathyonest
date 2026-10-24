@@ -618,7 +618,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 .home .wrap{position:relative;z-index:1;text-align:center;padding-top:44px;padding-bottom:48px}
 .home-date{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;padding:5px 14px 5px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--fg-2);box-shadow:var(--sh-1)}
 .home-date .i{color:var(--brand)}
-.home-title{font-family:var(--display);font-weight:700;font-size:clamp(32px,6.2vw,58px);line-height:1.2;margin:0 auto 12px;color:var(--brand-900);letter-spacing:-.01em;text-wrap:balance}
+.home-title{font-family:var(--display);font-weight:700;font-size:clamp(28px,5.4vw,52px);line-height:1.2;margin:0 auto 12px;color:var(--brand-900);letter-spacing:-.01em;text-wrap:balance}
 .home-title span{background:linear-gradient(90deg,var(--brand-600) 0%,var(--teal) 45%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .home-sub{margin:0 auto;max-width:58ch;font-size:clamp(15.5px,2vw,18px);color:var(--fg-2);line-height:1.7}
 .tiles{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:18px 16px;max-width:1120px}
@@ -679,6 +679,85 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
   .soon-days{min-width:62px;font-size:12.5px}
 }
 @media (prefers-reduced-motion:reduce){.tile,.soon-item{transition:none}.tile:hover,.soon-item:hover{transform:none}}
+
+
+/* ---------- এক লাইনের হেডার ও মেনু ---------- */
+.site-head .head-row{gap:14px}
+.mainnav{display:flex;align-items:center;gap:2px;margin-left:10px}
+.mainnav>a,.dd-btn{display:inline-flex;align-items:center;gap:5px;padding:9px 12px;border-radius:10px;border:0;background:none;color:var(--fg-2);font:inherit;font-weight:600;font-size:15.5px;text-decoration:none;cursor:pointer;white-space:nowrap;transition:color .15s,background .15s}
+.mainnav>a:hover,.dd-btn:hover,.dd.open .dd-btn{color:var(--brand);background:var(--soft)}
+.mainnav>a[aria-current="page"],.dd.cur .dd-btn{color:var(--brand)}
+.dd-btn .i{width:16px;height:16px;transform:rotate(90deg);transition:transform .2s}
+.dd.open .dd-btn .i{transform:rotate(-90deg)}
+.dd{position:relative}
+.dd-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:230px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -16px rgba(15,45,33,.35);z-index:50}
+.dd.open .dd-menu{display:block}
+.dd-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--fg);text-decoration:none;font-weight:600;font-size:15px}
+.dd-menu a .i{color:var(--muted)}
+.dd-menu a:hover,.dd-menu a[aria-current="page"]{background:var(--brand-soft);color:var(--brand)}
+.dd-menu a:hover .i,.dd-menu a[aria-current="page"] .i{color:var(--brand)}
+.site-head .hsearch{max-width:330px;margin-left:auto}
+#menuBtn{display:none}
+@media (min-width:1101px){.dd:hover .dd-menu{display:block}.dd:hover .dd-btn{color:var(--brand);background:var(--soft)}}
+@media (max-width:1100px){
+  #menuBtn{display:grid}
+  .site-head .hsearch{max-width:none}
+  .mainnav{display:none;position:absolute;left:0;right:0;top:var(--head-h);margin:0;flex-direction:column;align-items:stretch;gap:2px;padding:10px 14px 16px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(15,45,33,.3);max-height:calc(100vh - var(--head-h));overflow:auto;z-index:45}
+  .site-head.menu-open .mainnav{display:flex}
+  .mainnav>a{padding:12px 12px;font-size:16.5px}
+  .dd-btn{display:none}
+  .dd::before{content:attr(data-label);display:block;padding:12px 12px 4px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+  .dd-menu{display:block;position:static;min-width:0;padding:0;border:0;box-shadow:none;background:none}
+  .dd-menu a{font-size:16px;padding:11px 12px}
+}
+@media (min-width:960px) and (max-width:1100px){.icon-btn#menuBtn{display:grid}}
+
+/* ---------- তথ্য পাতা ---------- */
+.prose{max-width:820px;padding-top:28px;padding-bottom:60px;font-size:16.5px;line-height:1.85;color:var(--fg-2)}
+.prose h2{font-family:var(--display);font-size:20px;color:var(--fg);margin:28px 0 8px}
+.prose p{margin:0 0 12px}
+.prose>:first-child{margin-top:0}
+.prose ul{margin:0 0 12px;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-bottom:8px}
+.ccard{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;text-decoration:none;color:var(--fg);box-shadow:var(--sh-1);min-width:0}
+.ccard:hover{border-color:var(--brand-soft-2);color:var(--fg)}
+.ccard .ci{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.ccard small{display:block;color:var(--muted);font-size:13px}
+.ccard b{display:block;font-size:15.5px;overflow-wrap:anywhere}
+.note-box{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:14px 16px;border-radius:var(--r-lg);background:var(--red-soft);color:var(--red)}
+.note-box p{margin:0;color:var(--red);font-weight:500}
+.foot-grid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr)}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr}}
+.foot-links.one{grid-template-columns:1fr}
+
+/* ---------- হেডারের খোঁজ বক্স (পরিষ্কার এক লাইনের পিল) ---------- */
+.site-head .hsearch{height:46px;padding:4px 4px 4px 15px;background:#fff;border:1.5px solid var(--line-2);border-radius:999px;box-shadow:0 1px 2px rgba(15,45,33,.05);gap:4px}
+.site-head .hsearch:hover{border-color:#b5c4bc}
+.site-head .hsearch:focus-within{border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(5,102,74,.12)}
+.site-head .hsearch>.i{color:var(--brand);width:19px;height:19px}
+.site-head .hsearch input{flex:1;min-width:0;min-height:0;height:100%;padding:0 6px;border:0;border-radius:0;background:transparent;box-shadow:none;font-size:15px}
+.site-head .hsearch input:focus,.site-head .hsearch input:hover{border:0;box-shadow:none}
+.site-head .hsearch .btn{height:36px;padding:0 18px;border-radius:999px;font-size:14.5px;display:inline-flex;align-items:center}
+.site-head .saved-link{height:46px;padding:0 14px}
+@media (max-width:959px){
+  .site-head .hsearch{height:auto;padding:10px 16px;border-radius:0;border-width:0 0 1px;box-shadow:0 14px 24px -18px rgba(15,45,33,.35)}
+  .site-head .hsearch:focus-within{box-shadow:0 14px 24px -18px rgba(15,45,33,.35)}
+  .site-head .hsearch input{height:44px;padding:0 16px;margin:0 8px 0 0;background:var(--soft);border:1.5px solid var(--line);border-radius:999px}
+  .site-head .hsearch input:focus{border:1.5px solid var(--brand)}
+  .site-head .hsearch .btn{height:44px}
+}
+
+/* ---------- ফুটার: মোবাইল ---------- */
+@media (max-width:760px){
+  .foot-grid{grid-template-columns:1fr 1fr;gap:28px 18px;padding-top:32px;padding-bottom:28px}
+  .foot-grid>div:first-child{grid-column:1/-1}
+  .site-foot .logo-img{height:42px}
+  .site-foot p{font-size:14.5px;line-height:1.7}
+  .site-foot h2{margin-bottom:10px}
+  .foot-links{grid-template-columns:1fr;gap:10px}
+  .foot-links a{font-size:15px}
+  .foot-bar{flex-direction:column;align-items:center;text-align:center;gap:4px;padding-top:16px;padding-bottom:22px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -727,6 +806,29 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 <header class="site-head" id="head">
   <div class="wrap head-row">
     <a class="logo" href="#home" aria-label="TathyoNest — চাকরির খবর, প্রথম পাতা"><img class="logo-img" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIxMiA2MiAxMTY2IDI3NiI+PGRlZnM+PHN0eWxlPiAgICAgIC5zdDAgeyAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQyKTsgICAgICB9ICAgICAgLnN0MSB7ICAgICAgICBmaWxsOiAjMGU2YjUwOyAgICAgIH0gICAgICAuc3QyIHsgICAgICAgIGZpbGw6ICMwYjJlMjY7ICAgICAgfSAgICAgIC5zdDMgeyAgICAgICAgc3Ryb2tlLXdpZHRoOiAxOXB4OyAgICAgIH0gICAgICAuc3QzLCAuc3Q0LCAuc3Q1LCAuc3Q2IHsgICAgICAgIGZpbGw6IG5vbmU7ICAgICAgfSAgICAgIC5zdDMsIC5zdDYgeyAgICAgICAgc3Ryb2tlOiAjZmZmOyAgICAgIH0gICAgICAuc3Q3LCAuc3Q4IHsgICAgICAgIGZpbGw6ICNmZmY7ICAgICAgfSAgICAgIC5zdDkgeyAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQxKTsgICAgICB9ICAgICAgLnN0MTAgeyAgICAgICAgZmlsbDogI2NkZWJkZDsgICAgICB9ICAgICAgLnN0OCB7ICAgICAgICBzdHJva2U6ICMwYjVhNDU7ICAgICAgICBzdHJva2Utd2lkdGg6IDlweDsgICAgICB9ICAgICAgLnN0NCB7ICAgICAgICBzdHJva2U6ICM3YmUwYjI7ICAgICAgICBzdHJva2Utd2lkdGg6IDNweDsgICAgICB9ICAgICAgLnN0NCwgLnN0NSwgLnN0NiB7ICAgICAgICBzdHJva2UtbGluZWNhcDogcm91bmQ7ICAgICAgfSAgICAgIC5zdDExIHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50NCk7ICAgICAgfSAgICAgIC5zdDEyIHsgICAgICAgIGZpbGw6ICNlNmZhZjE7ICAgICAgfSAgICAgIC5zdDEzIHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50Myk7ICAgICAgfSAgICAgIC5zdDUgeyAgICAgICAgc3Ryb2tlOiAjMGU4YTVmOyAgICAgICAgc3Ryb2tlLXdpZHRoOiA1cHg7ICAgICAgfSAgICAgIC5zdDE0IHsgICAgICAgIGZpbGw6ICMwZThhNWY7ICAgICAgfSAgICAgIC5zdDE1IHsgICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50KTsgICAgICB9ICAgICAgLnN0NiB7ICAgICAgICBzdHJva2Utd2lkdGg6IDE2cHg7ICAgICAgfSAgICA8L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iLTI1NiIgeTE9IjEyNjIuNCIgeDI9Ii0yNTUiIHkyPSIxMjYxLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjY1ODMgMzI4MzA2KSBzY2FsZSgyNjAgLTI2MCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwZjhhNjYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYTRlM2MiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50MSIgeDE9Ii0yNTQuMyIgeTE9IjEyNzQuOCIgeDI9Ii0yNTMuMyIgeTI9IjEyNzMuOCIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgyNDc5Ni41MDEgLTEzMzk5OC44MDUzKSBzY2FsZSg5NC4yIDEwNS4zKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQyIiB4MT0iLTI1My45IiB5MT0iMTI3Ni44IiB4Mj0iLTI1Mi45IiB5Mj0iMTI3NS44IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDIyMjc5LjgwMDggLTEwOTY5MC40MDQzKSBzY2FsZSg4NCA4Ni4xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQzIiB4MT0iLTI1My40IiB5MT0iMTI3Ni44IiB4Mj0iLTI1Mi40IiB5Mj0iMTI3NS44IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDE5NDAxLjQ1MDcgLTEwOTY5MC40MDQzKSBzY2FsZSg3Mi40NSA4Ni4xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzIyYzI4NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlOGE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQ0IiB4MT0iLTI1Mi4xIiB5MT0iMTI3NSIgeDI9Ii0yNTEuMSIgeTI9IjEyNzQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQ0MzAuNTUwNiAtMTMyNDc5LjYwNTIpIHNjYWxlKDUyLjggMTA0LjEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJjMjg1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGU4YTVmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGc+PHJlY3QgY2xhc3M9InN0MTUiIHg9IjIwIiB5PSI3MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIyNjAiIHJ4PSI2MiIgcnk9IjYyIi8+PGc+PHBhdGggY2xhc3M9InN0NyIgZD0iTTg3LDEwNy41aDY1bDM4LDM4djExMGMwLDEyLjItOS44LDIyLTIyLDIyaC04MWMtMTIuMiwwLTIyLTkuOC0yMi0yMnYtMTI2YzAtMTIuMiw5LjgtMjIsMjItMjJaIi8+PHBhdGggY2xhc3M9InN0MTAiIGQ9Ik0xNTIsMTA3LjV2MzhoMzhsLTM4LTM4WiIvPjxnPjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik04Ny4xLDEzNy41aDU3LjZjMi4zLDAsNC4xLDIsNC4xLDQuNWgwYzAsMi41LTEuOCw0LjUtNC4xLDQuNWgtNTcuNmMtMi4zLDAtNC4xLTItNC4xLTQuNWgwYzAtMi41LDEuOC00LjUsNC4xLTQuNVoiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNODcuNSwxNTkuNWg2M2MyLjUsMCw0LjUsMiw0LjUsNC41aDBjMCwyLjUtMiw0LjUtNC41LDQuNWgtNjNjLTIuNSwwLTQuNS0yLTQuNS00LjVoMGMwLTIuNSwyLTQuNSw0LjUtNC41WiIvPjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik04Ny41LDE4MS41aDQxYzIuNSwwLDQuNSwyLDQuNSw0LjVoMGMwLDIuNS0yLDQuNS00LjUsNC41aC00MWMtMi41LDAtNC41LTItNC41LTQuNWgwYzAtMi41LDItNC41LDQuNS00LjVaIi8+PHBhdGggY2xhc3M9InN0MSIgZD0iTTg3LjUsMjAzLjVoMzNjMi41LDAsNC41LDIsNC41LDQuNWgwYzAsMi41LTIsNC41LTQuNSw0LjVoLTMzYy0yLjUsMC00LjUtMi00LjUtNC41aDBjMC0yLjUsMi00LjUsNC41LTQuNVoiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNODcuNSwyMjUuNWgyN2MyLjUsMCw0LjUsMiw0LjUsNC41aDBjMCwyLjUtMiw0LjUtNC41LDQuNWgtMjdjLTIuNSwwLTQuNS0yLTQuNS00LjVoMGMwLTIuNSwyLTQuNSw0LjUtNC41WiIvPjwvZz48bGluZSBjbGFzcz0ic3Q2IiB4MT0iMTk3IiB5MT0iMjU0LjUiIHgyPSIyMzUiIHkyPSIyOTIuNSIvPjxjaXJjbGUgY2xhc3M9InN0MyIgY3g9IjE2NSIgY3k9IjIyMi41IiByPSI0OCIvPjxjaXJjbGUgY2xhc3M9InN0OCIgY3g9IjE2NSIgY3k9IjIyMi41IiByPSI0OCIvPjxwYXRoIGNsYXNzPSJzdDUiIGQ9Ik0xNTcsMjA1LjV2LTdjMC0yLjIsMS44LTQsNC00aDhjMi4yLDAsNCwxLjgsNCw0djciLz48cmVjdCBjbGFzcz0ic3QxNCIgeD0iMTM5IiB5PSIyMDUuNSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjM2IiByeD0iNyIgcnk9IjciLz48cGF0aCBjbGFzcz0ic3Q0IiBkPSJNMTM5LDIyMC41YzE3LjMsNiwzNC43LDYsNTIsMCIvPjxyZWN0IGNsYXNzPSJzdDEyIiB4PSIxNjEiIHk9IjIxOS41IiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiByeD0iMiIgcnk9IjIiLz48L2c+PC9nPjxnPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0zOTUuMSwxMzQuN3YyMC42aC0yNy45djg0LjhoLTI1Ljd2LTg0LjhoLTI3Ljl2LTIwLjZoODEuNVoiLz48cGF0aCBjbGFzcz0ic3QyIiBkPSJNNDM2LjcsMTU1LjFjNS45LDAsMTEuMSwxLjIsMTUuNSwzLjZzNy45LDUuNiwxMC4zLDkuNXYtMTEuOWgyNS43djgzLjdoLTI1Ljd2LTExLjljLTIuNSwzLjktNiw3LjEtMTAuNCw5LjVzLTkuNiwzLjYtMTUuNSwzLjYtMTMtMS44LTE4LjYtNS4zYy01LjYtMy42LTEwLTguNi0xMy4zLTE1LjItMy4zLTYuNi00LjktMTQuMS00LjktMjIuN3MxLjYtMTYuMSw0LjktMjIuN2MzLjItNi41LDcuNy0xMS41LDEzLjMtMTUsNS42LTMuNSwxMS45LTUuMywxOC44LTUuM1pNNDQ0LjIsMTc3LjRjLTUuMSwwLTkuNCwxLjgtMTMsNS41LTMuNiwzLjctNS4zLDguNy01LjMsMTUuMXMxLjgsMTEuNSw1LjMsMTUuMmMzLjUsMy44LDcuOSw1LjYsMTMsNS42czkuNC0xLjgsMTMtNS42LDUuMy04LjcsNS4zLTE1LjItMS44LTExLjUtNS4zLTE1LjItNy45LTUuNi0xMy01LjZaIi8+PHBhdGggY2xhc3M9InN0MiIgZD0iTTU1MC41LDIxOC4ydjIxLjhoLTEzLjFjLTkuMywwLTE2LjUtMi4zLTIxLjgtNi44LTUuMi00LjYtNy44LTEyLTcuOC0yMi4zdi0zMy4zaC0xMC4ydi0yMS4zaDEwLjJ2LTIwLjRoMjUuN3YyMC40aDE2Ljh2MjEuM2gtMTYuOHYzMy42YzAsMi41LjYsNC4zLDEuOCw1LjRzMy4yLDEuNyw2LDEuN2g5LjJaIi8+PHBhdGggY2xhc3M9InN0MiIgZD0iTTY0NSwxOTEuMXY0OC45aC0yNS41di00NS41YzAtNS42LTEuNC0xMC00LjQtMTMuMXMtNi44LTQuNy0xMS43LTQuNy04LjgsMS42LTExLjcsNC43Yy0yLjksMy4xLTQuNCw3LjQtNC40LDEzLjF2NDUuNWgtMjUuN3YtMTExaDI1Ljd2MzguNmMyLjYtMy43LDYuMi02LjYsMTAuNy04LjlzOS41LTMuMywxNS4yLTMuM2M5LjYsMCwxNy4zLDMuMiwyMy4xLDkuNSw1LjgsNi40LDguNywxNS4xLDguNywyNi4yWiIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03NDUuMywxNTYuM2wtNTIuNSwxMjMuNWgtMjcuNmwxOS4yLTQyLjYtMzQuMS04MC45aDI4LjdsMTkuNCw1Mi40LDE5LjItNTIuNGgyNy44WiIvPjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik03NDYuNSwxOTguMWMwLTguNiwxLjktMTYuMiw1LjctMjIuNywzLjgtNi41LDktMTEuNiwxNS42LTE1LjEsNi42LTMuNSwxNC01LjMsMjIuMi01LjNzMTUuNiwxLjgsMjIuMiw1LjNjNi42LDMuNSwxMS44LDguNSwxNS42LDE1LjFzNS43LDE0LjEsNS43LDIyLjctMS45LDE2LjItNS44LDIyLjdjLTMuOSw2LjUtOS4xLDExLjYtMTUuOCwxNS4xLTYuNywzLjUtMTQuMSw1LjMtMjIuMyw1LjNzLTE1LjYtMS44LTIyLjEtNS4zYy02LjUtMy41LTExLjctOC41LTE1LjUtMTUtMy44LTYuNS01LjYtMTQuMS01LjYtMjIuOFpNODA3LjQsMTk4LjFjMC02LjctMS43LTExLjktNS0xNS41cy03LjUtNS40LTEyLjQtNS40LTkuMiwxLjgtMTIuNSw1LjMtNSw4LjctNSwxNS41LDEuNiwxMS45LDQuOSwxNS41YzMuMiwzLjYsNy4zLDUuNCwxMi4yLDUuNHM5LjEtMS44LDEyLjUtNS40LDUuMi04LjcsNS4yLTE1LjVaIi8+PHBhdGggY2xhc3M9InN0OSIgZD0iTTkzOC4zLDI0MGgtMjUuN2wtNDIuOS02NXY2NWgtMjUuN3YtMTA1LjNoMjUuN2w0Mi45LDY1LjN2LTY1LjNoMjUuN3YxMDUuM1oiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAzMi4zLDIwNC4zaC01OC4xYy40LDUuMiwyLjEsOS4yLDUsMTEuOXM2LjYsNC4xLDEwLjksNC4xYzYuNCwwLDEwLjktMi43LDEzLjQtOC4xaDI3LjNjLTEuNCw1LjUtMy45LDEwLjUtNy42LDE0LjktMy43LDQuNC04LjIsNy45LTEzLjcsMTAuNC01LjUsMi41LTExLjYsMy44LTE4LjUsMy44cy0xNS41LTEuOC0yMS45LTUuM2MtNi40LTMuNS0xMS40LTguNS0xNS0xNS0zLjYtNi41LTUuNC0xNC4xLTUuNC0yMi44czEuOC0xNi4zLDUuMy0yMi44YzMuNS02LjUsOC41LTExLjUsMTQuOS0xNSw2LjQtMy41LDEzLjgtNS4zLDIyLjEtNS4zczE1LjMsMS43LDIxLjYsNS4xYzYuMywzLjQsMTEuMiw4LjMsMTQuOCwxNC42czUuMywxMy43LDUuMywyMi4xLS4yLDQuOS0uNSw3LjVaTTEwMDYuNSwxOTBjMC00LjQtMS41LTcuOS00LjUtMTAuNXMtNi44LTMuOS0xMS4zLTMuOS03LjksMS4zLTEwLjksMy44LTQuOCw2LjEtNS41LDEwLjdoMzIuMVoiLz48cGF0aCBjbGFzcz0ic3QxMyIgZD0iTTEwMzguOCwyMTIuNWgyNS40Yy4zLDIuOSwxLjcsNS4zLDQuMSw3LjFzNS4zLDIuNyw4LjksMi43LDUuNy0uNiw3LjQtMS45YzEuNy0xLjIsMi42LTIuOSwyLjYtNC45cy0xLjMtNC4yLTMuOC01LjMtNi41LTIuNC0xMi4yLTMuOGMtNi0xLjQtMTEtMi45LTE1LTQuNC00LTEuNi03LjQtNC0xMC40LTcuNC0yLjktMy40LTQuNC03LjktNC40LTEzLjZzMS4zLTkuMiw0LTEzLjFjMi42LTQsNi41LTcuMSwxMS43LTkuNCw1LjEtMi4zLDExLjMtMy41LDE4LjQtMy41LDEwLjUsMCwxOC44LDIuNiwyNC44LDcuOCw2LjEsNS4yLDkuNSwxMi4xLDEwLjQsMjAuN2gtMjMuN2MtLjQtMi45LTEuNy01LjItMy44LTYuOXMtNS0yLjYtOC41LTIuNi01LjMuNi02LjksMS43LTIuNCwyLjctMi40LDQuNywxLjMsNC4yLDMuOCw1LjQsNi41LDIuNCwxMS45LDMuNmM2LjIsMS42LDExLjMsMy4yLDE1LjIsNC43czcuMyw0LjEsMTAuMyw3LjUsNC41LDguMSw0LjYsMTMuOWMwLDQuOS0xLjQsOS4zLTQuMSwxMy4xLTIuOCwzLjktNi43LDYuOS0xMS45LDkuMS01LjIsMi4yLTExLjEsMy4zLTE3LjksMy4zcy0xMy44LTEuMy0xOS41LTMuOGMtNS43LTIuNS0xMC4yLTUuOS0xMy41LTEwLjNzLTUuMi05LjItNS42LTE0LjZaIi8+PHBhdGggY2xhc3M9InN0MTEiIGQ9Ik0xMTcwLjgsMjE4LjJ2MjEuOGgtMTMuMWMtOS4zLDAtMTYuNS0yLjMtMjEuOC02LjgtNS4yLTQuNi03LjgtMTItNy44LTIyLjN2LTMzLjNoLTEwLjJ2LTIxLjNoMTAuMnYtMjAuNGgyNS43djIwLjRoMTYuOHYyMS4zaC0xNi44djMzLjZjMCwyLjUuNiw0LjMsMS44LDUuNHMzLjIsMS43LDYsMS43aDkuMloiLz48L2c+PC9zdmc+" alt="TathyoNest — চাকরির খবর" width="190" height="45"></a>
+    <nav class="mainnav" id="menu" aria-label="প্রধান মেনু">
+      <a href="#home" data-p="home">হোম</a>
+      <div class="dd" data-label="চাকরি" data-pages="jobs results exams">
+        <button class="dd-btn" type="button" aria-expanded="false" aria-haspopup="true">চাকরি<svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <div class="dd-menu">
+          <a href="#jobs" data-go="govt"><svg class="i" aria-hidden="true"><use href="#i-gov"/></svg>সরকারি চাকরি</a>
+          <a href="#jobs" data-go="private"><svg class="i" aria-hidden="true"><use href="#i-building"/></svg>বেসরকারি চাকরি</a>
+          <a href="#results" data-p="results"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg>ফলাফল ও প্রবেশপত্র</a>
+          <a href="#exams" data-p="exams"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>পরীক্ষার তারিখ</a>
+        </div>
+      </div>
+      <div class="dd" data-label="টুলস" data-pages="cv photo age alert">
+        <button class="dd-btn" type="button" aria-expanded="false" aria-haspopup="true">টুলস<svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <div class="dd-menu">
+          <a href="#cv" data-p="cv"><svg class="i" aria-hidden="true"><use href="#i-cv"/></svg>সিভি তৈরি</a>
+          <a href="#photo" data-p="photo"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg>ছবি-স্বাক্ষর রিসাইজ</a>
+          <a href="#age" data-p="age"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg>বয়স ক্যালকুলেটর</a>
+          <a href="#alert" data-p="alert"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>জব অ্যালার্ট</a>
+        </div>
+      </div>
+      <a href="#about" data-p="about">আমাদের সম্পর্কে</a>
+      <a href="#contact" data-p="contact">যোগাযোগ</a>
+    </nav>
     <form class="hsearch" id="hsearch" role="search" autocomplete="off">
       <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
       <input id="hq" type="search" enterkeyhint="search" placeholder="প্রতিষ্ঠান বা পদের নাম লিখুন" aria-label="চাকরি খুঁজুন">
@@ -738,16 +840,6 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
       <button class="icon-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="মেনু খুলুন"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </div>
-  <nav class="menu" id="menu" aria-label="প্রধান মেনু"><div class="wrap">
-    <a href="#home" data-p="home"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>হোম</a>
-    <a href="#jobs" data-p="jobs"><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg>চাকরি</a>
-    <a href="#results" data-p="results"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg>ফলাফল ও প্রবেশপত্র</a>
-    <a href="#exams" data-p="exams"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>পরীক্ষার তারিখ</a>
-    <a href="#photo" data-p="photo"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg>ছবি-স্বাক্ষর রিসাইজ</a>
-    <a href="#cv" data-p="cv"><svg class="i" aria-hidden="true"><use href="#i-result"/></svg>সিভি তৈরি</a>
-    <a href="#age" data-p="age"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg>বয়স ক্যালকুলেটর</a>
-    <a href="#alert" data-p="alert"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>জব অ্যালার্ট</a>
-  </div></nav>
 </header>
 
 <main id="main" tabindex="-1">
@@ -757,7 +849,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
   <section class="home" aria-labelledby="homeTitle">
     <div class="wrap">
       <p class="home-date"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg><span id="todayLine">আজ</span></p>
-      <h1 id="homeTitle" class="home-title">চাকরির খবর, <span>এক জায়গায়</span></h1>
+      <h1 id="homeTitle" class="home-title">আপনার তথ্য ও <span>প্রয়োজনীয় সেবার প্ল্যাটফর্ম</span></h1>
       <p class="home-sub">সরকারি-বেসরকারি নিয়োগ বিজ্ঞপ্তি, ফলাফল, পরীক্ষার তারিখ আর আবেদনের দরকারি টুল — প্রতিদিন হালনাগাদ।</p>
       <ul class="tiles" aria-label="বিভাগসমূহ">
         <li class="c1"><a class="tile" href="#jobs" data-go="govt"><span class="tile-ico"><svg class="i" aria-hidden="true"><use href="#i-gov"/></svg></span><span class="tile-name">সরকারি চাকরি</span></a><span class="tile-tag"><b id="hGov">০</b>টি চলমান</span></li>
@@ -1048,6 +1140,101 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
   </div>
 </div>
 
+<!-- ================= আমাদের সম্পর্কে ================= -->
+<div class="page" id="p-about" hidden>
+  <header class="page-head"><div class="wrap">
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg></span>
+    <div><h1 class="sec">আমাদের সম্পর্কে</h1>
+    <p class="lead">TathyoNest কী, তথ্য কোথা থেকে আসে, আর আমরা কীভাবে কাজ করি।</p></div>
+  </div></header>
+  <div class="wrap prose">
+    <p><b>TathyoNest</b> বাংলাদেশের চাকরিপ্রার্থীদের জন্য একটি ফ্রি তথ্যভিত্তিক ওয়েবসাইট। এখানে এক জায়গায় পাবেন সরকারি ও বেসরকারি চাকরির চলমান নিয়োগ বিজ্ঞপ্তি, আবেদনের শেষ তারিখ, নিয়োগ পরীক্ষার ফলাফল, প্রবেশপত্র ও পরীক্ষার তারিখ। সঙ্গে আছে আবেদনের দরকারি টুল — ছবি-স্বাক্ষর রিসাইজ, সিভি তৈরি ও বয়স ক্যালকুলেটর।</p>
+    <h2>তথ্য কোথা থেকে আসে</h2>
+    <p>প্রতিটি বিজ্ঞপ্তি জাতীয় দৈনিক (যেমন প্রথম আলো, যুগান্তর, কালের কণ্ঠ, ইত্তেফাক, সমকাল, ঢাকা পোস্ট, জাগো নিউজ) এবং সরকারি ওয়েবসাইট (gov.bd, টেলিটক, সরকারি কর্ম কমিশন) থেকে নেওয়া ও মিলিয়ে দেখা হয়। প্রতিটি বিজ্ঞপ্তির সঙ্গে সূত্রের লিংক দেওয়া থাকে, যাতে আপনি নিজে যাচাই করতে পারেন।</p>
+    <h2>আমরা যা করি না</h2>
+    <ul>
+      <li>আমরা কোনো নিয়োগদাতা প্রতিষ্ঠান নই এবং কোনো চাকরির আবেদন গ্রহণ করি না।</li>
+      <li>চাকরি দেওয়ার বিনিময়ে কোনো টাকা নিই না, কাউকে নিতে বলিও না।</li>
+      <li>আবেদন সবসময় প্রতিষ্ঠানের অফিসিয়াল ওয়েবসাইট বা টেলিটকের মাধ্যমে করতে হয়।</li>
+    </ul>
+    <h2>ভুল চোখে পড়লে</h2>
+    <p>আমরা সঠিক তথ্য দিতে সর্বোচ্চ চেষ্টা করি, তবু ভুল হতে পারে। কোনো তথ্য ভুল বা পুরোনো মনে হলে <a href="#contact">যোগাযোগ</a> পাতায় জানান — দ্রুত ঠিক করে দেব। মনে রাখবেন, অফিসিয়াল বিজ্ঞপ্তিই চূড়ান্ত।</p>
+  </div>
+</div>
+
+<!-- ================= যোগাযোগ ================= -->
+<div class="page" id="p-contact" hidden>
+  <header class="page-head"><div class="wrap">
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></span>
+    <div><h1 class="sec">যোগাযোগ</h1>
+    <p class="lead">প্রশ্ন, পরামর্শ, ভুল তথ্যের খবর বা বিজ্ঞাপনের জন্য আমাদের লিখুন।</p></div>
+  </div></header>
+  <div class="wrap prose">
+    <div class="contact-cards" id="contactCards"></div>
+    <h2>লেখার সময় যা দেবেন</h2>
+    <ul>
+      <li>ভুল তথ্য জানাতে: বিজ্ঞপ্তির নাম আর সঠিক তথ্যের লিংক।</li>
+      <li>নতুন বিজ্ঞপ্তি যোগ করতে বলতে: অফিসিয়াল বিজ্ঞপ্তি বা পত্রিকার প্রতিবেদনের লিংক।</li>
+      <li>বিজ্ঞাপন বা স্পনসরড পোস্টের জন্য: প্রতিষ্ঠানের নাম ও যোগাযোগের নম্বর।</li>
+    </ul>
+    <div class="note-box"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><p>আমরা চাকরির আবেদন গ্রহণ করি না এবং চাকরি দেওয়ার কথা বলে কখনো টাকা চাই না। TathyoNest-এর নাম করে কেউ টাকা চাইলে সেটা প্রতারণা।</p></div>
+  </div>
+</div>
+
+<!-- ================= গোপনীয়তা নীতি ================= -->
+<div class="page" id="p-privacy" hidden>
+  <header class="page-head"><div class="wrap">
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
+    <div><h1 class="sec">গোপনীয়তা নীতি</h1>
+    <p class="lead">TathyoNest আপনার কোন তথ্য ব্যবহার করে আর কোনটা করে না। কার্যকর: <span class="policy-date"></span></p></div>
+  </div></header>
+  <div class="wrap prose">
+    <h2>১. আমরা যা সংগ্রহ করি না</h2>
+    <p>এই সাইট ব্যবহার করতে কোনো অ্যাকাউন্ট, নাম, ফোন নম্বর বা ইমেইল লাগে না। আমরা আপনার ব্যক্তিগত তথ্য সংগ্রহ বা বিক্রি করি না।</p>
+    <h2>২. আপনার ডিভাইসে যা থাকে</h2>
+    <p>“সেভ করা চাকরি”, সিভি তৈরির খসড়া এবং কিছু পছন্দ (যেমন শেষ বাছাই করা ফিল্টার) আপনার নিজের ব্রাউজারের লোকাল স্টোরেজে রাখা হয়। এগুলো আমাদের সার্ভারে পাঠানো হয় না। ছবি-স্বাক্ষর রিসাইজ ও সিভি তৈরির টুলে দেওয়া ছবি ও তথ্য পুরোপুরি আপনার ডিভাইসেই প্রক্রিয়া হয় — কোথাও আপলোড হয় না। ব্রাউজারের ডেটা মুছে দিলে এসব মুছে যাবে।</p>
+    <h2>৩. কুকি ও বিজ্ঞাপন</h2>
+    <p>সাইটের খরচ চালাতে আমরা Google AdSense-সহ তৃতীয় পক্ষের বিজ্ঞাপন দেখাতে পারি।</p>
+    <ul>
+      <li>Google-সহ তৃতীয় পক্ষের বিক্রেতারা কুকি ব্যবহার করে আপনার এই সাইট ও অন্যান্য সাইটে আগের ভিজিটের ভিত্তিতে বিজ্ঞাপন দেখায়।</li>
+      <li>Google-এর বিজ্ঞাপন কুকি ব্যবহারের মাধ্যমে Google ও তার অংশীদাররা আপনার এই সাইট বা ইন্টারনেটের অন্য সাইটে ভিজিটের ভিত্তিতে বিজ্ঞাপন দেখাতে পারে।</li>
+      <li>আপনি চাইলে <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google বিজ্ঞাপন সেটিংস</a> থেকে ব্যক্তিগতকৃত বিজ্ঞাপন বন্ধ করতে পারেন, অথবা <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a> থেকে তৃতীয় পক্ষের বিক্রেতাদের কুকি বন্ধ করতে পারেন।</li>
+      <li>Google কীভাবে তথ্য ব্যবহার করে তা জানতে দেখুন: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google-এর অংশীদার সাইট নীতি</a>।</li>
+    </ul>
+    <h2>৪. হোস্টিং ও নিরাপত্তা</h2>
+    <p>সাইটটি Cloudflare-এ হোস্ট করা। নিরাপত্তা ও দ্রুত লোডের জন্য Cloudflare সাধারণ কারিগরি তথ্য (যেমন IP ঠিকানা, ব্রাউজারের ধরন) সাময়িকভাবে প্রক্রিয়া করতে পারে।</p>
+    <h2>৫. বাইরের লিংক</h2>
+    <p>বিজ্ঞপ্তির সূত্র ও আবেদনের লিংক আপনাকে পত্রিকা, সরকারি বা প্রতিষ্ঠানের ওয়েবসাইটে নিয়ে যায়। সেসব সাইটের নিজস্ব গোপনীয়তা নীতি প্রযোজ্য।</p>
+    <h2>৬. শিশুদের গোপনীয়তা</h2>
+    <p>এই সাইট চাকরিপ্রার্থী প্রাপ্তবয়স্কদের জন্য। আমরা জেনেশুনে ১৩ বছরের কম বয়সী কারো তথ্য সংগ্রহ করি না।</p>
+    <h2>৭. নীতির পরিবর্তন ও যোগাযোগ</h2>
+    <p>প্রয়োজনে এই নীতি হালনাগাদ করা হতে পারে; পরিবর্তন এই পাতাতেই প্রকাশ হবে। কোনো প্রশ্ন থাকলে <a href="#contact">যোগাযোগ</a> পাতায় লিখুন।</p>
+  </div>
+</div>
+
+<!-- ================= শর্তাবলি ও দায়মুক্তি ================= -->
+<div class="page" id="p-terms" hidden>
+  <header class="page-head"><div class="wrap">
+    <span class="page-ico"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></span>
+    <div><h1 class="sec">শর্তাবলি ও দায়মুক্তি</h1>
+    <p class="lead">সাইট ব্যবহারের নিয়ম। কার্যকর: <span class="policy-date"></span></p></div>
+  </div></header>
+  <div class="wrap prose">
+    <h2>১. তথ্যের ধরন</h2>
+    <p>TathyoNest-এর সব তথ্য শুধু জানানোর উদ্দেশ্যে। আমরা বিশ্বস্ত সূত্র থেকে তথ্য মিলিয়ে দেই, তবে ভুল, বাদ পড়া বা পরে পরিবর্তন হতে পারে। আবেদনের আগে সবসময় অফিসিয়াল বিজ্ঞপ্তি নিজে পড়ে নিন — অফিসিয়াল বিজ্ঞপ্তিই চূড়ান্ত।</p>
+    <h2>২. দায়মুক্তি</h2>
+    <p>এই সাইটের তথ্যের ওপর নির্ভর করে নেওয়া কোনো সিদ্ধান্ত, আবেদন বাতিল, সময় পার হওয়া বা আর্থিক ক্ষতির জন্য TathyoNest দায়ী থাকবে না। আমরা কোনো নিয়োগ প্রক্রিয়ার অংশ নই।</p>
+    <h2>৩. টুল ব্যবহার</h2>
+    <p>ছবি-স্বাক্ষর রিসাইজ, সিভি তৈরি ও বয়স ক্যালকুলেটর বিনা খরচে ব্যবহার করা যায়। ফলাফল বিজ্ঞপ্তির শর্তের সাথে মিলিয়ে নেওয়ার দায়িত্ব ব্যবহারকারীর।</p>
+    <h2>৪. মেধাস্বত্ব</h2>
+    <p>বিজ্ঞপ্তির সারসংক্ষেপ আমাদের নিজের ভাষায় লেখা এবং প্রতিটির সঙ্গে মূল সূত্রের লিংক দেওয়া থাকে। পত্রিকা ও প্রতিষ্ঠানের নাম, লোগো ও লেখা তাদের নিজস্ব সম্পত্তি। কেউ মনে করলে তাদের কোনো বিষয়বস্তু সরানো দরকার, <a href="#contact">যোগাযোগ</a> করুন।</p>
+    <h2>৫. বিজ্ঞাপন ও স্পনসরড পোস্ট</h2>
+    <p>সাইটে বিজ্ঞাপন থাকতে পারে। স্পনসরড বিজ্ঞপ্তি আলাদা করে “স্পনসরড” লেখা থাকবে। বিজ্ঞাপনদাতার পণ্য বা সেবার দায় বিজ্ঞাপনদাতার।</p>
+    <h2>৬. প্রতারণা থেকে সাবধান</h2>
+    <p>চাকরি দেওয়ার কথা বলে কেউ টাকা চাইলে সেটা প্রতারণা। সরকারি চাকরির আবেদন ফি শুধু টেলিটক বা অফিসিয়াল মাধ্যমে দেওয়া হয়।</p>
+  </div>
+</div>
+
 </main>
 
 <footer class="site-foot">
@@ -1066,7 +1253,17 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
         <li><a href="#exams">পরীক্ষার তারিখ</a></li>
         <li><a href="#photo">ছবি-স্বাক্ষর রিসাইজ</a></li>
         <li><a href="#age">বয়স ক্যালকুলেটর</a></li>
+        <li><a href="#cv">সিভি তৈরি</a></li>
         <li><a href="#alert">জব অ্যালার্ট</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="তথ্য">
+      <h2>তথ্য</h2>
+      <ul class="foot-links one">
+        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+        <li><a href="#privacy">গোপনীয়তা নীতি</a></li>
+        <li><a href="#terms">শর্তাবলি ও দায়মুক্তি</a></li>
       </ul>
     </nav>
   </div>
@@ -1086,6 +1283,14 @@ const SOCIAL = {
   whatsapp: "",   // যেমন: "https://whatsapp.com/channel/....."
   facebook: ""    // যেমন: "https://facebook.com/apnar_page"
 };
+
+/* যোগাযোগ পাতায় যা দেখাবে — খালি রাখলে ওই ঘর দেখাবে না */
+const CONTACT = {
+  email: "",        // যেমন: "contact@tathyonest.com"
+  phone: "",        // যেমন: "01XXXXXXXXX"
+  address: "বাংলাদেশ"
+};
+const POLICY_DATE = "2026-10-24";   // গোপনীয়তা নীতি ও শর্তাবলি কার্যকরের তারিখ
 
 /*DATA:START — এই অংশ admin প্যানেল থেকে নিজে নিজে বদলায়। এখানে হাতে কিছু লিখবেন না। */
 const UPDATED = "2026-10-17";
@@ -1196,14 +1401,15 @@ document.addEventListener("click",e=>{if(!head.contains(e.target)){setMenu(false
 matchMedia("(min-width:960px)").addEventListener("change",e=>{if(e.matches){setMenu(false);setSearch(false)}});
 
 /* ---------- মেনু ---------- */
-const PAGES=["home","jobs","results","exams","photo","cv","age","alert"];
+const PAGES=["home","jobs","results","exams","photo","cv","age","alert","about","contact","privacy","terms"];
 const BASE_TITLE=document.title;
 let page="home",scrollToList=false;
-function route(){const h=location.hash.slice(1);const p=PAGES.includes(h)?h:"home";page=p;
+function route(){const h=location.hash.slice(1);const p=PAGES.includes(h)?h:(PAGES.includes(window.START_PAGE)?window.START_PAGE:"home");page=p;
   PAGES.forEach(x=>$("p-"+x).hidden=x!==p);
   document.querySelectorAll("a[data-p]").forEach(a=>{if(a.dataset.p===p)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
-  const t=document.querySelector("a[data-p='"+p+"']").textContent.trim();
+  const h1=$("p-"+p).querySelector("h1"),t=h1?h1.textContent.trim():"";
   document.title=p==="home"?BASE_TITLE:t+" — চাকরির খবর";
+  document.querySelectorAll(".dd").forEach(d=>{d.classList.toggle("cur",d.dataset.pages.split(" ").includes(p));closeDD(d)});
   setMenu(false);
   if(p==="alert")renderSaved();
   if(p==="cv")cvRenderPrev();}
@@ -1674,8 +1880,33 @@ cvBuildForm();
 
 
 
+
+/* ---------- হেডারের ড্রপডাউন ---------- */
+function closeDD(d){d.classList.remove("open");d.querySelector(".dd-btn").setAttribute("aria-expanded","false")}
+document.querySelectorAll(".dd").forEach(d=>{
+  const b=d.querySelector(".dd-btn");
+  b.addEventListener("click",e=>{e.stopPropagation();const open=!d.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(closeDD);if(open){d.classList.add("open");b.setAttribute("aria-expanded","true")}});
+  d.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDD(d);b.focus()}});
+});
+document.addEventListener("click",e=>{document.querySelectorAll(".dd.open").forEach(d=>{if(!d.contains(e.target))closeDD(d)})});
+
+/* ---------- যোগাযোগ ও নীতির তারিখ ---------- */
+function renderContact(){
+  const box=$("contactCards");if(!box)return;box.replaceChildren();
+  const card=(href,icon,label,value)=>{const a=el(href?"a":"div","ccard");if(href){a.href=href;if(/^https?:/.test(href)){a.target="_blank";a.rel="noopener"}}
+    const ci=el("span","ci");ci.append(ico(icon));const t=el("span");t.append(el("small",null,label),el("b",null,value));a.append(ci,t);box.append(a)};
+  if(CONTACT.email)card("mailto:"+CONTACT.email,"send","ইমেইল",CONTACT.email);
+  if(CONTACT.phone)card("tel:"+CONTACT.phone,"info","ফোন",CONTACT.phone);
+  if(SOCIAL.facebook)card(SOCIAL.facebook,"users","ফেসবুক পেজ","মেসেজ পাঠান");
+  if(SOCIAL.telegram)card(SOCIAL.telegram,"send","টেলিগ্রাম","চ্যানেলে যুক্ত হোন");
+  if(SOCIAL.whatsapp)card(SOCIAL.whatsapp,"send","হোয়াটসঅ্যাপ","চ্যানেলে যুক্ত হোন");
+  if(CONTACT.address)card("","pin","ঠিকানা",CONTACT.address);
+}
+document.querySelectorAll(".policy-date").forEach(e=>e.textContent=fmt(POLICY_DATE));
+
 /* ---------- শুরু ---------- */
-route();buildChips();render();renderWeek();renderSoon();renderResults();renderExams();renderSocial();renderCounts();age();
+route();buildChips();render();renderWeek();renderSoon();renderContact();renderResults();renderExams();renderSocial();renderCounts();age();
 </script>
 <div id="cvPrint"></div>
 </body>
