@@ -325,6 +325,7 @@ const T = {
   },
   mcq_questions: {
     label: "MCQ", one: "MCQ প্রশ্ন", order: "created_at.desc",
+    read: "mcq_admin",   // উত্তরসহ পড়া যায় শুধু এই অ্যাডমিন-ভিউ থেকে (সাধারণ দর্শক উত্তর দেখতে পায় না)
     titleOf: r => r.question,
     expired: () => false,
     meta: r => [r.category, "সঠিক উত্তর: " + ("কখগঘ"[r.answer - 1] || "?") + ". " + (r["opt" + r.answer] || "")],
@@ -347,7 +348,7 @@ const DATA = { jobs:null, results:null, exams:null };
 
 async function loadAll(){
   await Promise.all(Object.keys(T).map(async t => {
-    try { DATA[t] = await api(t + "?select=*&order=" + T[t].order + "&limit=2000"); }
+    try { DATA[t] = await api((T[t].read || t) + "?select=*&order=" + T[t].order + "&limit=2000"); }
     catch(e){ DATA[t] = []; toast(bnError(e.message)); }
   }));
   renderTabs(); renderList();
@@ -483,6 +484,18 @@ function payload(status){
   return p;
 }
 async function saveRow(p, id){
+  if (T[tab].read){
+    // উত্তরের কলাম সরাসরি ফেরত পড়া যায় না — তাই লিখে তারপর অ্যাডমিন-ভিউ থেকে পড়া হয়
+    const rid = id || (crypto.randomUUID ? crypto.randomUUID() : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)));
+    if (id) await api(tab + "?id=eq." + encodeURIComponent(id), { method:"PATCH", body:p, prefer:"return=minimal" });
+    else await api(tab, { method:"POST", body:Object.assign({ id: rid }, p), prefer:"return=minimal" });
+    const got = await api(T[tab].read + "?select=*&id=eq." + encodeURIComponent(rid));
+    const row = Array.isArray(got) ? got[0] : null;
+    if (!row) throw new Error("সংরক্ষণ নিশ্চিত হয়নি");
+    DATA[tab] = id ? DATA[tab].map(x => x.id === id ? row : x) : [row, ...DATA[tab]];
+    markDirty(); renderTabs(); renderList();
+    return row;
+  }
   const out = id
     ? await api(tab + "?id=eq." + encodeURIComponent(id), { method:"PATCH", body:p, prefer:"return=representation" })
     : await api(tab, { method:"POST", body:p, prefer:"return=representation" });
