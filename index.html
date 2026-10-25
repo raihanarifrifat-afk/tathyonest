@@ -786,7 +786,8 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 .mq-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
 .mq-cat-btn.special{border-style:dashed}
 .mq-cat-btn:disabled{opacity:.5;cursor:not-allowed}
-.mq-set{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mq-set{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:959px){.mq-set{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .mq-set .field{min-width:0}
 .mq-sum{margin:16px 0 0;padding:12px 14px;border-radius:14px;background:var(--soft);font-size:15px;color:var(--fg-2)}
 .mq-start{margin-top:16px;font-size:17px;padding:13px 26px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
@@ -870,6 +871,17 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 @media (max-width:640px){.mq-key{display:none}.mq-card{padding:16px 14px}.mq-nav .btn{padding:11px 10px}.mq-nav .lbl{display:none}}
 
 /* প্রশ্ন নম্বর প্যানেল */
+.mq-list{display:flex;flex-direction:column;gap:14px}
+.mq-item{scroll-margin-top:calc(var(--head-h) + 84px)}
+.mq-item .mq-q{font-size:clamp(17px,2.2vw,20px);margin-bottom:14px}
+.mq-item.cur{border-color:var(--brand-soft-2)}
+.mq-itemfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;flex-wrap:wrap}
+.mq-itemfoot .mq-clear{margin:0}
+.mq-itemfoot .mq-mark{padding:6px 12px;font-size:13.5px;margin-left:auto}
+.mq-listend{margin-top:20px;text-align:center;padding:18px;border-radius:18px;background:var(--soft);border:1px solid var(--line)}
+.mq-listend p{margin:0 0 4px;color:var(--fg-2)}
+.mq-listend .mq-start{margin-top:10px}
+@media (max-width:640px){#mqViewBtn{display:none}}
 .mq-pal{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh-1);position:sticky;top:calc(var(--head-h) + 92px)}
 @media (max-width:899px){.mq-pal{position:static}}
 .mq-pal h3{margin:0 0 10px;font-size:15px}
@@ -1370,6 +1382,9 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
           <label class="field">সময়
             <select id="mqTime"><option value="0">সময় ছাড়া</option><option value="auto">প্রতি প্রশ্নে ৩৬ সেকেন্ড (BCS)</option><option value="5">৫ মিনিট</option><option value="10">১০ মিনিট</option><option value="15">১৫ মিনিট</option><option value="20">২০ মিনিট</option><option value="30">৩০ মিনিট</option><option value="60">১ ঘণ্টা</option><option value="120">২ ঘণ্টা</option></select>
           </label>
+          <label class="field">প্রশ্ন দেখানো
+            <select id="mqLayout"><option value="list">সব প্রশ্ন নিচে নিচে</option><option value="one">একটি করে</option></select>
+          </label>
           <label class="field">নেগেটিভ মার্কিং (প্রতি ভুলে)
             <select id="mqNeg"><option value="0">নেই</option><option value="0.25">−০.২৫</option><option value="0.5">−০.৫ (BCS প্রিলি)</option><option value="1">−১</option></select>
           </label>
@@ -1389,12 +1404,16 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
           <span class="cnt" id="mqCnt"></span>
           <span class="sp"></span>
           <span class="mq-clock" id="mqClock" hidden role="timer"></span>
+          <button class="btn" id="mqViewBtn" type="button"></button>
           <button class="btn main" id="mqSubmitTop" type="button">জমা দিন</button>
         </div>
         <div class="mq-track" aria-hidden="true"><span id="mqFill"></span></div>
       </div>
       <div class="mq-body">
         <div>
+          <div class="mq-list" id="mqList" hidden></div>
+          <div class="mq-listend" id="mqListEnd" hidden><p id="mqListEndTxt"></p><button class="btn main mq-start" id="mqSubmitEnd" type="button">জমা দিন</button></div>
+          <div id="mqOne">
           <article class="mq-card" aria-live="polite">
             <div class="mq-qhead">
               <span class="num" id="mqNum"></span><span class="cat" id="mqCat"></span>
@@ -1411,6 +1430,7 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
             <button class="btn main" id="mqNext" type="button"><span class="lbl">পরের</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
           </div>
           <p class="mq-key">কি-বোর্ড: ১–৪ উত্তর · ← → আগের/পরের · M রিভিউ চিহ্ন</p>
+          </div>
         </div>
         <aside class="mq-pal" aria-label="প্রশ্ন নম্বর">
           <h3>প্রশ্নসমূহ</h3>
@@ -3234,7 +3254,7 @@ document.querySelectorAll(".policy-date").forEach(e=>e.textContent=fmt(POLICY_DA
 const MQ_SB="https://jzqathsjweryiwyynxzh.supabase.co",MQ_KEY="sb_publishable_b5yyz-iIHdembZTYe-HEnA_R7507R5a";
 const MQ_L=["ক","খ","গ","ঘ"],MQ_ALL="__all",MQ_WRONG="__wrong",MQ_BM="__bm",MQ_SEC=36;
 const MQMAP=new Map(MCQS.map(q=>[q.id,q]));
-const mqCfg=Object.assign({mode:"practice",cat:MQ_ALL,n:"20",time:"0",neg:"0"},store.get("mqCfg",{}));
+const mqCfg=Object.assign({mode:"practice",cat:MQ_ALL,n:"20",time:"0",neg:"0",layout:"list"},store.get("mqCfg",{}));
 let mqRun=null,mqTimer=null,mqSubmitting=false,mqLast=null,mqServerHist=null,mqRvFilter="all",mqExpState={};
 let mqUser=store.get("tnUser",null),mqBmSet=new Set(store.get("mqBm",[]));
 const mqNow=()=>Math.floor(Date.now()/1000);
@@ -3423,7 +3443,7 @@ function mqRenderSetup(){
     const b=el("button","mq-cat-btn"+(sp?" special":""));b.type="button";b.setAttribute("role","radio");b.setAttribute("aria-checked",String(c===mqCfg.cat));
     b.append(el("b",null,mqCatName(c)));if(!n&&sp)b.append(el("small",null,c===MQ_WRONG?"ভুল করলে এখানে আসবে":"☆ চাপলে এখানে আসবে"));
     b.disabled=!n;b.onclick=()=>{mqCfg.cat=c;store.set("mqCfg",mqCfg);mqRenderSetup()};box.append(b)});
-  $("mqN").value=mqCfg.n;$("mqTime").value=mqCfg.time;$("mqNeg").value=mqCfg.neg;
+  $("mqN").value=mqCfg.n;$("mqTime").value=mqCfg.time;$("mqNeg").value=mqCfg.neg;$("mqLayout").value=mqCfg.layout==="one"?"one":"list";
   if($("mqN").value!==mqCfg.n)$("mqN").value="20";
   $("mqStart").disabled=false;mqRenderSum();mqRenderProgress();mqRenderResume()}
 function mqRenderSum(){const p=mqPool(mqCfg.cat).length,n=mqCount(p),lim=mqLimit(n),neg=Number(mqCfg.neg)||0,want=Number(mqCfg.n);
@@ -3435,7 +3455,7 @@ function mqStartIds(ids,mode,catName,lim,neg){
   if(!ids.length){mqToast("এখানে কোনো প্রশ্ন নেই");return}
   if(mqRun&&mqRun.state==="run"){mqConfirm("আগের অসমাপ্ত পরীক্ষা মুছে যাবে",["নতুন শুরু করলে আগের অসমাপ্ত পরীক্ষার উত্তরগুলো মুছে যাবে।"],"নতুন শুরু করুন",()=>{mqRun=null;mqStartIds(ids,mode,catName,lim,neg)});return}
   const now=Date.now();mqExpState={};
-  mqRun={v:2,cid:mqUuid(),mode,catName,ids,picks:{},marked:[],i:0,started:now,ends:lim?now+lim*1000:0,limit:lim,neg,rev:{},state:"run"};
+  mqRun={v:2,cid:mqUuid(),mode,catName,ids,view:mqCfg.layout==="one"?"one":"list",picks:{},marked:[],i:0,started:now,ends:lim?now+lim*1000:0,limit:lim,neg,rev:{},state:"run"};
   mqSave();mqOpenQuiz()}
 function mqStart(){const pool=mqShuffle(mqPool(mqCfg.cat)),n=mqCount(pool.length);
   mqStartIds(pool.slice(0,n),mqCfg.mode,mqCatName(mqCfg.cat),mqLimit(n),Number(mqCfg.neg)||0)}
@@ -3451,7 +3471,44 @@ function mqTick(){const r=mqRun;if(!r||!r.ends||r.state!=="run"){clearInterval(m
   if(left<=0){clearInterval(mqTimer);mqTimer=null;document.querySelectorAll(".mq-modal").forEach(m=>m.remove());
     mqToast("সময় শেষ — উত্তরগুলো জমা দেওয়া হচ্ছে");mqSubmit(true)}}
 function mqCounts(){const r=mqRun,n=r.ids.length,a=r.ids.filter(id=>r.picks[id]).length,m=r.marked.length;return {n,a,l:n-a,m}}
-function mqShow(){const r=mqRun;if(!r)return;const id=r.ids[r.i],q=MQMAP.get(id),n=r.ids.length,pick=r.picks[id],rev=r.rev[id],ex=r.mode==="exam";
+function mqBar(){const r=mqRun,C=mqCounts(),n=r.ids.length,ex=r.mode==="exam",list=r.view==="list";
+  $("mqPos").textContent=(ex?"মডেল টেস্ট":"অনুশীলন")+" · "+(list?bn(n)+"টি প্রশ্ন":bn(r.i+1)+"/"+bn(n));
+  $("mqCnt").textContent="উত্তর "+bn(C.a)+" · বাকি "+bn(C.l)+(C.m?" · রিভিউ "+bn(C.m):"");
+  $("mqFill").style.width=(C.a/n*100)+"%";
+  $("mqSA").textContent=bn(C.a);$("mqSL").textContent=bn(C.l);$("mqSR").textContent=bn(C.m);
+  $("mqViewBtn").textContent=list?"একটি করে দেখুন":"সব প্রশ্ন নিচে নিচে";
+  $("mqListEndTxt").textContent=C.l?"এখনো "+bn(C.l)+"টি প্রশ্নের উত্তর বাকি।":"সব প্রশ্নের উত্তর দেওয়া হয়েছে।";
+  $("mqSubmitEnd").textContent=ex?"জমা দিন":"শেষ করুন"}
+function mqExpFill(e,id){const r=mqRun;e.replaceChildren();
+  if(r.mode==="exam"||!r.picks[id]){e.hidden=true;return}
+  e.hidden=false;const rev=r.rev[id],st=mqExpState[id],q=MQMAP.get(id);
+  if(rev){const ok=rev.answer===r.picks[id];e.className="mq-exp"+(ok?"":" wrong");
+    e.append(el("b",null,ok?"✓ সঠিক উত্তর!":"✗ ভুল — সঠিক উত্তর: "+MQ_L[rev.answer-1]+". "+q.o[rev.answer-1]));if(rev.explanation)e.append(document.createTextNode(rev.explanation))}
+  else if(st==="gone"){e.className="mq-exp err";e.textContent="এই প্রশ্নটি সরিয়ে নেওয়া হয়েছে — নম্বরে ধরা হবে না।"}
+  else if(st==="err"){e.className="mq-exp err";e.append(el("b",null,"উত্তর আনা যায়নি — ইন্টারনেট সংযোগ দেখুন।"),document.createTextNode("আপনার উত্তর সংরক্ষিত আছে; জমা দেওয়ার সময়ও যাচাই হবে।"));
+    const b=el("button","btn","আবার চেষ্টা করুন");b.type="button";b.onclick=()=>{delete mqExpState[id];mqReveal(id)};e.append(el("br"),b)}
+  else{e.className="mq-exp wait";e.textContent="উত্তর যাচাই হচ্ছে…"}}
+function mqItemEl(i){const r=mqRun,id=r.ids[i],q=MQMAP.get(id),pick=r.picks[id],rev=r.rev[id],ex=r.mode==="exam",mk=r.marked.includes(id);
+  const a=el("article","mq-card mq-item"+(i===r.i?" cur":""));a.id="mqIt"+i;
+  const h=el("div","mq-qhead");h.append(el("span","num","প্রশ্ন "+bn(i+1)),el("span","cat",q.c),mqBmBtn(id));
+  const box=el("div","mq-ans");box.setAttribute("role","group");box.setAttribute("aria-label","প্রশ্ন "+bn(i+1)+"-এর উত্তর");
+  q.o.forEach((t,k)=>{const b=el("button","mq-opt");b.type="button";b.dataset.k=k+1;b.append(el("span","l",MQ_L[k]),el("span",null,t));
+    b.setAttribute("aria-pressed",String(pick===k+1));
+    if(!ex&&pick){b.disabled=true;if(rev){b.setAttribute("aria-pressed","false");if(k+1===rev.answer)b.classList.add("ok");else if(k+1===pick)b.classList.add("bad");else b.classList.add("dim")}}
+    b.onclick=()=>mqPick(k+1,i);box.append(b)});
+  const e=el("div","mq-exp");mqExpFill(e,id);
+  const f=el("div","mq-itemfoot");
+  if(ex&&pick){const c=el("button","mq-clear","উত্তর মুছে ফেলুন");c.type="button";c.onclick=()=>{delete r.picks[id];mqSave();mqItemUpdate(i)};f.append(c)}
+  const m=el("button","btn mq-mark",mk?"✓ রিভিউ চিহ্নিত":"রিভিউ চিহ্ন");m.type="button";m.setAttribute("aria-pressed",String(mk));
+  m.onclick=()=>{r.marked=mk?r.marked.filter(x=>x!==id):[...r.marked,id];mqSave();mqItemUpdate(i)};f.append(m);
+  a.append(h,el("h2","mq-q",q.q),box,e,f);return a}
+function mqItemUpdate(i){const r=mqRun;if(!r||i<0)return;const old=$("mqIt"+i);if(old)old.replaceWith(mqItemEl(i));mqBar();mqRenderPal()}
+function mqShowList(){const r=mqRun,L=$("mqList");L.replaceChildren(...r.ids.map((_,i)=>mqItemEl(i)));mqBar();mqRenderPal();
+  if(r.mode==="practice")r.ids.forEach(id=>{if(r.picks[id]&&!r.rev[id]&&!mqExpState[id])mqReveal(id)})}
+function mqShow(){const r=mqRun;if(!r)return;const list=r.view==="list";
+  $("mqOne").hidden=list;$("mqList").hidden=!list;$("mqListEnd").hidden=!list;
+  if(list){mqShowList();return}
+  const id=r.ids[r.i],q=MQMAP.get(id),n=r.ids.length,pick=r.picks[id],rev=r.rev[id],ex=r.mode==="exam";
   const C=mqCounts();
   $("mqPos").textContent=(ex?"মডেল টেস্ট":"অনুশীলন")+" · "+bn(r.i+1)+"/"+bn(n);
   $("mqCnt").textContent="উত্তর "+bn(C.a)+" · বাকি "+bn(C.l)+(C.m?" · রিভিউ "+bn(C.m):"");
@@ -3469,8 +3526,7 @@ function mqShow(){const r=mqRun;if(!r)return;const id=r.ids[r.i],q=MQMAP.get(id)
   $("mqMark").textContent=r.marked.includes(id)?"✓ রিভিউ চিহ্নিত":"রিভিউ চিহ্ন";
   $("mqPrev").disabled=r.i===0;
   const last=r.i===n-1;$("mqNext").querySelector(".lbl").textContent=last?(ex?"জমা দিন":"শেষ করুন"):"পরের";
-  $("mqSA").textContent=bn(C.a);$("mqSL").textContent=bn(C.l);$("mqSR").textContent=bn(C.m);
-  mqRenderPal();
+  mqBar();mqRenderPal();
   if(!ex&&pick&&!rev&&!mqExpState[id])mqReveal(id)}
 function mqRenderPal(){const r=mqRun,g=$("mqGrid");g.replaceChildren();
   r.ids.forEach((id,i)=>{const b=el("button",null,bn(i+1));b.type="button";const p=r.picks[id],rv=r.rev[id],mk=r.marked.includes(id);
@@ -3478,25 +3534,24 @@ function mqRenderPal(){const r=mqRun,g=$("mqGrid");g.replaceChildren();
     if(i===r.i)b.setAttribute("aria-current","true");
     b.setAttribute("aria-label","প্রশ্ন "+bn(i+1)+" — "+(p?"উত্তর দেওয়া":"বাকি")+(mk?", রিভিউ চিহ্নিত":""));
     b.onclick=()=>mqGo(i);g.append(b)})}
-function mqRenderExp(){const r=mqRun,id=r.ids[r.i],e=$("mqExp");e.replaceChildren();
-  if(r.mode==="exam"||!r.picks[id]){e.hidden=true;return}
-  e.hidden=false;const rev=r.rev[id],st=mqExpState[id],q=MQMAP.get(id);
-  if(rev){const ok=rev.answer===r.picks[id];e.className="mq-exp"+(ok?"":" wrong");
-    e.append(el("b",null,ok?"✓ সঠিক উত্তর!":"✗ ভুল — সঠিক উত্তর: "+MQ_L[rev.answer-1]+". "+q.o[rev.answer-1]));if(rev.explanation)e.append(document.createTextNode(rev.explanation))}
-  else if(st==="gone"){e.className="mq-exp err";e.textContent="এই প্রশ্নটি সরিয়ে নেওয়া হয়েছে — নম্বরে ধরা হবে না।"}
-  else if(st==="err"){e.className="mq-exp err";e.append(el("b",null,"উত্তর আনা যায়নি — ইন্টারনেট সংযোগ দেখুন।"),document.createTextNode("আপনার উত্তর সংরক্ষিত আছে; জমা দেওয়ার সময়ও যাচাই হবে।"));
-    const b=el("button","btn","আবার চেষ্টা করুন");b.type="button";b.onclick=()=>{delete mqExpState[id];mqReveal(id)};e.append(el("br"),b)}
-  else{e.className="mq-exp wait";e.textContent="উত্তর যাচাই হচ্ছে…"}}
+function mqRenderExp(){const r=mqRun;mqExpFill($("mqExp"),r.ids[r.i])}
 async function mqReveal(id){const r=mqRun;if(!r||r.rev[id]||mqExpState[id]==="wait")return;mqExpState[id]="wait";
-  if(r.ids[r.i]===id)mqRenderExp();
+  if(r.view==="list")mqItemUpdate(r.ids.indexOf(id));else if(r.ids[r.i]===id)mqRenderExp();
   try{const d=await mqApi("rpc/mcq_check",{method:"POST",body:{p_id:id}});
     if(!d||!d.answer)mqExpState[id]="gone";else{r.rev[id]={answer:d.answer,explanation:d.explanation||""};delete mqExpState[id];if(mqRun===r)mqSave()}}
   catch(e){mqExpState[id]="err"}
-  if(mqRun===r&&r.state==="run"){if(r.ids[r.i]===id)mqShow();else mqRenderPal()}}
-function mqPick(k){const r=mqRun;if(!r||r.state!=="run")return;const id=r.ids[r.i];
-  if(r.mode==="practice"){if(r.picks[id])return;r.picks[id]=k;mqSave();mqShow();return}
-  r.picks[id]=r.picks[id]===k?undefined:k;if(!r.picks[id])delete r.picks[id];mqSave();mqShow()}
-function mqGo(i){const r=mqRun;if(!r||i<0||i>=r.ids.length)return;r.i=i;mqSave();mqShow();
+  if(mqRun===r&&r.state==="run"){if(r.view==="list")mqItemUpdate(r.ids.indexOf(id));else if(r.ids[r.i]===id)mqShow();else mqRenderPal()}}
+function mqPick(k,idx){const r=mqRun;if(!r||r.state!=="run")return;if(idx==null)idx=r.i;const id=r.ids[idx];
+  if(r.mode==="practice"&&r.picks[id])return;
+  const prevI=r.i;r.i=idx;
+  if(r.mode==="practice")r.picks[id]=k;
+  else{r.picks[id]=r.picks[id]===k?undefined:k;if(!r.picks[id])delete r.picks[id]}
+  mqSave();
+  if(r.view==="list"){const o=$("mqIt"+prevI);if(o&&prevI!==idx)o.classList.remove("cur");mqItemUpdate(idx);if(r.mode==="practice"&&!r.rev[id])mqReveal(id)}
+  else mqShow()}
+function mqGo(i){const r=mqRun;if(!r||i<0||i>=r.ids.length)return;
+  if(r.view==="list"){const o=$("mqIt"+r.i);if(o)o.classList.remove("cur");r.i=i;mqSave();const it=$("mqIt"+i);if(it){it.classList.add("cur");it.scrollIntoView({block:"start",behavior:"smooth"})}mqRenderPal();return}
+  r.i=i;mqSave();mqShow();
   const top=$("mqQuiz").getBoundingClientRect().top;if(top<0)window.scrollTo(0,window.scrollY+top)}
 function mqAskSubmit(){const r=mqRun;if(!r||r.state!=="run")return;const C=mqCounts(),ex=r.mode==="exam";
   const s=el("div","mq-confirm-stats");[[C.a,"উত্তর দেওয়া"],[C.l,"বাকি"],[C.m,"রিভিউ"]].forEach(([v,l])=>{const d=el("div");d.append(el("b",null,bn(v)),document.createTextNode(l));s.append(d)});
@@ -3580,19 +3635,21 @@ function mqInit(){
   document.querySelectorAll(".mq-mode").forEach(b=>b.onclick=()=>{mqCfg.mode=b.dataset.mode;
     if(b.dataset.mode==="exam"&&mqCfg.time==="0"&&!mqCfg.touchedTime){mqCfg.time="auto";if(mqCfg.neg==="0")mqCfg.neg="0.5"}
     store.set("mqCfg",mqCfg);mqRenderSetup()});
-  [["mqN","n"],["mqTime","time"],["mqNeg","neg"]].forEach(([id,k])=>$(id).onchange=()=>{mqCfg[k]=$(id).value;if(k==="time")mqCfg.touchedTime=true;store.set("mqCfg",mqCfg);mqRenderSum()});
+  [["mqN","n"],["mqTime","time"],["mqNeg","neg"],["mqLayout","layout"]].forEach(([id,k])=>$(id).onchange=()=>{mqCfg[k]=$(id).value;if(k==="time")mqCfg.touchedTime=true;store.set("mqCfg",mqCfg);mqRenderSum()});
   $("mqStart").onclick=mqStart;
   $("mqPrev").onclick=()=>mqGo(mqRun.i-1);
   $("mqNext").onclick=()=>{if(mqRun.i<mqRun.ids.length-1)mqGo(mqRun.i+1);else mqAskSubmit()};
   $("mqMark").onclick=()=>{const r=mqRun,id=r.ids[r.i];r.marked=r.marked.includes(id)?r.marked.filter(x=>x!==id):[...r.marked,id];mqSave();mqShow()};
   $("mqClear").onclick=()=>{const r=mqRun;delete r.picks[r.ids[r.i]];mqSave();mqShow()};
   $("mqBm").onclick=()=>mqToggleBm(mqRun.ids[mqRun.i]);
-  $("mqSubmitTop").onclick=$("mqSubmitSide").onclick=mqAskSubmit;
+  $("mqSubmitTop").onclick=$("mqSubmitSide").onclick=$("mqSubmitEnd").onclick=mqAskSubmit;
+  $("mqViewBtn").onclick=()=>{const r=mqRun;if(!r)return;r.view=r.view==="list"?"one":"list";mqCfg.layout=r.view;store.set("mqCfg",mqCfg);mqSave();mqShow();
+    if(r.view==="list"){const it=$("mqIt"+r.i);if(it)it.scrollIntoView({block:"start"})}else{const top=$("mqQuiz").getBoundingClientRect().top;if(top<0)window.scrollTo(0,window.scrollY+top)}};
   $("mqQuit").onclick=()=>mqConfirm("বাতিল করবেন?",["এই পরীক্ষার উত্তরগুলো মুছে যাবে, নম্বর গোনা হবে না।"],"বাতিল করুন",()=>{mqRun=null;mqSave();clearInterval(mqTimer);mqRenderSetup();mqView("mqSetup")});
   $("mqResumeGo").onclick=mqOpenQuiz;
   $("mqResumeDrop").onclick=()=>mqConfirm("অসমাপ্ত পরীক্ষা বাতিল করবেন?",["উত্তরগুলো মুছে যাবে।"],"বাতিল করুন",()=>{mqRun=null;mqSave();clearInterval(mqTimer);mqView("mqSetup")});
   document.addEventListener("keydown",e=>{
-    if(page!=="mcq"||$("mqQuiz").hidden||!mqRun||mqRun.state!=="run"||e.altKey||e.ctrlKey||e.metaKey||document.querySelector(".mq-modal"))return;
+    if(page!=="mcq"||$("mqQuiz").hidden||!mqRun||mqRun.state!=="run"||mqRun.view==="list"||e.altKey||e.ctrlKey||e.metaKey||document.querySelector(".mq-modal"))return;
     if(/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName))return;
     const bnd={"১":"1","২":"2","৩":"3","৪":"4"}[e.key]||e.key;
     if(/^[1-4]$/.test(bnd)){mqPick(Number(bnd));e.preventDefault()}
