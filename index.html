@@ -881,7 +881,6 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
 .mq-listend{margin-top:20px;text-align:center;padding:18px;border-radius:18px;background:var(--soft);border:1px solid var(--line)}
 .mq-listend p{margin:0 0 4px;color:var(--fg-2)}
 .mq-listend .mq-start{margin-top:10px}
-@media (max-width:640px){#mqViewBtn{display:none}}
 .mq-pal{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh-1);position:sticky;top:calc(var(--head-h) + 92px)}
 @media (max-width:899px){.mq-pal{position:static}}
 .mq-pal h3{margin:0 0 10px;font-size:15px}
@@ -1404,7 +1403,6 @@ footer.site-foot{background:var(--brand-900);color:rgba(255,255,255,.82);font-si
           <span class="cnt" id="mqCnt"></span>
           <span class="sp"></span>
           <span class="mq-clock" id="mqClock" hidden role="timer"></span>
-          <button class="btn" id="mqViewBtn" type="button"></button>
           <button class="btn main" id="mqSubmitTop" type="button">জমা দিন</button>
         </div>
         <div class="mq-track" aria-hidden="true"><span id="mqFill"></span></div>
@@ -3476,7 +3474,6 @@ function mqBar(){const r=mqRun,C=mqCounts(),n=r.ids.length,ex=r.mode==="exam",li
   $("mqCnt").textContent="উত্তর "+bn(C.a)+" · বাকি "+bn(C.l)+(C.m?" · রিভিউ "+bn(C.m):"");
   $("mqFill").style.width=(C.a/n*100)+"%";
   $("mqSA").textContent=bn(C.a);$("mqSL").textContent=bn(C.l);$("mqSR").textContent=bn(C.m);
-  $("mqViewBtn").textContent=list?"একটি করে দেখুন":"সব প্রশ্ন নিচে নিচে";
   $("mqListEndTxt").textContent=C.l?"এখনো "+bn(C.l)+"টি প্রশ্নের উত্তর বাকি।":"সব প্রশ্নের উত্তর দেওয়া হয়েছে।";
   $("mqSubmitEnd").textContent=ex?"জমা দিন":"শেষ করুন"}
 function mqExpFill(e,id){const r=mqRun;e.replaceChildren();
@@ -3643,8 +3640,6 @@ function mqInit(){
   $("mqClear").onclick=()=>{const r=mqRun;delete r.picks[r.ids[r.i]];mqSave();mqShow()};
   $("mqBm").onclick=()=>mqToggleBm(mqRun.ids[mqRun.i]);
   $("mqSubmitTop").onclick=$("mqSubmitSide").onclick=$("mqSubmitEnd").onclick=mqAskSubmit;
-  $("mqViewBtn").onclick=()=>{const r=mqRun;if(!r)return;r.view=r.view==="list"?"one":"list";mqCfg.layout=r.view;store.set("mqCfg",mqCfg);mqSave();mqShow();
-    if(r.view==="list"){const it=$("mqIt"+r.i);if(it)it.scrollIntoView({block:"start"})}else{const top=$("mqQuiz").getBoundingClientRect().top;if(top<0)window.scrollTo(0,window.scrollY+top)}};
   $("mqQuit").onclick=()=>mqConfirm("বাতিল করবেন?",["এই পরীক্ষার উত্তরগুলো মুছে যাবে, নম্বর গোনা হবে না।"],"বাতিল করুন",()=>{mqRun=null;mqSave();clearInterval(mqTimer);mqRenderSetup();mqView("mqSetup")});
   $("mqResumeGo").onclick=mqOpenQuiz;
   $("mqResumeDrop").onclick=()=>mqConfirm("অসমাপ্ত পরীক্ষা বাতিল করবেন?",["উত্তরগুলো মুছে যাবে।"],"বাতিল করুন",()=>{mqRun=null;mqSave();clearInterval(mqTimer);mqView("mqSetup")});
