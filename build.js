@@ -98,7 +98,7 @@ async function main() {
 
   let out = html.slice(0, start) + block + html.slice(end + "/*DATA:END*/".length);
   const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-  const head = (h, extra) => h.replace("</head>", extra + "\n</head>");
+  const head = (h, extra) => h.replace("</head>", '<link rel="stylesheet" href="/redesign.css">\n' + extra + "\n</head>");
   const adsTag = ADSENSE_PUB ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-${ADSENSE_PUB}" crossorigin="anonymous"></script>` : "";
 
   // প্রথম পাতা
