@@ -303,3 +303,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @keyframes footerTwinkle{0%,100%{opacity:.65;transform:scale(.9) rotate(-10deg)}50%{opacity:1;transform:scale(1.25) rotate(12deg)}}
 @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px 22px}.footer-intro{grid-column:1/-1}.footer-bottom{flex-direction:column;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.footer:before,.footer-glow,.footer-tagline i,.footer-credit i{animation:none!important}.footer-brand,.footer-brand .brand-mark,.footer-link-group button span{transition:none!important}}
+
+/* Use the original brand wordmark in the footer */
+.footer-brand img{height:42px;max-width:220px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform-origin:left center;transition:transform .3s ease,filter .3s ease}.footer-brand:hover img{transform:translateY(-3px) scale(1.035);filter:brightness(0) invert(1) drop-shadow(0 0 9px rgba(141,235,177,.28))}
