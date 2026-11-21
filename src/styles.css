@@ -96,3 +96,153 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  .quick-grid{gap:10px}
  .section{padding-top:58px}
 }
+
+
+/* Responsive layout and motion pass */
+@keyframes tnRiseIn{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes tnSoftPulse{0%,100%{box-shadow:0 0 0 0 rgba(173,226,143,0)}50%{box-shadow:0 0 0 8px rgba(173,226,143,.08)}}
+@keyframes tnShine{0%{background-position:150% 0}100%{background-position:-150% 0}}
+@keyframes tnFloatSlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes tnBarGrow{from{transform:scaleY(.08);opacity:.25}to{transform:scaleY(1);opacity:1}}
+.hero-copy>*{animation:tnRiseIn .65s both}
+.hero-copy>*:nth-child(1){animation-delay:.04s}
+.hero-copy>*:nth-child(2){animation-delay:.12s}
+.hero-copy>*:nth-child(3){animation-delay:.2s}
+.hero-copy>*:nth-child(4){animation-delay:.28s}
+.hero-copy>*:nth-child(5){animation-delay:.36s}
+.dashboard-card{animation:cardfloat 7s ease-in-out infinite,tnRiseIn .8s .12s both}
+.chart-bars i{transform-origin:bottom;animation:tnBarGrow .8s cubic-bezier(.2,.7,.2,1) both}
+.chart-bars i:nth-child(2n){animation-delay:.06s}
+.chart-bars i:nth-child(3n){animation-delay:.12s}
+.float-card{animation:tnFloatSlow 5.5s ease-in-out infinite}
+.quick-card,.job-card,.tool-card,.info-panel,.list-card{transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+.quick-card:active,.tool-card:active{transform:scale(.985)}
+.btn.primary{background-size:200% 100%;background-image:linear-gradient(110deg,#d5f39d 0%,#b7e889 45%,#d5f39d 100%);transition:transform .2s,box-shadow .2s,background-position .45s}
+.btn.primary:hover{background-position:100% 0}
+.section-heading,.quick-grid,.feature-inner,.split-panels,.tool-grid,.page-banner{animation:tnRiseIn .55s both}
+.job-grid>.job-card:nth-child(2),.stack-list>.list-card:nth-child(2),.quick-grid>*:nth-child(2){animation-delay:.06s}
+.job-grid>.job-card:nth-child(3),.stack-list>.list-card:nth-child(3),.quick-grid>*:nth-child(3){animation-delay:.12s}
+.job-grid>.job-card:nth-child(4),.stack-list>.list-card:nth-child(4),.quick-grid>*:nth-child(4){animation-delay:.18s}
+.job-grid>.job-card:nth-child(5),.quick-grid>*:nth-child(5){animation-delay:.24s}
+.back-top{transition:transform .2s,box-shadow .2s}
+.back-top:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(4,65,39,.32)}
+/* Tablet navigation and compact desktop */
+@media(max-width:1180px){
+ .topbar-inner{width:calc(100% - 34px);gap:10px}
+ .nav-link{padding:9px 7px;font-size:12px}
+ .top-search{min-width:165px}
+ .brand img{max-width:172px}
+ .hero-inner{gap:34px}
+ .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+ .topbar{height:70px}
+ .topbar-inner{width:calc(100% - 30px)}
+ .nav{display:none;position:absolute;top:70px;left:0;right:0;margin:0;padding:14px 18px 18px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 18px 32px rgba(8,45,36,.1);flex-direction:column;align-items:stretch;gap:3px}
+ .nav.open{display:flex;animation:tnRiseIn .2s both}
+ .nav-link{text-align:left;padding:12px 14px;font-size:14px}
+ .nav-link:after{display:none}
+ .menu-toggle,.mobile-search{display:grid}
+ .saved-pill{margin-left:auto}
+ .hero-inner{grid-template-columns:1fr  .9fr;min-height:470px;padding-top:48px;padding-bottom:52px}
+ .hero h1{font-size:clamp(40px,5vw,58px)}
+ .hero-art{min-height:310px}
+ .dashboard-card{padding:20px}
+ .dash-head{font-size:23px}
+ .dash-head b{font-size:30px}
+ .feature-inner{gap:35px}
+}
+@media(max-width:720px){
+ .container{width:calc(100% - 34px)}
+ .topbar-inner{gap:8px}
+ .brand img{height:40px;max-width:160px}
+ .top-search.expanded{z-index:3}
+ .hero-inner{grid-template-columns:1fr;gap:10px;padding-top:42px;padding-bottom:38px}
+ .hero-copy{max-width:640px}
+ .hero-art{width:min(100%,520px);min-height:300px;margin:8px auto 0}
+ .dashboard-card{width:min(100%,430px)}
+ .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .quick-card{padding:13px 12px}
+ .quick-card b{font-size:13px}
+ .section{padding-top:58px}
+ .job-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .feature-inner{grid-template-columns:1fr}
+ .feature-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .footer-grid{grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+}
+@media(max-width:540px){
+ .topbar{height:64px}
+ .topbar-inner{width:calc(100% - 22px)}
+ .brand img{height:36px;max-width:142px}
+ .mobile-search,.menu-toggle{width:39px;height:39px;border-radius:11px}
+ .saved-pill{height:39px;padding:0 8px;gap:5px}
+ .saved-pill b{padding:1px 6px}
+ .nav{top:64px}
+ .top-search.expanded{top:64px}
+ .container{width:calc(100% - 28px)}
+ .hero-inner{padding-top:34px;padding-bottom:30px}
+ .hero h1{font-size:clamp(35px,9.5vw,44px);line-height:1.22}
+ .hero-copy>p{font-size:14px;line-height:1.8}
+ .hero-actions{gap:9px;margin-top:22px}
+ .btn{min-height:45px;padding-inline:14px;font-size:13px}
+ .hero-proof{gap:9px 12px;margin-top:20px}
+ .hero-art{min-height:255px}
+ .dashboard-card{padding:16px;border-radius:20px}
+ .dash-head{font-size:20px;margin:16px 0 12px}
+ .dash-head b{font-size:26px}
+ .chart-bars{height:76px;gap:5px}
+ .float-card{padding:7px 9px;gap:7px;border-radius:12px}
+ .float-card .icon-box{width:33px;height:33px;border-radius:10px}
+ .float-card b{font-size:14px}
+ .float-card small{font-size:9px}
+ .quick-grid{gap:8px}
+ .quick-card{padding:10px 9px;gap:8px;border-radius:13px}
+ .quick-card .icon-box{width:35px;height:35px;border-radius:10px}
+ .quick-card b{font-size:11px;line-height:1.35}
+ .quick-card small{font-size:9px}
+ .quick-arrow{width:13px}
+ .section{padding-top:48px}
+ .section-heading h2{font-size:23px}
+ .job-grid{grid-template-columns:1fr}
+ .job-card{padding:16px}
+ .feature-band{margin-top:48px;padding:42px 0}
+ .feature-inner h2{font-size:29px}
+ .feature-list{grid-template-columns:1fr}
+ .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .tool-card{padding:13px}
+ .tool-card .icon-box{width:39px;height:39px}
+ .tool-card h3{font-size:13px}
+ .tool-card p{font-size:10px;min-height:36px}
+ .split-panels,.form-grid,.cv-layout{grid-template-columns:1fr}
+ .page-banner{padding:22px 17px}
+ .page-banner h1{font-size:26px}
+ .listing-toolbar{padding:10px}
+ .listing-toolbar select{font-size:12px;padding:9px}
+ .list-card{gap:10px;padding:12px}
+ .list-card h3{font-size:14px}
+ .footer{margin-top:52px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:22px}
+ .footer-grid>div:first-child{grid-column:1/-1}
+ .back-top{right:14px;bottom:14px;width:40px;height:40px}
+}
+@media(max-width:380px){
+ .brand img{max-width:126px}
+ .saved-pill{font-size:0;padding:0 7px}
+ .saved-pill svg{width:16px}
+ .hero h1{font-size:34px}
+ .hero-proof{font-size:9px}
+ .quick-card{gap:6px;padding:9px 7px}
+ .quick-card .icon-box{width:31px;height:31px}
+ .quick-card b{font-size:10px}
+ .quick-card small{font-size:8px}
+ .tool-grid{grid-template-columns:1fr}
+ .hero-caption{letter-spacing:.08em}
+}
+@media(hover:none){
+ .quick-card:hover,.job-card:hover,.tool-card:hover{transform:none}
+ .quick-card,.job-card,.tool-card{transition:border-color .18s ease,box-shadow .18s ease}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-copy>*,.dashboard-card,.chart-bars i,.float-card,.section-heading,.quick-grid,.feature-inner,.split-panels,.tool-grid,.page-banner,.job-grid>.job-card,.stack-list>.list-card{animation:none!important}
+}
