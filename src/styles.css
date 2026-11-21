@@ -255,7 +255,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .welcome-modal:after{content:"";position:absolute;top:-105px;right:-95px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(137,211,157,.23),transparent 70%);pointer-events:none}
 .welcome-close{position:absolute;z-index:1;right:16px;top:17px;width:36px;height:36px;display:grid;place-items:center;border:1px solid #deebe2;border-radius:50%;background:#fff;color:#426452;cursor:pointer;transition:transform .2s,background .2s}
 .welcome-close:hover{transform:rotate(90deg);background:#eaf6ee}
-.welcome-emblem{position:relative;z-index:1;width:66px;height:66px;margin:0 auto 17px;display:grid;place-items:center;border-radius:21px;background:linear-gradient(145deg,#0c8058,#06432f);color:#d3f19c;box-shadow:0 12px 28px rgba(7,91,57,.22);animation:tnFloatSlow 4s ease-in-out infinite}
+.welcome-emblem{position:relative;z-index:1;width:min(190px,58vw);height:46px;margin:0 auto 17px;display:grid;place-items:center;background:transparent;box-shadow:none;animation:none}.welcome-emblem img{display:block;width:100%;height:100%;object-fit:contain}
 .welcome-kicker{display:block;color:#0c8058;font:800 10px "Plus Jakarta Sans",sans-serif;letter-spacing:.17em}
 .welcome-modal h2{margin:12px 0 10px;color:#123b2b;font:800 clamp(25px,5vw,32px) "Hind Siliguri",sans-serif;line-height:1.35}
 .welcome-modal h2 em{color:#0b8056;font-style:normal}
