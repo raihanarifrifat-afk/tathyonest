@@ -272,3 +272,34 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .welcome-modal>small{display:block;margin-top:20px;color:#82958a;font:400 10px "Hind Siliguri",sans-serif}
 @media(max-width:540px){.welcome-overlay{padding:15px}.welcome-modal{padding:38px 20px 25px;border-radius:23px}.welcome-emblem{width:58px;height:58px;border-radius:18px}.welcome-modal>p{font-size:13px}.welcome-highlights{gap:6px;margin:18px 0 20px}.welcome-highlights span{font-size:10px;padding:7px 8px}.welcome-actions{flex-direction:column}.welcome-primary,.welcome-secondary{width:100%}}
 @media(prefers-reduced-motion:reduce){.welcome-emblem{animation:none!important}}
+
+/* Premium animated footer */
+.footer{position:relative;isolation:isolate;overflow:hidden;margin-top:90px;padding:58px 0 20px;background:linear-gradient(118deg,#052d23 0%,#064331 48%,#073a2d 100%);color:#f2fff7}
+.footer:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(110deg,transparent 15%,rgba(115,222,166,.07) 48%,transparent 78%);background-size:220% 100%;animation:footerShine 12s ease-in-out infinite}
+.footer-glow{position:absolute;z-index:-1;width:340px;height:340px;border-radius:50%;filter:blur(75px);opacity:.16;pointer-events:none}
+.footer-glow-one{left:-130px;top:-190px;background:#24c78a;animation:footerGlow 12s ease-in-out infinite alternate}
+.footer-glow-two{right:-110px;bottom:-220px;background:#a4df75;animation:footerGlow 15s ease-in-out infinite alternate-reverse}
+.footer-grid{position:relative;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:42px}
+.footer-intro,.footer-link-group{min-width:0}
+.footer-brand{display:inline-flex;align-items:center;gap:10px;color:#fff;transition:transform .3s ease}
+.footer-brand:hover{transform:translateY(-3px)}
+.footer-brand .brand-mark{transition:transform .5s ease,box-shadow .3s ease}
+.footer-brand:hover .brand-mark{transform:rotate(-9deg) scale(1.08);box-shadow:0 0 24px rgba(121,231,169,.24)}
+.footer-grid p{color:#b1d0c0;font-size:13px;margin:15px 0 16px}
+.footer-tagline{display:inline-flex;align-items:center;gap:8px;color:#8fbaa5;font-size:11px}
+.footer-tagline i{width:7px;height:7px;border-radius:50%;background:#7ee3a8;box-shadow:0 0 0 5px rgba(126,227,168,.12);animation:footerPulse 2s ease-in-out infinite}
+.footer-link-group{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.footer-link-group>b{margin-bottom:7px;color:#effff5;font-size:15px}
+.footer-link-group button{display:flex;align-items:center;gap:9px;border:0;background:none;color:#b1d0c0;text-align:left;padding:2px 0;font-size:13px;cursor:pointer;transition:color .22s ease}
+.footer-link-group button span{opacity:0;transform:translate(-4px,3px);transition:opacity .22s,transform .22s;color:#9be6b5}
+.footer-link-group button:hover{color:#fff}
+.footer-link-group button:hover span{opacity:1;transform:translate(0,0)}
+.footer-bottom{position:relative;border-top:1px solid rgba(210,245,222,.17);padding-top:18px;display:flex;justify-content:space-between;gap:12px;color:#9fc3af;font:11px "DM Sans","Hind Siliguri",sans-serif}
+.footer-credit{display:inline-flex;align-items:center;gap:5px}
+.footer-credit i{font-style:normal;color:#c6ed91;animation:footerTwinkle 2.2s ease-in-out infinite}
+@keyframes footerShine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+@keyframes footerGlow{from{transform:translate3d(0,0,0) scale(.9)}to{transform:translate3d(50px,25px,0) scale(1.16)}}
+@keyframes footerPulse{0%,100%{box-shadow:0 0 0 4px rgba(126,227,168,.10)}50%{box-shadow:0 0 0 8px rgba(126,227,168,.02)}}
+@keyframes footerTwinkle{0%,100%{opacity:.65;transform:scale(.9) rotate(-10deg)}50%{opacity:1;transform:scale(1.25) rotate(12deg)}}
+@media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px 22px}.footer-intro{grid-column:1/-1}.footer-bottom{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.footer:before,.footer-glow,.footer-tagline i,.footer-credit i{animation:none!important}.footer-brand,.footer-brand .brand-mark,.footer-link-group button span{transition:none!important}}
