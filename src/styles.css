@@ -246,3 +246,29 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){
  .hero-copy>*,.dashboard-card,.chart-bars i,.float-card,.section-heading,.quick-grid,.feature-inner,.split-panels,.tool-grid,.page-banner,.job-grid>.job-card,.stack-list>.list-card{animation:none!important}
 }
+
+
+/* Animated welcome dialog */
+.welcome-overlay{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:rgba(4,27,20,.68);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.welcome-modal{position:relative;width:min(100%,510px);overflow:hidden;padding:42px 40px 30px;border:1px solid rgba(221,242,226,.9);border-radius:28px;background:linear-gradient(155deg,#fff 0%,#f5fbf6 68%,#e8f5eb 100%);box-shadow:0 32px 100px rgba(0,25,16,.34);text-align:center}
+.welcome-modal:before{content:"";position:absolute;inset:0 0 auto;height:7px;background:linear-gradient(90deg,#0b7651,#7bcf9b,#c8ed9a)}
+.welcome-modal:after{content:"";position:absolute;top:-105px;right:-95px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(137,211,157,.23),transparent 70%);pointer-events:none}
+.welcome-close{position:absolute;z-index:1;right:16px;top:17px;width:36px;height:36px;display:grid;place-items:center;border:1px solid #deebe2;border-radius:50%;background:#fff;color:#426452;cursor:pointer;transition:transform .2s,background .2s}
+.welcome-close:hover{transform:rotate(90deg);background:#eaf6ee}
+.welcome-emblem{position:relative;z-index:1;width:66px;height:66px;margin:0 auto 17px;display:grid;place-items:center;border-radius:21px;background:linear-gradient(145deg,#0c8058,#06432f);color:#d3f19c;box-shadow:0 12px 28px rgba(7,91,57,.22);animation:tnFloatSlow 4s ease-in-out infinite}
+.welcome-kicker{display:block;color:#0c8058;font:800 10px "Plus Jakarta Sans",sans-serif;letter-spacing:.17em}
+.welcome-modal h2{margin:12px 0 10px;color:#123b2b;font:800 clamp(25px,5vw,32px) "Hind Siliguri",sans-serif;line-height:1.35}
+.welcome-modal h2 em{color:#0b8056;font-style:normal}
+.welcome-modal>p{max-width:390px;margin:0 auto;color:#62776b;font:400 14px/1.9 "Hind Siliguri",sans-serif}
+.welcome-highlights{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:22px 0 24px}
+.welcome-highlights span{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid #dcebe2;border-radius:999px;background:rgba(255,255,255,.8);color:#35634c;font:600 11px "Hind Siliguri",sans-serif}
+.welcome-highlights svg{color:#0b8056}
+.welcome-actions{display:flex;justify-content:center;gap:10px}
+.welcome-primary,.welcome-secondary{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 20px;border-radius:13px;font:700 13px "Hind Siliguri",sans-serif;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.welcome-primary{border:1px solid #0b7651;background:linear-gradient(135deg,#0b8058,#075239);color:#fff;box-shadow:0 9px 22px rgba(7,91,57,.2)}
+.welcome-primary:hover{transform:translateY(-2px);box-shadow:0 13px 26px rgba(7,91,57,.28)}
+.welcome-secondary{border:1px solid #d4e5d9;background:#fff;color:#315d49}
+.welcome-secondary:hover{transform:translateY(-2px);background:#edf7ef}
+.welcome-modal>small{display:block;margin-top:20px;color:#82958a;font:400 10px "Hind Siliguri",sans-serif}
+@media(max-width:540px){.welcome-overlay{padding:15px}.welcome-modal{padding:38px 20px 25px;border-radius:23px}.welcome-emblem{width:58px;height:58px;border-radius:18px}.welcome-modal>p{font-size:13px}.welcome-highlights{gap:6px;margin:18px 0 20px}.welcome-highlights span{font-size:10px;padding:7px 8px}.welcome-actions{flex-direction:column}.welcome-primary,.welcome-secondary{width:100%}}
+@media(prefers-reduced-motion:reduce){.welcome-emblem{animation:none!important}}
