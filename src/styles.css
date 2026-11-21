@@ -306,3 +306,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* Use the original brand wordmark in the footer */
 .footer-brand img{height:42px;max-width:220px;width:auto;object-fit:contain;filter:brightness(0) invert(1);transform-origin:left center;transition:transform .3s ease,filter .3s ease}.footer-brand:hover img{transform:translateY(-3px) scale(1.035);filter:brightness(0) invert(1) drop-shadow(0 0 9px rgba(141,235,177,.28))}
+
+/* Restore the original information-rich footer layout */
+.footer{padding:42px 0 18px}
+.footer-grid{grid-template-columns:minmax(360px,1.55fr) minmax(320px,1fr) minmax(210px,.72fr);gap:54px;padding-bottom:36px}
+.footer-intro{max-width:510px}
+.footer-brand{display:inline-flex;width:205px;height:48px;margin:0 0 10px;align-items:center}
+.footer-brand img{display:block;width:100%;height:100%;max-width:none;object-fit:contain;object-position:left center;filter:none;transform-origin:left center;transition:transform .3s ease,filter .3s ease}
+.footer-brand:hover img{transform:translateY(-2px) scale(1.025);filter:drop-shadow(0 0 8px rgba(141,235,177,.22))}
+.footer-grid p{color:#b8d0c5;font-size:13px;line-height:1.85;margin:8px 0}
+.footer-grid .footer-slogan{font-size:16px;color:#b7edce;font-weight:600;margin:2px 0 10px}
+.footer-slogan b{color:#72d8a3}
+.footer-link-group{gap:10px}
+.footer-link-group>b{margin-bottom:7px;font-size:15px}
+.footer-link-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:11px}
+.footer-link-group button{font-size:13px;line-height:1.7}
+.footer-info{gap:12px}
+.footer-bottom{padding-top:17px;font-size:11px}
+@media(max-width:900px){.footer-grid{grid-template-columns:1.2fr 1fr;gap:32px}.footer-intro{grid-column:1/-1;max-width:650px}.footer-info{grid-column:2;grid-row:2}}
+@media(max-width:600px){.footer{padding-top:34px}.footer-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.footer-intro{grid-column:1/-1}.footer-services{grid-column:1/-1}.footer-info{grid-column:auto;grid-row:auto}.footer-link-grid{column-gap:14px}.footer-bottom{font-size:10px}}
